@@ -1,0 +1,1636 @@
+Archive member included because of file (symbol)
+
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+                              .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o (cyfitter_cfg)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+                              .\CortexM0\ARM_GCC_493\Debug\main.o (I2C_Start)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o) (I2C_I2CInit)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o) (I2C_mstrRdBufIndex)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o) (I2C_sda_Read)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o) (I2C_scl_Write)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o) (CyIntSetVector)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o) (CySysWdtIsr)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+                              .\CortexM0\ARM_GCC_493\Debug\Battery.o (Charge_Status_Reg_Read)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+                              .\CortexM0\ARM_GCC_493\Debug\main.o (DisplayReset_Write)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                              .\CortexM0\ARM_GCC_493\Debug\main.o (ADC_Start)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o) (ADC_ISR)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+                              .\CortexM0\ARM_GCC_493\Debug\main.o (Timer_Start)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+                              .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o (Timer_RTOS_ISR_StartEx)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o) (I2C_I2C_ISR)
+.\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyBootAsmGnu.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o) (CyDelayCycles)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+                              .\CortexM0\ARM_GCC_493\Debug\Battery.o (__gnu_thumb1_case_uqi)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+                              .\CortexM0\ARM_GCC_493\Debug\LM92.o (__aeabi_uidiv)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divsi3.o)
+                              .\CortexM0\ARM_GCC_493\Debug\LM92.o (__aeabi_idiv)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpsf2.o)
+                              .\CortexM0\ARM_GCC_493\Debug\LM92.o (__aeabi_fcmplt)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_aeabi_ldivmod.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o) (__aeabi_ldivmod)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_muldi3.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o) (__aeabi_lmul)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunssfsi.o)
+                              .\CortexM0\ARM_GCC_493\Debug\LM92.o (__aeabi_f2uiz)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_aeabi_ldivmod.o) (__gnu_ldivmod_helper)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o) (__aeabi_fdiv)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqsf2.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpsf2.o) (__eqsf2)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gesf2.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpsf2.o) (__gesf2)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(lesf2.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpsf2.o) (__lesf2)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(mulsf3.o)
+                              .\CortexM0\ARM_GCC_493\Debug\LM92.o (__aeabi_fmul)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subsf3.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunssfsi.o) (__aeabi_fsub)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixsfsi.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunssfsi.o) (__aeabi_f2iz)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsisf.o)
+                              .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o) (__aeabi_i2f)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(muldf3.o)
+                              .\CortexM0\ARM_GCC_493\Debug\LM92.o (__aeabi_dmul)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
+                              .\CortexM0\ARM_GCC_493\Debug\LM92.o (__aeabi_i2d)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(truncdfsf2.o)
+                              .\CortexM0\ARM_GCC_493\Debug\LM92.o (__aeabi_d2f)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzsi2.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o) (__clzsi2)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o) (__divdi3)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o) (__udivdi3)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzdi2.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o) (__clzdi2)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+                              .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o (__errno)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (exit)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o) (_global_impure_ptr)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (__libc_init_array)
+c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                              c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (memset)
+
+Allocating common symbols
+Common symbol       size              file
+
+lcd_buff            0x400             .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+Battery_Operation_Struct
+                    0xe               .\CortexM0\ARM_GCC_493\Debug\main.o
+LM92_Operational_Struct
+                    0x20              .\CortexM0\ARM_GCC_493\Debug\main.o
+I2C_mstrWrBufIndexTmp
+                    0x4               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ADC_countsPer10Volt
+                    0x4               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+I2C_state           0x1               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+I2C_mstrWrBufIndex  0x4               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ADC_offset          0x2               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+I2C_mstrWrBufSize   0x4               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+I2C_mstrStatus      0x2               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+I2C_mstrRdBufPtr    0x4               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+I2C_mstrControl     0x1               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+I2C_mstrRdBufSize   0x4               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+I2C_mstrRdBufIndex  0x4               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+I2C_mstrWrBufPtr    0x4               .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+ .data          0x00000000        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .text          0x00000000       0x78 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.extab     0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.exidx     0x00000000        0x8 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .bss           0x00000000       0xd4 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .text.LCD_2xChr
+                0x00000000      0x114 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .text.LCD_2xFStr
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .text.LCD_Picture
+                0x00000000       0x30 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .text.LCD_User
+                0x00000000       0x54 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .text.BCD_1    0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .text.BCD_2    0x00000000       0x34 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .text.BCD_3    0x00000000       0x58 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .text.BCD_3Int
+                0x00000000       0x54 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .text.BCD_4Int
+                0x00000000       0x80 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .text.BCD_5Int
+                0x00000000       0xac .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .text.BCD_Uint
+                0x00000000       0xac .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .text.BCD_Ulong
+                0x00000000      0x168 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .data          0x00000000        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .text._exit    0x00000000        0xa .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .text._sbrk    0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .text.I2C_Init
+                0x00000000        0x8 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .text.I2C_Stop
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .text.I2C_SetRxFifoLevel
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .text.I2C_SetTxFifoLevel
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .text.I2C_SetCustomInterruptHandler
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .text.I2C_I2CSlaveNackGeneration
+                0x00000000       0x3c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .text.I2C_I2CStop
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterSendStart
+                0x00000000       0xb8 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterSendStop
+                0x00000000       0x7c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterWriteByte
+                0x00000000       0x7c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterReadByte
+                0x00000000       0x80 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterGetReadBufSize
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterGetWriteBufSize
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterClearReadBuf
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterClearWriteBuf
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterSendRestart
+                0x00000000       0xa8 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .text.I2C_sda_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .text.I2C_sda_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .text.I2C_sda_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .text.I2C_sda_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .text.I2C_scl_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .text.I2C_scl_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .text.I2C_scl_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .bss           0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysClkImoStart
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysClkImoStop
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysClkWriteHfclkDirect
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysClkWriteSysclkDiv
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysLvdDisable
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysLvdGetInterruptSource
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysLvdClearInterrupt
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysGetResetReason
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyDisableInts
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyEnableInts
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyIntSetSysVector
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyIntGetSysVector
+                0x00000000       0x12 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyIntGetVector
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyIntGetPriority
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyIntGetState
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyIntSetPending
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyIntClearPending
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySoftwareReset
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysLvdEnable
+                0x00000000       0x44 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyDelayFreq
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickInit
+                0x00000000       0x50 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickStop
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickEnableInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickEnable
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickStart
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickDisableInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickSetReload
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickGetReload
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickGetValue
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickGetCountFlag
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickServiceCallbacks
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickClear
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickSetCallback
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CySysTickGetCallback
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text.CyGetUniqueId
+                0x00000000       0x70 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysClkIloStart
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtGetEnabledStatus
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtSetMode
+                0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtGetMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtSetClearOnMatch
+                0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtGetClearOnMatch
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtEnable
+                0x00000000       0x34 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtDisable
+                0x00000000       0x3c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtSetCascade
+                0x00000000       0x34 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtGetCascade
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtSetMatch
+                0x00000000       0x3c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtSetToggleBit
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtGetToggleBit
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtGetMatch
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtGetCount
+                0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysClkIloStop
+                0x00000000       0xb4 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtGetInterruptSource
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtResetCounters
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtSetInterruptCallback
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtGetInterruptCallback
+                0x00000000       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtEnableCounterIsr
+                0x00000000       0x34 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWdtDisableCounterIsr
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysTimerDelayUntilMatch
+                0x00000000       0x6c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysTimerDelay
+                0x00000000       0x3c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text.CySysWatchdogFeed
+                0x00000000       0x52 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .rodata        0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .text.Charge_Status_Reg_InterruptEnable
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .text.Charge_Status_Reg_InterruptDisable
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .text.Charge_Status_Reg_WriteMask
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .text.Charge_Status_Reg_ReadMask
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .text.DisplayReset_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .text.DisplayReset_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .text.DisplayReset_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .text.DisplayReset_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_Stop
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_StopConvert
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_SetChanMask
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_SetLowLimit
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_SetHighLimit
+                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_SetLimitMask
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_SetSatMask
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_SetOffset
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_SetGain
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_CountsTo_uVolts
+                0x00000000       0x40 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text.ADC_CountsTo_Volts
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetQDMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetPrescaler
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetOneShot
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetPWMMode
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetPWMSyncKill
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetPWMStopOnKill
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetPWMDeadTime
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetPWMInvert
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_WriteCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_ReadCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetCounterMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_WritePeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_ReadPeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetCompareSwap
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_WritePeriodBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_ReadPeriodBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetPeriodSwap
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_WriteCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_ReadCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_WriteCompareBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_ReadCompareBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_ReadCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_ReadCaptureBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetCaptureMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetReloadMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetStartMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetStopMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetCountMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_ReadStatus
+                0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_GetInterruptSourceMasked
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_GetInterruptSource
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_ClearInterrupt
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text.Timer_SetInterrupt
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_GetPriority
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_Enable
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_Disable
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_SetPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text.Timer_RTOS_ISR_ClearPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyBootAsmGnu.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyBootAsmGnu.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divsi3.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divsi3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpsf2.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpsf2.o)
+ .text          0x00000000       0x48 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_aeabi_ldivmod.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_aeabi_ldivmod.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_aeabi_ldivmod.o)
+ .text          0x00000000       0x54 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_muldi3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_muldi3.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_muldi3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunssfsi.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunssfsi.o)
+ .text          0x00000000       0x6c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o)
+ .text          0x00000000      0x270 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o)
+ .rodata        0x00000000       0x80 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqsf2.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqsf2.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gesf2.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gesf2.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(lesf2.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(lesf2.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(mulsf3.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(mulsf3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subsf3.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subsf3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixsfsi.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixsfsi.o)
+ .text          0x00000000       0x90 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsisf.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsisf.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsisf.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(muldf3.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(muldf3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(truncdfsf2.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(truncdfsf2.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzsi2.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzsi2.o)
+ .text          0x00000000      0x1f0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
+ .ARM.extab     0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x00000000        0x8 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
+ .text          0x00000000      0x158 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
+ .ARM.extab     0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x00000000        0x8 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
+ .text          0x00000000       0x18 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzdi2.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzdi2.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzdi2.o)
+ .text          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .text.__errno  0x00000000        0xc c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .text          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .text          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .data.impure_data
+                0x00000000       0x60 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x00000000        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .rodata.str1.1
+                0x00000000        0x2 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .text          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ .text          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+ .data          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+ .bss           0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x00000000         0x00008000         xr
+ram              0x20000000         0x00001000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+START GROUP
+LOAD .\CortexM0\ARM_GCC_493\Debug\main.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\LM92.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\bcd.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\Battery.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+LOAD .\CortexM0\ARM_GCC_493\Debug\SensorTest.a
+LOAD C:\My Programs\PSoC\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_493\Debug\CyComponentLibrary.a
+END GROUP
+START GROUP
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libc_nano.a
+END GROUP
+START GROUP
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libc_nano.a
+END GROUP
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+START GROUP
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libc.a
+LOAD c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libnosys.a
+END GROUP
+                0x00000000                CY_APPL_ORIGIN = 0x0
+                0x00000080                CY_FLASH_ROW_SIZE = 0x80
+                0x00000001                CY_APPL_NUM = 0x1
+                0x00000001                CY_APPL_MAX = 0x1
+                0x00000040                CY_METADATA_SIZE = 0x40
+                0x00000000                CY_APPL_LOADABLE = 0x0
+                0x00000000                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x0, CY_FLASH_ROW_SIZE)
+                0x00000000                CY_APP_FOR_STACK_AND_COPIER = 0x0
+                0x20000678                PROVIDE (__cy_heap_start, _end)
+                0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
+                0x20001000                PROVIDE (__cy_stack, (ORIGIN (ram) + 0x1000))
+                0x20000c00                PROVIDE (__cy_heap_end, (__cy_stack - 0x400))
+
+.cybootloader   0x00000000        0x0
+ *(.cybootloader)
+                0x00000000                appl1_start = CY_APPL_ORIGIN?CY_APPL_ORIGIN:ALIGN (CY_FLASH_ROW_SIZE)
+                0x00003f80                appl2_start = (appl1_start + ALIGN ((((0x8000 - appl1_start) - (0x2 * CY_FLASH_ROW_SIZE)) / 0x2), CY_FLASH_ROW_SIZE))
+                0x00000000                appl_start = (CY_APPL_NUM == 0x1)?appl1_start:appl2_start
+                0x00000001                cy_project_type_bootloader = (appl_start == 0x0)?0x1:0x0
+                0x00000000                cy_project_type_app_for_stack_and_copier = (CY_APP_FOR_STACK_AND_COPIER == 0x1)?0x1:0x0
+
+.text           0x00000000     0x2ba4
+ CREATE_OBJECT_SYMBOLS
+                0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
+ *(.romvectors)
+ .romvectors    0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00000000                RomVectors
+                0x00000001                ASSERT ((. != __cy_interrupt_vector), No interrupt vector)
+                0x00000001                ASSERT (CY_APPL_ORIGIN?(SIZEOF (.cybootloader) <= CY_APPL_ORIGIN):0x1, Wrong image location)
+                0x00000010                PROVIDE (__cy_reset, Reset)
+ *(.text.Reset)
+ .text.Reset    0x00000010        0x6 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00000010                Reset
+                0x00000001                ASSERT ((. != __cy_reset), No reset code)
+ *(.psocinit)
+ *fill*         0x00000016        0x2 
+ .psocinit      0x00000018      0x224 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+                0x00000018                cyfitter_cfg
+                0x0000023c                . = MAX (., 0x100)
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x0000023c       0x60 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .text.LM92_Action
+                0x0000029c       0x44 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x0000029c                LM92_Action
+ .text.ADC_Start_Convert_Task
+                0x000002e0       0x14 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x000002e0                ADC_Start_Convert_Task
+ .text.ADC_Get_Battery_Volts
+                0x000002f4       0x5c .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x000002f4                ADC_Get_Battery_Volts
+ .text.I2C_SendBuffer
+                0x00000350       0x26 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00000350                I2C_SendBuffer
+ .text.I2C_ReadRegister
+                0x00000376       0x46 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00000376                I2C_ReadRegister
+ .text.startup.main
+                0x000003bc       0x50 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x000003bc                main
+ .text.I2C_SendCommand
+                0x0000040c       0x18 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x0000040c                I2C_SendCommand
+ .text.LCD_Init
+                0x00000424       0xcc .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x00000424                LCD_Init
+ .text.LCD_Clear
+                0x000004f0       0x24 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x000004f0                LCD_Clear
+ .text.LCD_Update
+                0x00000514       0x38 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x00000514                LCD_Update
+ .text.LCD_Chr  0x0000054c       0x7c .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x0000054c                LCD_Chr
+ .text.LCD_FStr
+                0x000005c8       0x18 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x000005c8                LCD_FStr
+ .text.LCD_GotoXY
+                0x000005e0       0x14 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x000005e0                LCD_GotoXY
+ .text.LM92_GetRegisters
+                0x000005f4       0xa8 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+                0x000005f4                LM92_GetRegisters
+ .text.LM92_GetTemperature
+                0x0000069c      0x27c .\CortexM0\ARM_GCC_493\Debug\LM92.o
+                0x0000069c                LM92_GetTemperature
+ .text.BCD_GetPointerBuf
+                0x00000918        0x8 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+                0x00000918                BCD_GetPointerBuf
+ .text.BCD_Uchar
+                0x00000920       0x58 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+                0x00000920                BCD_Uchar
+ .text.Idle     0x00000978        0x2 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+                0x00000978                Idle
+ *fill*         0x0000097a        0x2 
+ .text.TaskManager
+                0x0000097c       0x34 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+                0x0000097c                TaskManager
+ .text.SetTask  0x000009b0       0x28 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+                0x000009b0                SetTask
+ .text.SetTimerTask
+                0x000009d8       0x4c .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+                0x000009d8                SetTimerTask
+ .text.InitRTOS
+                0x00000a24       0x34 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+                0x00000a24                InitRTOS
+ .text.RTOS_Start
+                0x00000a58       0x14 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+                0x00000a58                RTOS_Start
+ .text.TimerService
+                0x00000a6c       0x3c .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+                0x00000a6c                TimerService
+ .text.TaskDispatcher_ISR
+                0x00000aa8        0x8 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+                0x00000aa8                TaskDispatcher_ISR
+ .text.Battery_Get_Volts
+                0x00000ab0       0xb0 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+                0x00000ab0                Battery_Get_Volts
+ .text.IntDefaultHandler
+                0x00000b60        0x2 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00000b60                IntDefaultHandler
+ *fill*         0x00000b62        0x2 
+ .text.Start_c  0x00000b64       0x4c .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00000b64                Start_c
+ .text.startup.initialize_psoc
+                0x00000bb0       0x44 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00000bb0                initialize_psoc
+ .text.SetAnalogRoutingPumps
+                0x00000bf4       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+                0x00000bf4                SetAnalogRoutingPumps
+ .text.I2C_Enable
+                0x00000c10       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+                0x00000c10                I2C_Enable
+ .text.I2C_Start
+                0x00000c2c       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+                0x00000c2c                I2C_Start
+ .text.I2C_I2CInit
+                0x00000c48       0xcc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+                0x00000c48                I2C_I2CInit
+ .text.I2C_I2CMasterStatus
+                0x00000d14       0x2c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+                0x00000d14                I2C_I2CMasterStatus
+ .text.I2C_I2CMasterClearStatus
+                0x00000d40       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+                0x00000d40                I2C_I2CMasterClearStatus
+ .text.I2C_I2CReStartGeneration
+                0x00000d60       0x90 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+                0x00000d60                I2C_I2CReStartGeneration
+ .text.I2C_I2CMasterWriteBuf
+                0x00000df0       0xdc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+                0x00000df0                I2C_I2CMasterWriteBuf
+ .text.I2C_I2CMasterReadBuf
+                0x00000ecc       0xe8 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+                0x00000ecc                I2C_I2CMasterReadBuf
+ .text.I2C_sda_Read
+                0x00000fb4       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+                0x00000fb4                I2C_sda_Read
+ .text.I2C_scl_Write
+                0x00000fc4       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+                0x00000fc4                I2C_scl_Write
+ .text.I2C_scl_Read
+                0x00000fdc       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+                0x00000fdc                I2C_scl_Read
+ .text.CyIntSetVector
+                0x00000fec       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x00000fec                CyIntSetVector
+ .text.CyIntSetPriority
+                0x00001004       0x3c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x00001004                CyIntSetPriority
+ .text.CyIntEnable
+                0x00001040       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x00001040                CyIntEnable
+ .text.CyIntDisable
+                0x00001054       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x00001054                CyIntDisable
+ .text.CyHalt   0x00001068        0x4 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x00001068                CyHalt
+ .text.CyDelay  0x0000106c       0x2c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x0000106c                CyDelay
+ .text.CyDelayUs
+                0x00001098       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x00001098                CyDelayUs
+ .text.CySysClkWriteImoFreq
+                0x000010ac      0x128 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x000010ac                CySysClkWriteImoFreq
+ .text.CySysWdtLock
+                0x000011d4       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+                0x000011d4                CySysWdtLock
+ .text.CySysWdtUnlock
+                0x000011f0       0x30 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+                0x000011f0                CySysWdtUnlock
+ .text.CySysWdtClearInterrupt
+                0x00001220       0x54 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+                0x00001220                CySysWdtClearInterrupt
+ .text.CySysWdtIsr
+                0x00001274       0xa0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+                0x00001274                CySysWdtIsr
+ .text.Charge_Status_Reg_Read
+                0x00001314        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+                0x00001314                Charge_Status_Reg_Read
+ .text.DisplayReset_Write
+                0x00001320       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+                0x00001320                DisplayReset_Write
+ .text.ADC_Init
+                0x00001338       0xec .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                0x00001338                ADC_Init
+ .text.ADC_Enable
+                0x00001424       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                0x00001424                ADC_Enable
+ .text.ADC_Start
+                0x00001444       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                0x00001444                ADC_Start
+ .text.ADC_StartConvert
+                0x00001460       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                0x00001460                ADC_StartConvert
+ .text.ADC_IsEndConversion
+                0x00001474       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                0x00001474                ADC_IsEndConversion
+ .text.ADC_GetResult16
+                0x0000149c       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                0x0000149c                ADC_GetResult16
+ .text.ADC_CountsTo_mVolts
+                0x000014bc       0x50 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                0x000014bc                ADC_CountsTo_mVolts
+ .text.ADC_ISR  0x0000150c        0xc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+                0x0000150c                ADC_ISR
+ .text.Timer_Init
+                0x00001518       0x3c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+                0x00001518                Timer_Init
+ .text.Timer_TriggerCommand
+                0x00001554       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+                0x00001554                Timer_TriggerCommand
+ .text.Timer_Enable
+                0x00001570       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+                0x00001570                Timer_Enable
+ .text.Timer_Start
+                0x00001594       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+                0x00001594                Timer_Start
+ .text.Timer_RTOS_ISR_SetPriority
+                0x000015b0       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+                0x000015b0                Timer_RTOS_ISR_SetPriority
+ .text.Timer_RTOS_ISR_StartEx
+                0x000015d0       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+                0x000015d0                Timer_RTOS_ISR_StartEx
+ .text.I2C_I2C_ISR
+                0x000015f4      0x354 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+                0x000015f4                I2C_I2C_ISR
+ .text          0x00001948       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyBootAsmGnu.o)
+                0x00001948                CyDelayCycles
+                0x0000195c                CyEnterCriticalSection
+                0x00001964                CyExitCriticalSection
+ .text          0x00001970       0x14 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+                0x00001970                __gnu_thumb1_case_uqi
+ .text          0x00001984      0x120 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+                0x00001984                __aeabi_uidiv
+                0x00001984                __udivsi3
+                0x00001a90                __aeabi_uidivmod
+ .text          0x00001aa4      0x1e0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divsi3.o)
+                0x00001aa4                __divsi3
+                0x00001aa4                __aeabi_idiv
+                0x00001c70                __aeabi_idivmod
+ .text          0x00001c84        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x00001c84                __aeabi_idiv0
+                0x00001c84                __aeabi_ldiv0
+ .text          0x00001c88       0x74 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpsf2.o)
+                0x00001c88                __aeabi_cfrcmple
+                0x00001c90                __aeabi_cfcmpeq
+                0x00001c90                __aeabi_cfcmple
+                0x00001ca0                __aeabi_fcmpeq
+                0x00001cac                __aeabi_fcmplt
+                0x00001cc0                __aeabi_fcmple
+                0x00001cd4                __aeabi_fcmpgt
+                0x00001ce8                __aeabi_fcmpge
+ .text          0x00001cfc       0x30 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunssfsi.o)
+                0x00001cfc                __fixunssfsi
+                0x00001cfc                __aeabi_f2uiz
+ .text          0x00001d2c       0x54 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqsf2.o)
+                0x00001d2c                __eqsf2
+                0x00001d2c                __nesf2
+ .text          0x00001d80       0x94 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gesf2.o)
+                0x00001d80                __gesf2
+                0x00001d80                __gtsf2
+ .text          0x00001e14       0x8c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(lesf2.o)
+                0x00001e14                __ltsf2
+                0x00001e14                __lesf2
+ .text          0x00001ea0      0x264 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(mulsf3.o)
+                0x00001ea0                __aeabi_fmul
+ .text          0x00002104      0x2fc c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subsf3.o)
+                0x00002104                __aeabi_fsub
+ .text          0x00002400       0x40 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixsfsi.o)
+                0x00002400                __aeabi_f2iz
+ .text          0x00002440      0x534 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(muldf3.o)
+                0x00002440                __aeabi_dmul
+ .text          0x00002974       0x78 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
+                0x00002974                __aeabi_i2d
+ .text          0x000029ec      0x120 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(truncdfsf2.o)
+                0x000029ec                __aeabi_d2f
+ .text          0x00002b0c       0x3c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzsi2.o)
+                0x00002b0c                __clzsi2
+ .text.__libc_init_array
+                0x00002b48       0x4c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x00002b48                __libc_init_array
+ .text.memset   0x00002b94       0x10 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                0x00002b94                memset
+ *(.plt)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+ *(.bootloader)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ *(.gcc_except_table)
+
+.v4_bx          0x00002ba4        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x00002ba4        0x0
+ .iplt          0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame       0x00002ba4        0x4
+ *(.eh_frame)
+ .eh_frame      0x00002ba4        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .eh_frame      0x00002ba4        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+                0x00002ba8                PROVIDE (__exidx_start, .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x00002ba8                __exidx_end = .
+
+.rodata         0x00002ba8      0x490
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.1
+                0x00002ba8       0x16 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .rodata        0x00002bbe      0x325 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x00002bbe                font
+ *fill*         0x00002ee3        0x1 
+ .rodata        0x00002ee4       0x70 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .rodata        0x00002f54       0x2e .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x00002f54                cyImoFreqMhz2Reg
+ *fill*         0x00002f82        0x2 
+ .rodata        0x00002f84       0x40 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(mulsf3.o)
+ .rodata        0x00002fc4       0x40 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(muldf3.o)
+                0x00003004                . = ALIGN (0x4)
+ *(.init)
+ .init          0x00003004        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x00003004                _init
+ .init          0x00003008        0x8 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x00003010                . = ALIGN (0x4)
+                0x00003010                __preinit_array_start = .
+ *(.preinit_array)
+                0x00003010                __preinit_array_end = .
+                0x00003010                . = ALIGN (0x4)
+                0x00003010                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00003010        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .init_array    0x00003014        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00003018                __init_array_end = .
+                0x00003018                . = ALIGN (0x4)
+ *(.fini)
+ .fini          0x00003018        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x00003018                _fini
+ .fini          0x0000301c        0x8 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x00003024                . = ALIGN (0x4)
+                0x00003024                __fini_array_start = .
+ *(.fini_array)
+ .fini_array    0x00003024        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x00003028                __fini_array_end = .
+                0x00003028                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+                0x00003028                . = ALIGN (0x4)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+                0x00003028                . = ALIGN (0x4)
+                0x00003028                __cy_regions = .
+                0x00003028        0x4 LONG 0x3038 __cy_region_init_ram
+                0x0000302c        0x4 LONG 0x200000c8 __cy_region_start_data
+                0x00003030        0x4 LONG 0x20 __cy_region_init_size_ram
+                0x00003034        0x4 LONG 0x590 __cy_region_zero_size_ram
+                0x00003038                __cy_regions_end = .
+                0x00003038                . = ALIGN (0x8)
+                0x00003038                _etext = .
+
+.cy_checksum_exclude
+                0x00003038        0x0
+ *(.cy_checksum_exclude)
+
+.ramvectors     0x20000000       0xc0
+                0x20000000                __cy_region_start_ram = .
+ *(.ramvectors)
+ .ramvectors    0x20000000       0xc0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x20000000                CyRamVectors
+
+.noinit         0x200000c0        0x4
+ *(.noinit)
+ .noinit        0x200000c0        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+
+.data           0x200000c8       0x20 load address 0x00003038
+                0x200000c8                __cy_region_start_data = .
+ *(.jcr)
+ .jcr           0x200000c8        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .jcr           0x200000c8        0x4 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ *(.got.plt)
+ *(.got)
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x200000cc        0x4 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+                0x200000cc                LM92_I2C_ADRESS
+ .data          0x200000d0       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                0x200000d0                cydelay32kMs
+                0x200000d4                cydelayFreqKhz
+                0x200000d8                cydelayFreqMhz
+                0x200000dc                cydelayFreqHz
+ .data          0x200000e0        0x4 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+                0x200000e8                . = ALIGN (0x8)
+ *fill*         0x200000e4        0x4 
+ *(.ram)
+                0x200000e8                _edata = .
+
+.igot.plt       0x200000e8        0x0 load address 0x00003058
+ .igot.plt      0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+
+.bss            0x200000e8      0x590 load address 0x00003058
+                0x200000e8                PROVIDE (__bss_start__, .)
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x200000e8       0x1c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .bss           0x20000104        0x8 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x20000104                x_cur
+                0x20000105                y_cur
+                0x20000108                lcd_buff_idx
+ .bss           0x2000010c        0xd .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ *fill*         0x20000119        0x3 
+ .bss           0x2000011c       0xd4 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .bss           0x200001f0        0x8 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+                0x200001f0                I2C_initVar
+                0x200001f4                I2C_customIntrHandler
+ .bss           0x200001f8       0x1c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .bss           0x20000214        0x1 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                0x20000214                ADC_initVar
+ .bss           0x20000215        0x1 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+                0x20000215                Timer_initVar
+ *(COMMON)
+ COMMON         0x20000216       0x2e .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x20000216                Battery_Operation_Struct
+                0x20000224                LM92_Operational_Struct
+ COMMON         0x20000244      0x400 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                0x20000244                lcd_buff
+ COMMON         0x20000644        0x1 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+                0x20000644                I2C_state
+ *fill*         0x20000645        0x3 
+ COMMON         0x20000648       0x24 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+                0x20000648                I2C_mstrWrBufIndexTmp
+                0x2000064c                I2C_mstrWrBufIndex
+                0x20000650                I2C_mstrWrBufSize
+                0x20000654                I2C_mstrStatus
+                0x20000658                I2C_mstrRdBufPtr
+                0x2000065c                I2C_mstrControl
+                0x20000660                I2C_mstrRdBufSize
+                0x20000664                I2C_mstrRdBufIndex
+                0x20000668                I2C_mstrWrBufPtr
+ COMMON         0x2000066c        0x6 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                0x2000066c                ADC_countsPer10Volt
+                0x20000670                ADC_offset
+                0x20000678                . = ALIGN (0x8)
+ *fill*         0x20000672        0x6 
+ *(.ram.b)
+                0x20000678                _end = .
+                0x20000678                __end = .
+                0x20000678                PROVIDE (end, .)
+                0x20000678                PROVIDE (__bss_end__, .)
+                0x00003038                __cy_region_init_ram = LOADADDR (.data)
+                0x00000020                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x00000590                __cy_region_zero_size_ram = (_end - _edata)
+
+.heap           0x20000678       0x80 load address 0x00003058
+                0x20000678                . = _end
+                0x200006f8                . = (. + 0x80)
+ *fill*         0x20000678       0x80 
+                0x200006f8                __cy_heap_limit = .
+
+.stack          0x20000c00      0x400
+                0x20000c00                __cy_stack_limit = .
+                0x20001000                . = (. + 0x400)
+ *fill*         0x20000c00      0x400 
+                0x00000001                ASSERT ((__cy_stack_limit >= __cy_heap_limit), region RAM overflowed with stack)
+                0x00000000                cy_checksum_exclude_size = (CY_APPL_LOADABLE == 0x1)?SIZEOF (.cy_checksum_exclude):0x0
+                0x00000001                ASSERT ((cy_checksum_exclude_size <= CY_CHECKSUM_EXCLUDE_SIZE), CY_BOOT: Section .cy_checksum_exclude size exceedes specified limit.)
+                0x00007fc0                cyloadermeta_start = (cy_project_type_bootloader || cy_project_type_app_for_stack_and_copier)?(0x8000 - CY_METADATA_SIZE):0xf0000000
+
+.cyloadermeta
+ *(.cyloadermeta)
+                0x00007fc0                cyloadablemeta_start = cy_project_type_app_for_stack_and_copier?((0x8000 - CY_FLASH_ROW_SIZE) - CY_METADATA_SIZE):((0x8000 - (CY_FLASH_ROW_SIZE * (CY_APPL_NUM - 0x1))) - CY_METADATA_SIZE)
+
+.cyloadablemeta
+ *(.cyloadablemeta)
+
+.cyflashprotect
+                0x90400000       0x20
+ *(.cyflashprotect)
+ .cyflashprotect
+                0x90400000       0x20 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+                0x90400000                cy_meta_flashprotect
+
+.cymeta         0x90500000        0xc
+ *(.cymeta)
+ .cymeta        0x90500000        0xc .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+                0x90500000                cy_metadata
+
+.cychipprotect  0x90600000        0x1
+ *(.cychipprotect)
+ .cychipprotect
+                0x90600000        0x1 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+                0x90600000                cy_meta_chipprotect
+
+.rel.dyn        0x00003058        0x0 load address 0x90600004
+ .rel.iplt      0x00000000        0x0 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x9a0
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_aranges
+                0x00000048       0x70 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .debug_aranges
+                0x000000b8       0x28 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .debug_aranges
+                0x000000e0       0x68 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .debug_aranges
+                0x00000148       0x58 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .debug_aranges
+                0x000001a0       0x20 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .debug_aranges
+                0x000001c0       0x18 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_aranges
+                0x000001d8       0x48 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_aranges
+                0x00000220       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .debug_aranges
+                0x00000248       0x58 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .debug_aranges
+                0x000002a0       0x28 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .debug_aranges
+                0x000002c8       0x88 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .debug_aranges
+                0x00000350       0x40 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .debug_aranges
+                0x00000390       0x40 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .debug_aranges
+                0x000003d0      0x170 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .debug_aranges
+                0x00000540      0x100 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .debug_aranges
+                0x00000640       0x40 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .debug_aranges
+                0x00000680       0x40 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .debug_aranges
+                0x000006c0       0xa8 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .debug_aranges
+                0x00000768       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .debug_aranges
+                0x00000788      0x158 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .debug_aranges
+                0x000008e0       0x80 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .debug_aranges
+                0x00000960       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+ .debug_aranges
+                0x00000980       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyBootAsmGnu.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x61d5
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x7ed .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_info    0x000007ed      0x6fa .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .debug_info    0x00000ee7      0x422 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .debug_info    0x00001309      0x342 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .debug_info    0x0000164b      0x2b2 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .debug_info    0x000018fd      0x1e1 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .debug_info    0x00001ade       0xfd .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_info    0x00001bdb      0x38a .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_info    0x00001f65      0x453 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .debug_info    0x000023b8      0x2c0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .debug_info    0x00002678      0x1a8 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .debug_info    0x00002820      0x682 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .debug_info    0x00002ea2      0x14c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .debug_info    0x00002fee      0x14c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .debug_info    0x0000313a      0xb69 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .debug_info    0x00003ca3      0xd73 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .debug_info    0x00004a16      0x179 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .debug_info    0x00004b8f      0x14c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .debug_info    0x00004cdb      0x59d .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .debug_info    0x00005278       0xc3 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .debug_info    0x0000533b      0x932 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .debug_info    0x00005c6d      0x34e .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .debug_info    0x00005fbb      0x18a .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+ .debug_info    0x00006145       0x90 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyBootAsmGnu.o)
+
+.debug_abbrev   0x00000000     0x220e
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x1e1 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_abbrev  0x000001e1      0x213 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .debug_abbrev  0x000003f4      0x14c .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .debug_abbrev  0x00000540       0xba .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .debug_abbrev  0x000005fa      0x16c .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .debug_abbrev  0x00000766      0x10c .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .debug_abbrev  0x00000872       0x5d .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_abbrev  0x000008cf      0x1fe .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_abbrev  0x00000acd      0x24b .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .debug_abbrev  0x00000d18      0x1a2 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .debug_abbrev  0x00000eba      0x100 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .debug_abbrev  0x00000fba      0x189 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .debug_abbrev  0x00001143       0xc4 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .debug_abbrev  0x00001207       0xc4 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .debug_abbrev  0x000012cb      0x338 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .debug_abbrev  0x00001603      0x35f .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .debug_abbrev  0x00001962       0xd3 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .debug_abbrev  0x00001a35       0xc4 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .debug_abbrev  0x00001af9      0x1e6 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .debug_abbrev  0x00001cdf       0x72 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .debug_abbrev  0x00001d51      0x1a9 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .debug_abbrev  0x00001efa      0x26b .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .debug_abbrev  0x00002165       0x95 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+ .debug_abbrev  0x000021fa       0x14 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyBootAsmGnu.o)
+
+.debug_line     0x00000000     0x30e8
+ *(.debug_line)
+ .debug_line    0x00000000      0x25d .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_line    0x0000025d      0x354 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .debug_line    0x000005b1      0x1d5 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .debug_line    0x00000786      0x5da .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .debug_line    0x00000d60      0x160 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .debug_line    0x00000ec0      0x1a3 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .debug_line    0x00001063       0x53 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_line    0x000010b6      0x226 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_line    0x000012dc      0x198 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .debug_line    0x00001474      0x164 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .debug_line    0x000015d8       0xdd .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .debug_line    0x000016b5      0x30c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .debug_line    0x000019c1       0xb7 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .debug_line    0x00001a78       0xb7 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .debug_line    0x00001b2f      0x4c2 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .debug_line    0x00001ff1      0x496 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .debug_line    0x00002487       0xcc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .debug_line    0x00002553       0xbc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .debug_line    0x0000260f      0x2f6 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .debug_line    0x00002905       0x6a .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .debug_line    0x0000296f      0x3e3 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .debug_line    0x00002d52      0x1d1 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .debug_line    0x00002f23      0x15c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+ .debug_line    0x0000307f       0x69 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyBootAsmGnu.o)
+
+.debug_frame    0x00000000     0x1af8
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xd4 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_frame   0x000000d4      0x14c .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .debug_frame   0x00000220       0x60 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .debug_frame   0x00000280       0xf8 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .debug_frame   0x00000378       0xf0 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .debug_frame   0x00000468       0x2c .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .debug_frame   0x00000494       0xb0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_frame   0x00000544       0x48 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .debug_frame   0x0000058c       0xc0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .debug_frame   0x0000064c       0x3c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .debug_frame   0x00000688      0x1bc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .debug_frame   0x00000844       0x60 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .debug_frame   0x000008a4       0x60 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .debug_frame   0x00000904      0x36c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .debug_frame   0x00000c70      0x308 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .debug_frame   0x00000f78       0x78 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .debug_frame   0x00000ff0       0x60 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .debug_frame   0x00001050      0x1bc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .debug_frame   0x0000120c       0x20 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .debug_frame   0x0000122c      0x384 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .debug_frame   0x000015b0      0x104 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .debug_frame   0x000016b4       0x38 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+ .debug_frame   0x000016ec       0x20 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x0000170c       0x20 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divsi3.o)
+ .debug_frame   0x0000172c       0x34 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_muldi3.o)
+ .debug_frame   0x00001760       0x28 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunssfsi.o)
+ .debug_frame   0x00001788       0x50 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o)
+ .debug_frame   0x000017d8       0x3c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o)
+ .debug_frame   0x00001814       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqsf2.o)
+ .debug_frame   0x00001840       0x30 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gesf2.o)
+ .debug_frame   0x00001870       0x30 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(lesf2.o)
+ .debug_frame   0x000018a0       0x3c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(mulsf3.o)
+ .debug_frame   0x000018dc       0x30 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subsf3.o)
+ .debug_frame   0x0000190c       0x20 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixsfsi.o)
+ .debug_frame   0x0000192c       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsisf.o)
+ .debug_frame   0x00001958       0x3c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(muldf3.o)
+ .debug_frame   0x00001994       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
+ .debug_frame   0x000019c0       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(truncdfsf2.o)
+ .debug_frame   0x000019ec       0x3c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
+ .debug_frame   0x00001a28       0x3c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
+ .debug_frame   0x00001a64       0x20 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00001a84       0x28 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00001aac       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00001ad8       0x20 c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+
+.debug_str      0x00000000     0x1e99
+ *(.debug_str)
+ .debug_str     0x00000000      0x433 .\CortexM0\ARM_GCC_493\Debug\main.o
+                                0x4ba (size before relaxing)
+ .debug_str     0x00000433       0x8d .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+                                0x29f (size before relaxing)
+ .debug_str     0x000004c0       0x4e .\CortexM0\ARM_GCC_493\Debug\LM92.o
+                                0x2b2 (size before relaxing)
+ .debug_str     0x0000050e       0x59 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+                                0x20a (size before relaxing)
+ .debug_str     0x00000567       0x89 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+                                0x24e (size before relaxing)
+ .debug_str     0x000005f0       0x37 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+                                0x24d (size before relaxing)
+ .debug_str     0x00000627       0x5b .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+                                0x1ce (size before relaxing)
+ .debug_str     0x00000682      0x14f .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                                0x2f5 (size before relaxing)
+ .debug_str     0x000007d1      0x120 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+                                0x2fe (size before relaxing)
+ .debug_str     0x000008f1      0x14d .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+                                0x2e3 (size before relaxing)
+ .debug_str     0x00000a3e       0x73 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+                                0x23b (size before relaxing)
+ .debug_str     0x00000ab1      0x20b .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+                                0x449 (size before relaxing)
+ .debug_str     0x00000cbc       0x84 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+                                0x213 (size before relaxing)
+ .debug_str     0x00000d40       0x63 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+                                0x213 (size before relaxing)
+ .debug_str     0x00000da3      0x422 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+                                0x649 (size before relaxing)
+ .debug_str     0x000011c5      0x468 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+                                0x653 (size before relaxing)
+ .debug_str     0x0000162d       0xa9 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+                                0x279 (size before relaxing)
+ .debug_str     0x000016d6       0x89 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+                                0x231 (size before relaxing)
+ .debug_str     0x0000175f      0x180 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+                                0x3c5 (size before relaxing)
+ .debug_str     0x000018df       0x37 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+                                0x1b1 (size before relaxing)
+ .debug_str     0x00001916      0x3dc .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+                                0x5a5 (size before relaxing)
+ .debug_str     0x00001cf2      0x15e .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+                                0x35c (size before relaxing)
+ .debug_str     0x00001e50       0x49 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+                                0x29e (size before relaxing)
+
+.debug_loc      0x00000000     0x32a9
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x131 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_loc     0x00000131      0x323 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .debug_loc     0x00000454       0x4a .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .debug_loc     0x0000049e      0x8c7 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .debug_loc     0x00000d65      0x160 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .debug_loc     0x00000ec5       0x4f .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .debug_loc     0x00000f14      0x1e9 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_loc     0x000010fd      0x132 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .debug_loc     0x0000122f       0x7e .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .debug_loc     0x000012ad      0x5a2 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .debug_loc     0x0000184f       0x63 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .debug_loc     0x000018b2       0x63 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .debug_loc     0x00001915      0x55e .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .debug_loc     0x00001e73      0x918 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .debug_loc     0x0000278b       0x44 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .debug_loc     0x000027cf       0x63 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .debug_loc     0x00002832      0x3a8 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .debug_loc     0x00002bda      0x53c .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .debug_loc     0x00003116       0xaa .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .debug_loc     0x000031c0       0xe9 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_ranges   0x00000000      0xa58
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_ranges  0x00000038       0x60 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .debug_ranges  0x00000098       0x18 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .debug_ranges  0x000000b0       0x58 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .debug_ranges  0x00000108       0x48 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .debug_ranges  0x00000150       0x10 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .debug_ranges  0x00000160       0x38 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_ranges  0x00000198       0xa8 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .debug_ranges  0x00000240       0x48 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .debug_ranges  0x00000288       0x18 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .debug_ranges  0x000002a0       0x78 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .debug_ranges  0x00000318       0x30 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .debug_ranges  0x00000348       0x30 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .debug_ranges  0x00000378      0x1d0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .debug_ranges  0x00000548      0x1c0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .debug_ranges  0x00000708       0x30 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .debug_ranges  0x00000738       0x30 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .debug_ranges  0x00000768       0x98 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .debug_ranges  0x00000800       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .debug_ranges  0x00000810      0x148 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .debug_ranges  0x00000958       0xf0 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .debug_ranges  0x00000a48       0x10 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 .\CortexM0\ARM_GCC_493\Debug\main.o
+                                 0x71 (size before relaxing)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+.ARM.attributes
+                0x00000000       0x28
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+ .ARM.attributes
+                0x0000001e       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.attributes
+                0x00000065       0x31 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .ARM.attributes
+                0x00000096       0x31 .\CortexM0\ARM_GCC_493\Debug\SSD1306.o
+ .ARM.attributes
+                0x000000c7       0x31 .\CortexM0\ARM_GCC_493\Debug\LM92.o
+ .ARM.attributes
+                0x000000f8       0x31 .\CortexM0\ARM_GCC_493\Debug\bcd.o
+ .ARM.attributes
+                0x00000129       0x31 .\CortexM0\ARM_GCC_493\Debug\TaskDispatcher.o
+ .ARM.attributes
+                0x0000015a       0x31 .\CortexM0\ARM_GCC_493\Debug\Battery.o
+ .ARM.attributes
+                0x0000018b       0x31 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .ARM.attributes
+                0x000001bc       0x31 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .ARM.attributes
+                0x000001ed       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(cyfitter_cfg.o)
+ .ARM.attributes
+                0x0000021e       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C.o)
+ .ARM.attributes
+                0x0000024f       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C.o)
+ .ARM.attributes
+                0x00000280       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_MASTER.o)
+ .ARM.attributes
+                0x000002b1       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_sda.o)
+ .ARM.attributes
+                0x000002e2       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_scl.o)
+ .ARM.attributes
+                0x00000313       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLib.o)
+ .ARM.attributes
+                0x00000344       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyLFClk.o)
+ .ARM.attributes
+                0x00000375       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Charge_Status_Reg.o)
+ .ARM.attributes
+                0x000003a6       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(DisplayReset.o)
+ .ARM.attributes
+                0x000003d7       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC.o)
+ .ARM.attributes
+                0x00000408       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(ADC_INT.o)
+ .ARM.attributes
+                0x00000439       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer.o)
+ .ARM.attributes
+                0x0000046a       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(Timer_RTOS_ISR.o)
+ .ARM.attributes
+                0x0000049b       0x31 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(I2C_I2C_INT.o)
+ .ARM.attributes
+                0x000004cc       0x21 .\CortexM0\ARM_GCC_493\Debug\SensorTest.a(CyBootAsmGnu.o)
+ .ARM.attributes
+                0x000004ed       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+ .ARM.attributes
+                0x0000050b       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x00000529       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x00000547       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000565       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpsf2.o)
+ .ARM.attributes
+                0x00000583       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_aeabi_ldivmod.o)
+ .ARM.attributes
+                0x000005a1       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_muldi3.o)
+ .ARM.attributes
+                0x000005cd       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunssfsi.o)
+ .ARM.attributes
+                0x000005f9       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(bpabi.o)
+ .ARM.attributes
+                0x00000625       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(divsf3.o)
+ .ARM.attributes
+                0x00000651       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqsf2.o)
+ .ARM.attributes
+                0x0000067d       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gesf2.o)
+ .ARM.attributes
+                0x000006a9       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(lesf2.o)
+ .ARM.attributes
+                0x000006d5       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(mulsf3.o)
+ .ARM.attributes
+                0x00000701       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subsf3.o)
+ .ARM.attributes
+                0x0000072d       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixsfsi.o)
+ .ARM.attributes
+                0x00000759       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsisf.o)
+ .ARM.attributes
+                0x00000785       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(muldf3.o)
+ .ARM.attributes
+                0x000007b1       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
+ .ARM.attributes
+                0x000007dd       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(truncdfsf2.o)
+ .ARM.attributes
+                0x00000809       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzsi2.o)
+ .ARM.attributes
+                0x00000827       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_divdi3.o)
+ .ARM.attributes
+                0x00000853       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivdi3.o)
+ .ARM.attributes
+                0x0000087f       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzdi2.o)
+ .ARM.attributes
+                0x0000089d       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .ARM.attributes
+                0x000008c9       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .ARM.attributes
+                0x000008f5       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000921       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000094d       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000979       0x2c c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+ .ARM.attributes
+                0x000009a5       0x1e c:/my programs/psoc/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+
+/DISCARD/
+ *(.note.GNU-stack)
+OUTPUT(.\CortexM0\ARM_GCC_493\Debug\SensorTest.elf elf32-littlearm)

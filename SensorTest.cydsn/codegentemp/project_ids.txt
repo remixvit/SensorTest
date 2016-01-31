@@ -1,0 +1,5 @@
+C:\Users\Vit\Documents\PSoC Creator\SensorTest\SensorTest.cydsn\SensorTest.cyprj|e442222b-be14-4211-8c93-644ab61dab73
+C:\My Programs\PSoC\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|9d0f6cd8-dbe2-42e2-ba54-a686ef294cb1
+C:\My Programs\PSoC\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5582ec56-8967-443b-8d58-7e80225e5552
+C:\My Programs\PSoC\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|b78410cd-43dd-4da2-a8ed-a83cfdd35f49
+C:\My Programs\PSoC\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|74637acc-2db2-4045-985f-73bbdd04ba7d

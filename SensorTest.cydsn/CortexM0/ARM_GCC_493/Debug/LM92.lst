@@ -1,0 +1,1987 @@
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"LM92.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LM92_GetRegisters,"ax",%progbits
+  18              		.align	1
+  19              		.global	LM92_GetRegisters
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	LM92_GetRegisters, %function
+  23              	LM92_GetRegisters:
+  24              	.LFB33:
+  25              		.file 1 ".\\LM92.c"
+   1:.\LM92.c      **** /* ========================================
+   2:.\LM92.c      ****  *
+   3:.\LM92.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\LM92.c      ****  * All Rights Reserved
+   5:.\LM92.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\LM92.c      ****  *
+   7:.\LM92.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\LM92.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\LM92.c      ****  *
+  10:.\LM92.c      ****  * ========================================
+  11:.\LM92.c      **** */
+  12:.\LM92.c      **** 
+  13:.\LM92.c      **** #include <LM92.h>
+  14:.\LM92.c      **** #include <math.h>
+  15:.\LM92.c      **** #include <bcd.h>
+  16:.\LM92.c      **** 
+  17:.\LM92.c      **** volatile const uint32 LM92_I2C_ADRESS = 0x4B;// [10010(A1)(A0)], (A1 = 1, A0 = 1, in current projec
+  18:.\LM92.c      **** 
+  19:.\LM92.c      **** extern uint32 I2C_SendBuffer(uint32_t DevAddress, uint8_t *pData, uint16_t Size);
+  20:.\LM92.c      **** extern uint8 I2C_ReadRegister(uint32 Adress, uint8 *pData, uint8 Register, uint8 Registers_Lenght_B
+  21:.\LM92.c      **** 
+  22:.\LM92.c      **** 
+  23:.\LM92.c      **** 
+  24:.\LM92.c      **** 
+  25:.\LM92.c      **** //((Bufer[0] << 8) + Bufer[1]) >>3;
+  26:.\LM92.c      **** 
+  27:.\LM92.c      **** void LM92_GetRegisters()
+  28:.\LM92.c      **** {
+  26              		.loc 1 28 0
+  27              		.cfi_startproc
+  28 0000 73B5     		push	{r0, r1, r4, r5, r6, lr}
+  29              		.cfi_def_cfa_offset 24
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 2
+
+
+  30              		.cfi_offset 0, -24
+  31              		.cfi_offset 1, -20
+  32              		.cfi_offset 4, -16
+  33              		.cfi_offset 5, -12
+  34              		.cfi_offset 6, -8
+  35              		.cfi_offset 14, -4
+  29:.\LM92.c      ****     uint8 Bufer[2];
+  30:.\LM92.c      ****     
+  31:.\LM92.c      ****     I2C_ReadRegister(LM92_I2C_ADRESS, Bufer, LM92_REG_Tempiraure, 16);
+  36              		.loc 1 31 0
+  37 0002 274E     		ldr	r6, .L2
+  38 0004 01AC     		add	r4, sp, #4
+  39 0006 3068     		ldr	r0, [r6]
+  40 0008 211C     		mov	r1, r4
+  41 000a 0022     		mov	r2, #0
+  42 000c 1023     		mov	r3, #16
+  43 000e FFF7FEFF 		bl	I2C_ReadRegister
+  44              	.LVL0:
+  32:.\LM92.c      ****     LM92_Operational_Struct.Temp_Reg = ((Bufer[0] << 8) + Bufer[1]) >>3;
+  45              		.loc 1 32 0
+  46 0012 2378     		ldrb	r3, [r4]
+  47 0014 6278     		ldrb	r2, [r4, #1]
+  48 0016 1B02     		lsl	r3, r3, #8
+  49 0018 224D     		ldr	r5, .L2+4
+  50 001a 9B18     		add	r3, r3, r2
+  51 001c DB10     		asr	r3, r3, #3
+  52 001e 2B80     		strh	r3, [r5]
+  33:.\LM92.c      ****     I2C_ReadRegister(LM92_I2C_ADRESS, Bufer, LM92_REG_MANUFACURERS_ID, 16);
+  53              		.loc 1 33 0
+  54 0020 3068     		ldr	r0, [r6]
+  55 0022 211C     		mov	r1, r4
+  56 0024 0722     		mov	r2, #7
+  57 0026 1023     		mov	r3, #16
+  58 0028 FFF7FEFF 		bl	I2C_ReadRegister
+  59              	.LVL1:
+  34:.\LM92.c      ****     LM92_Operational_Struct.Manufacture_ID = (Bufer[0] << 8) | Bufer[1];
+  60              		.loc 1 34 0
+  61 002c 2378     		ldrb	r3, [r4]
+  62 002e 6278     		ldrb	r2, [r4, #1]
+  63 0030 1B02     		lsl	r3, r3, #8
+  64 0032 1343     		orr	r3, r2
+  65 0034 EB81     		strh	r3, [r5, #14]
+  35:.\LM92.c      ****     I2C_ReadRegister(LM92_I2C_ADRESS, Bufer, LM92_REG_Configuration, 8);
+  66              		.loc 1 35 0
+  67 0036 3068     		ldr	r0, [r6]
+  68 0038 211C     		mov	r1, r4
+  69 003a 0122     		mov	r2, #1
+  70 003c 0823     		mov	r3, #8
+  71 003e FFF7FEFF 		bl	I2C_ReadRegister
+  72              	.LVL2:
+  36:.\LM92.c      ****     LM92_Operational_Struct.Config = Bufer[0];
+  73              		.loc 1 36 0
+  74 0042 2378     		ldrb	r3, [r4]
+  37:.\LM92.c      ****     I2C_ReadRegister(LM92_I2C_ADRESS, Bufer, LM92_REG_TEMP_CRIT, 16);
+  75              		.loc 1 37 0
+  76 0044 3068     		ldr	r0, [r6]
+  36:.\LM92.c      ****     LM92_Operational_Struct.Config = Bufer[0];
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 3
+
+
+  77              		.loc 1 36 0
+  78 0046 2B71     		strb	r3, [r5, #4]
+  79              		.loc 1 37 0
+  80 0048 211C     		mov	r1, r4
+  81 004a 0322     		mov	r2, #3
+  82 004c 1023     		mov	r3, #16
+  83 004e FFF7FEFF 		bl	I2C_ReadRegister
+  84              	.LVL3:
+  38:.\LM92.c      ****     LM92_Operational_Struct.T_Crit = (Bufer[0] << 8) | Bufer[1];
+  85              		.loc 1 38 0
+  86 0052 2378     		ldrb	r3, [r4]
+  87 0054 6278     		ldrb	r2, [r4, #1]
+  88 0056 1B02     		lsl	r3, r3, #8
+  89 0058 1343     		orr	r3, r2
+  90 005a 6B81     		strh	r3, [r5, #10]
+  39:.\LM92.c      ****     I2C_ReadRegister(LM92_I2C_ADRESS, Bufer, LM92_REG_TEMP_HI, 16);
+  91              		.loc 1 39 0
+  92 005c 3068     		ldr	r0, [r6]
+  93 005e 211C     		mov	r1, r4
+  94 0060 0522     		mov	r2, #5
+  95 0062 1023     		mov	r3, #16
+  96 0064 FFF7FEFF 		bl	I2C_ReadRegister
+  97              	.LVL4:
+  40:.\LM92.c      ****     LM92_Operational_Struct.T_HI = (Bufer[0] << 8) | Bufer[1];
+  98              		.loc 1 40 0
+  99 0068 2378     		ldrb	r3, [r4]
+ 100 006a 6278     		ldrb	r2, [r4, #1]
+ 101 006c 1B02     		lsl	r3, r3, #8
+ 102 006e 1343     		orr	r3, r2
+ 103 0070 EB80     		strh	r3, [r5, #6]
+  41:.\LM92.c      ****     I2C_ReadRegister(LM92_I2C_ADRESS, Bufer, LM92_REG_TEMP_LOW, 16);
+ 104              		.loc 1 41 0
+ 105 0072 3068     		ldr	r0, [r6]
+ 106 0074 211C     		mov	r1, r4
+ 107 0076 0422     		mov	r2, #4
+ 108 0078 1023     		mov	r3, #16
+ 109 007a FFF7FEFF 		bl	I2C_ReadRegister
+ 110              	.LVL5:
+  42:.\LM92.c      ****     LM92_Operational_Struct.T_Low = (Bufer[0] << 8) | Bufer[1];
+ 111              		.loc 1 42 0
+ 112 007e 2378     		ldrb	r3, [r4]
+ 113 0080 6278     		ldrb	r2, [r4, #1]
+ 114 0082 1B02     		lsl	r3, r3, #8
+ 115 0084 1343     		orr	r3, r2
+ 116 0086 2B81     		strh	r3, [r5, #8]
+  43:.\LM92.c      ****     I2C_ReadRegister(LM92_I2C_ADRESS, Bufer, LM92_REG_TEMP_HYSTERESIS, 16);
+ 117              		.loc 1 43 0
+ 118 0088 3068     		ldr	r0, [r6]
+ 119 008a 211C     		mov	r1, r4
+ 120 008c 0222     		mov	r2, #2
+ 121 008e 1023     		mov	r3, #16
+ 122 0090 FFF7FEFF 		bl	I2C_ReadRegister
+ 123              	.LVL6:
+  44:.\LM92.c      ****     LM92_Operational_Struct.T_Hysteresis = (Bufer[0] << 8) | Bufer[1];
+ 124              		.loc 1 44 0
+ 125 0094 2378     		ldrb	r3, [r4]
+ 126 0096 6278     		ldrb	r2, [r4, #1]
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 4
+
+
+ 127 0098 1B02     		lsl	r3, r3, #8
+ 128 009a 1343     		orr	r3, r2
+ 129 009c AB81     		strh	r3, [r5, #12]
+  45:.\LM92.c      **** }
+ 130              		.loc 1 45 0
+ 131              		@ sp needed
+ 132 009e 73BD     		pop	{r0, r1, r4, r5, r6, pc}
+ 133              	.L3:
+ 134              		.align	2
+ 135              	.L2:
+ 136 00a0 00000000 		.word	.LANCHOR0
+ 137 00a4 00000000 		.word	LM92_Operational_Struct
+ 138              		.cfi_endproc
+ 139              	.LFE33:
+ 140              		.size	LM92_GetRegisters, .-LM92_GetRegisters
+ 141              		.global	__aeabi_i2d
+ 142              		.global	__aeabi_dmul
+ 143              		.global	__aeabi_d2f
+ 144              		.global	__aeabi_fcmpgt
+ 145              		.global	__aeabi_fcmplt
+ 146              		.global	__aeabi_f2uiz
+ 147              		.global	__aeabi_fmul
+ 148              		.global	__aeabi_uidivmod
+ 149              		.global	__aeabi_uidiv
+ 150              		.global	__aeabi_idiv
+ 151              		.section	.text.LM92_GetTemperature,"ax",%progbits
+ 152              		.align	1
+ 153              		.global	LM92_GetTemperature
+ 154              		.code	16
+ 155              		.thumb_func
+ 156              		.type	LM92_GetTemperature, %function
+ 157              	LM92_GetTemperature:
+ 158              	.LFB34:
+  46:.\LM92.c      **** 
+  47:.\LM92.c      **** void LM92_GetTemperature()
+  48:.\LM92.c      **** {
+ 159              		.loc 1 48 0
+ 160              		.cfi_startproc
+ 161 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 162              		.cfi_def_cfa_offset 24
+ 163              		.cfi_offset 3, -24
+ 164              		.cfi_offset 4, -20
+ 165              		.cfi_offset 5, -16
+ 166              		.cfi_offset 6, -12
+ 167              		.cfi_offset 7, -8
+ 168              		.cfi_offset 14, -4
+  49:.\LM92.c      ****     float F_Temp = LM92_Operational_Struct.Temp_Reg * 0.0625;
+ 169              		.loc 1 49 0
+ 170 0002 994C     		ldr	r4, .L23
+ 171 0004 2088     		ldrh	r0, [r4]
+ 172 0006 FFF7FEFF 		bl	__aeabi_i2d
+ 173              	.LVL7:
+ 174 000a 0022     		mov	r2, #0
+ 175 000c 974B     		ldr	r3, .L23+4
+ 176 000e FFF7FEFF 		bl	__aeabi_dmul
+ 177              	.LVL8:
+ 178 0012 FFF7FEFF 		bl	__aeabi_d2f
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 5
+
+
+ 179              	.LVL9:
+  50:.\LM92.c      ****     
+  51:.\LM92.c      ****     if(F_Temp > 0)
+ 180              		.loc 1 51 0
+ 181 0016 0021     		mov	r1, #0
+  49:.\LM92.c      ****     float F_Temp = LM92_Operational_Struct.Temp_Reg * 0.0625;
+ 182              		.loc 1 49 0
+ 183 0018 051C     		add	r5, r0, #0
+ 184              	.LVL10:
+ 185              		.loc 1 51 0
+ 186 001a FFF7FEFF 		bl	__aeabi_fcmpgt
+ 187              	.LVL11:
+ 188 001e 0028     		cmp	r0, #0
+ 189 0020 02D0     		beq	.L20
+  52:.\LM92.c      ****     {
+  53:.\LM92.c      ****         LM92_Operational_Struct.Sign = 0;
+ 190              		.loc 1 53 0
+ 191 0022 0023     		mov	r3, #0
+ 192 0024 A370     		strb	r3, [r4, #2]
+ 193 0026 05E0     		b	.L7
+ 194              	.L20:
+  54:.\LM92.c      ****     }    
+  55:.\LM92.c      ****     else
+  56:.\LM92.c      ****     {
+  57:.\LM92.c      ****         LM92_Operational_Struct.Sign = 1;
+ 195              		.loc 1 57 0
+ 196 0028 0123     		mov	r3, #1
+  58:.\LM92.c      ****         F_Temp = fabsf(F_Temp);
+ 197              		.loc 1 58 0
+ 198 002a 9D40     		lsl	r5, r5, r3
+ 199              	.LVL12:
+  57:.\LM92.c      ****         F_Temp = fabsf(F_Temp);
+ 200              		.loc 1 57 0
+ 201 002c A370     		strb	r3, [r4, #2]
+ 202              		.loc 1 58 0
+ 203 002e DD40     		lsr	r5, r5, r3
+ 204              	.LVL13:
+  59:.\LM92.c      ****         LM92_Operational_Struct.Display_String[0] = '-';//If Tempiratura < 0, add sign [-] under nu
+ 205              		.loc 1 59 0
+ 206 0030 2C33     		add	r3, r3, #44
+ 207 0032 6375     		strb	r3, [r4, #21]
+ 208              	.LVL14:
+ 209              	.L7:
+  60:.\LM92.c      ****     }
+  61:.\LM92.c      ****     
+  62:.\LM92.c      ****     if(F_Temp < 9)
+ 210              		.loc 1 62 0
+ 211 0034 281C     		add	r0, r5, #0
+ 212 0036 8E49     		ldr	r1, .L23+8
+ 213 0038 FFF7FEFF 		bl	__aeabi_fcmplt
+ 214              	.LVL15:
+ 215 003c 061C     		mov	r6, r0
+  63:.\LM92.c      ****     {
+  64:.\LM92.c      ****         LM92_Operational_Struct.Temp_Integer[0] = (uint8)F_Temp;//Get First integer number
+ 216              		.loc 1 64 0
+ 217 003e 281C     		add	r0, r5, #0
+  62:.\LM92.c      ****     {
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 6
+
+
+ 218              		.loc 1 62 0
+ 219 0040 002E     		cmp	r6, #0
+ 220 0042 41D0     		beq	.L21
+ 221              		.loc 1 64 0
+ 222 0044 FFF7FEFF 		bl	__aeabi_f2uiz
+ 223              	.LVL16:
+  65:.\LM92.c      ****         LM92_Operational_Struct.Temp_Integer[1] = 0;
+ 224              		.loc 1 65 0
+ 225 0048 0026     		mov	r6, #0
+  64:.\LM92.c      ****         LM92_Operational_Struct.Temp_Integer[1] = 0;
+ 226              		.loc 1 64 0
+ 227 004a C7B2     		uxtb	r7, r0
+  66:.\LM92.c      ****         LM92_Operational_Struct.Temp_Integer[2] = 0;
+  67:.\LM92.c      ****         LM92_Operational_Struct.Temp_Fractional[0] = (uint8)((uint16)(F_Temp * 100)%10);//Get first
+ 228              		.loc 1 67 0
+ 229 004c 8949     		ldr	r1, .L23+12
+  64:.\LM92.c      ****         LM92_Operational_Struct.Temp_Integer[1] = 0;
+ 230              		.loc 1 64 0
+ 231 004e 2774     		strb	r7, [r4, #16]
+  65:.\LM92.c      ****         LM92_Operational_Struct.Temp_Integer[2] = 0;
+ 232              		.loc 1 65 0
+ 233 0050 6674     		strb	r6, [r4, #17]
+  66:.\LM92.c      ****         LM92_Operational_Struct.Temp_Integer[2] = 0;
+ 234              		.loc 1 66 0
+ 235 0052 A674     		strb	r6, [r4, #18]
+ 236              		.loc 1 67 0
+ 237 0054 281C     		add	r0, r5, #0
+ 238 0056 FFF7FEFF 		bl	__aeabi_fmul
+ 239              	.LVL17:
+ 240 005a FFF7FEFF 		bl	__aeabi_f2uiz
+ 241              	.LVL18:
+ 242 005e 85B2     		uxth	r5, r0
+ 243              	.LVL19:
+ 244 0060 281C     		mov	r0, r5
+ 245 0062 0A21     		mov	r1, #10
+ 246 0064 FFF7FEFF 		bl	__aeabi_uidivmod
+ 247              	.LVL20:
+  68:.\LM92.c      ****         LM92_Operational_Struct.Temp_Fractional[1] = (uint8)(((uint16)(F_Temp * 100)%100)/10);//get
+ 248              		.loc 1 68 0
+ 249 0068 281C     		mov	r0, r5
+  67:.\LM92.c      ****         LM92_Operational_Struct.Temp_Fractional[1] = (uint8)(((uint16)(F_Temp * 100)%100)/10);//get
+ 250              		.loc 1 67 0
+ 251 006a E174     		strb	r1, [r4, #19]
+ 252              		.loc 1 68 0
+ 253 006c 6421     		mov	r1, #100
+ 254 006e FFF7FEFF 		bl	__aeabi_uidivmod
+ 255              	.LVL21:
+ 256 0072 88B2     		uxth	r0, r1
+ 257 0074 0A21     		mov	r1, #10
+ 258 0076 FFF7FEFF 		bl	__aeabi_uidiv
+ 259              	.LVL22:
+ 260 007a 2075     		strb	r0, [r4, #20]
+  69:.\LM92.c      ****         
+  70:.\LM92.c      ****         BCD_Uchar(LM92_Operational_Struct.Temp_Integer[0]);
+ 261              		.loc 1 70 0
+ 262 007c 381C     		mov	r0, r7
+ 263 007e FFF7FEFF 		bl	BCD_Uchar
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 7
+
+
+ 264              	.LVL23:
+  71:.\LM92.c      ****         LM92_Operational_Struct.Display_String[0 + LM92_Operational_Struct.Sign] = *(BCD_GetPointer
+ 265              		.loc 1 71 0
+ 266 0082 A578     		ldrb	r5, [r4, #2]
+ 267 0084 FFF7FEFF 		bl	BCD_GetPointerBuf
+ 268              	.LVL24:
+ 269 0088 0378     		ldrb	r3, [r0]
+ 270 008a 6519     		add	r5, r4, r5
+ 271 008c 6B75     		strb	r3, [r5, #21]
+  72:.\LM92.c      ****         BCD_Uchar(LM92_Operational_Struct.Temp_Fractional[1]);
+ 272              		.loc 1 72 0
+ 273 008e 207D     		ldrb	r0, [r4, #20]
+ 274 0090 FFF7FEFF 		bl	BCD_Uchar
+ 275              	.LVL25:
+  73:.\LM92.c      ****         
+  74:.\LM92.c      ****         LM92_Operational_Struct.Display_String[1 + LM92_Operational_Struct.Sign] = ',';
+ 276              		.loc 1 74 0
+ 277 0094 2C23     		mov	r3, #44
+ 278 0096 A578     		ldrb	r5, [r4, #2]
+ 279 0098 6519     		add	r5, r4, r5
+ 280 009a AB75     		strb	r3, [r5, #22]
+  75:.\LM92.c      ****         
+  76:.\LM92.c      ****         LM92_Operational_Struct.Display_String[2 + LM92_Operational_Struct.Sign] = *(BCD_GetPointer
+ 281              		.loc 1 76 0
+ 282 009c FFF7FEFF 		bl	BCD_GetPointerBuf
+ 283              	.LVL26:
+ 284 00a0 0378     		ldrb	r3, [r0]
+ 285 00a2 EB75     		strb	r3, [r5, #23]
+  77:.\LM92.c      ****         BCD_Uchar(LM92_Operational_Struct.Temp_Fractional[0]);
+ 286              		.loc 1 77 0
+ 287 00a4 E07C     		ldrb	r0, [r4, #19]
+ 288 00a6 FFF7FEFF 		bl	BCD_Uchar
+ 289              	.LVL27:
+  78:.\LM92.c      ****         LM92_Operational_Struct.Display_String[3 + LM92_Operational_Struct.Sign] = *(BCD_GetPointer
+ 290              		.loc 1 78 0
+ 291 00aa A578     		ldrb	r5, [r4, #2]
+ 292 00ac FFF7FEFF 		bl	BCD_GetPointerBuf
+ 293              	.LVL28:
+ 294 00b0 0335     		add	r5, r5, #3
+ 295 00b2 0378     		ldrb	r3, [r0]
+ 296 00b4 6519     		add	r5, r4, r5
+ 297 00b6 6B75     		strb	r3, [r5, #21]
+  79:.\LM92.c      ****         
+  80:.\LM92.c      ****         LM92_Operational_Struct.Display_String[4 + LM92_Operational_Struct.Sign] = 128;// Add [°] 
+ 298              		.loc 1 80 0
+ 299 00b8 A378     		ldrb	r3, [r4, #2]
+ 300 00ba E418     		add	r4, r4, r3
+ 301 00bc 8023     		mov	r3, #128
+ 302 00be 6376     		strb	r3, [r4, #25]
+  81:.\LM92.c      ****         LM92_Operational_Struct.Display_String[5 + LM92_Operational_Struct.Sign] = 'C';
+ 303              		.loc 1 81 0
+ 304 00c0 3D3B     		sub	r3, r3, #61
+ 305 00c2 A376     		strb	r3, [r4, #26]
+  82:.\LM92.c      ****         LM92_Operational_Struct.Display_String[6 + LM92_Operational_Struct.Sign] = '\0';
+ 306              		.loc 1 82 0
+ 307 00c4 E676     		strb	r6, [r4, #27]
+ 308 00c6 CEE0     		b	.L4
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 8
+
+
+ 309              	.LVL29:
+ 310              	.L21:
+  83:.\LM92.c      ****         // Output string -> [I1][,][f1][f2][°][C][EndOfString']
+  84:.\LM92.c      ****     }
+  85:.\LM92.c      ****         else if((F_Temp > 9) && (F_Temp < 99))
+ 311              		.loc 1 85 0
+ 312 00c8 6949     		ldr	r1, .L23+8
+ 313 00ca FFF7FEFF 		bl	__aeabi_fcmpgt
+ 314              	.LVL30:
+ 315 00ce 0028     		cmp	r0, #0
+ 316 00d0 5DD0     		beq	.L11
+ 317              		.loc 1 85 0 is_stmt 0 discriminator 1
+ 318 00d2 281C     		add	r0, r5, #0
+ 319 00d4 6849     		ldr	r1, .L23+16
+ 320 00d6 FFF7FEFF 		bl	__aeabi_fcmplt
+ 321              	.LVL31:
+ 322 00da 0028     		cmp	r0, #0
+ 323 00dc 57D0     		beq	.L11
+  86:.\LM92.c      ****         {
+  87:.\LM92.c      ****             LM92_Operational_Struct.Temp_Integer[0] = (uint8)F_Temp%10;
+ 324              		.loc 1 87 0 is_stmt 1
+ 325 00de 281C     		add	r0, r5, #0
+ 326 00e0 FFF7FEFF 		bl	__aeabi_f2uiz
+ 327              	.LVL32:
+ 328 00e4 C7B2     		uxtb	r7, r0
+ 329 00e6 381C     		mov	r0, r7
+ 330 00e8 0A21     		mov	r1, #10
+ 331 00ea FFF7FEFF 		bl	__aeabi_uidivmod
+ 332              	.LVL33:
+  88:.\LM92.c      ****             LM92_Operational_Struct.Temp_Integer[1] = (uint8)F_Temp/10;
+ 333              		.loc 1 88 0
+ 334 00ee 381C     		mov	r0, r7
+  87:.\LM92.c      ****             LM92_Operational_Struct.Temp_Integer[1] = (uint8)F_Temp/10;
+ 335              		.loc 1 87 0
+ 336 00f0 2174     		strb	r1, [r4, #16]
+ 337              		.loc 1 88 0
+ 338 00f2 0A21     		mov	r1, #10
+ 339 00f4 FFF7FEFF 		bl	__aeabi_uidiv
+ 340              	.LVL34:
+ 341 00f8 C7B2     		uxtb	r7, r0
+  89:.\LM92.c      ****             LM92_Operational_Struct.Temp_Integer[2] = 0;
+  90:.\LM92.c      ****             LM92_Operational_Struct.Temp_Fractional[0] = (uint8)((uint16)(F_Temp * 100)%10);
+ 342              		.loc 1 90 0
+ 343 00fa 5E49     		ldr	r1, .L23+12
+  88:.\LM92.c      ****             LM92_Operational_Struct.Temp_Integer[2] = 0;
+ 344              		.loc 1 88 0
+ 345 00fc 6774     		strb	r7, [r4, #17]
+  89:.\LM92.c      ****             LM92_Operational_Struct.Temp_Integer[2] = 0;
+ 346              		.loc 1 89 0
+ 347 00fe A674     		strb	r6, [r4, #18]
+ 348              		.loc 1 90 0
+ 349 0100 281C     		add	r0, r5, #0
+ 350 0102 FFF7FEFF 		bl	__aeabi_fmul
+ 351              	.LVL35:
+ 352 0106 FFF7FEFF 		bl	__aeabi_f2uiz
+ 353              	.LVL36:
+ 354 010a 85B2     		uxth	r5, r0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 9
+
+
+ 355              	.LVL37:
+ 356 010c 281C     		mov	r0, r5
+ 357 010e 0A21     		mov	r1, #10
+ 358 0110 FFF7FEFF 		bl	__aeabi_uidivmod
+ 359              	.LVL38:
+  91:.\LM92.c      ****             LM92_Operational_Struct.Temp_Fractional[1] = (uint8)(((uint16)(F_Temp * 100)%100)/10);
+ 360              		.loc 1 91 0
+ 361 0114 281C     		mov	r0, r5
+  90:.\LM92.c      ****             LM92_Operational_Struct.Temp_Fractional[1] = (uint8)(((uint16)(F_Temp * 100)%100)/10);
+ 362              		.loc 1 90 0
+ 363 0116 E174     		strb	r1, [r4, #19]
+ 364              		.loc 1 91 0
+ 365 0118 6421     		mov	r1, #100
+ 366 011a FFF7FEFF 		bl	__aeabi_uidivmod
+ 367              	.LVL39:
+ 368 011e 88B2     		uxth	r0, r1
+ 369 0120 0A21     		mov	r1, #10
+ 370 0122 FFF7FEFF 		bl	__aeabi_uidiv
+ 371              	.LVL40:
+ 372 0126 2075     		strb	r0, [r4, #20]
+  92:.\LM92.c      ****             
+  93:.\LM92.c      ****             BCD_Uchar(LM92_Operational_Struct.Temp_Integer[1]);
+ 373              		.loc 1 93 0
+ 374 0128 381C     		mov	r0, r7
+ 375 012a FFF7FEFF 		bl	BCD_Uchar
+ 376              	.LVL41:
+  94:.\LM92.c      ****             LM92_Operational_Struct.Display_String[0 + LM92_Operational_Struct.Sign] = *(BCD_GetPoi
+ 377              		.loc 1 94 0
+ 378 012e A578     		ldrb	r5, [r4, #2]
+ 379 0130 FFF7FEFF 		bl	BCD_GetPointerBuf
+ 380              	.LVL42:
+ 381 0134 8278     		ldrb	r2, [r0, #2]
+ 382 0136 6319     		add	r3, r4, r5
+ 383 0138 5A75     		strb	r2, [r3, #21]
+  95:.\LM92.c      ****             BCD_Uchar(LM92_Operational_Struct.Temp_Integer[0]);
+ 384              		.loc 1 95 0
+ 385 013a 207C     		ldrb	r0, [r4, #16]
+ 386 013c FFF7FEFF 		bl	BCD_Uchar
+ 387              	.LVL43:
+  96:.\LM92.c      ****             LM92_Operational_Struct.Display_String[1 + LM92_Operational_Struct.Sign] = *(BCD_GetPoi
+ 388              		.loc 1 96 0
+ 389 0140 A578     		ldrb	r5, [r4, #2]
+ 390 0142 FFF7FEFF 		bl	BCD_GetPointerBuf
+ 391              	.LVL44:
+  97:.\LM92.c      ****             
+  98:.\LM92.c      ****             LM92_Operational_Struct.Display_String[2 + LM92_Operational_Struct.Sign] = ',';
+ 392              		.loc 1 98 0
+ 393 0146 2C22     		mov	r2, #44
+  96:.\LM92.c      ****             LM92_Operational_Struct.Display_String[1 + LM92_Operational_Struct.Sign] = *(BCD_GetPoi
+ 394              		.loc 1 96 0
+ 395 0148 8378     		ldrb	r3, [r0, #2]
+ 396 014a 0135     		add	r5, r5, #1
+ 397 014c 6519     		add	r5, r4, r5
+ 398 014e 6B75     		strb	r3, [r5, #21]
+ 399              		.loc 1 98 0
+ 400 0150 A378     		ldrb	r3, [r4, #2]
+ 401 0152 E318     		add	r3, r4, r3
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 10
+
+
+ 402 0154 DA75     		strb	r2, [r3, #23]
+  99:.\LM92.c      ****             
+ 100:.\LM92.c      ****             BCD_Uchar(LM92_Operational_Struct.Temp_Fractional[1]);
+ 403              		.loc 1 100 0
+ 404 0156 207D     		ldrb	r0, [r4, #20]
+ 405 0158 FFF7FEFF 		bl	BCD_Uchar
+ 406              	.LVL45:
+ 101:.\LM92.c      ****             LM92_Operational_Struct.Display_String[3 + LM92_Operational_Struct.Sign] = *(BCD_GetPoi
+ 407              		.loc 1 101 0
+ 408 015c A578     		ldrb	r5, [r4, #2]
+ 409 015e FFF7FEFF 		bl	BCD_GetPointerBuf
+ 410              	.LVL46:
+ 411 0162 0335     		add	r5, r5, #3
+ 412 0164 8378     		ldrb	r3, [r0, #2]
+ 413 0166 6519     		add	r5, r4, r5
+ 414 0168 6B75     		strb	r3, [r5, #21]
+ 102:.\LM92.c      ****             BCD_Uchar(LM92_Operational_Struct.Temp_Fractional[0]);
+ 415              		.loc 1 102 0
+ 416 016a E07C     		ldrb	r0, [r4, #19]
+ 417 016c FFF7FEFF 		bl	BCD_Uchar
+ 418              	.LVL47:
+ 103:.\LM92.c      ****             LM92_Operational_Struct.Display_String[4 + LM92_Operational_Struct.Sign] = *(BCD_GetPoi
+ 419              		.loc 1 103 0
+ 420 0170 A578     		ldrb	r5, [r4, #2]
+ 421 0172 FFF7FEFF 		bl	BCD_GetPointerBuf
+ 422              	.LVL48:
+ 423 0176 0435     		add	r5, r5, #4
+ 424 0178 8378     		ldrb	r3, [r0, #2]
+ 425 017a 6519     		add	r5, r4, r5
+ 426 017c 6B75     		strb	r3, [r5, #21]
+ 104:.\LM92.c      ****             
+ 105:.\LM92.c      ****             LM92_Operational_Struct.Display_String[5 + LM92_Operational_Struct.Sign] = 128;
+ 427              		.loc 1 105 0
+ 428 017e A378     		ldrb	r3, [r4, #2]
+ 429 0180 E418     		add	r4, r4, r3
+ 430 0182 8023     		mov	r3, #128
+ 431 0184 A376     		strb	r3, [r4, #26]
+ 106:.\LM92.c      ****             LM92_Operational_Struct.Display_String[6 + LM92_Operational_Struct.Sign] = 'C';
+ 432              		.loc 1 106 0
+ 433 0186 3D3B     		sub	r3, r3, #61
+ 434 0188 E376     		strb	r3, [r4, #27]
+ 107:.\LM92.c      ****             LM92_Operational_Struct.Display_String[7 + LM92_Operational_Struct.Sign] = '\0';
+ 435              		.loc 1 107 0
+ 436 018a 2677     		strb	r6, [r4, #28]
+ 437 018c 6BE0     		b	.L4
+ 438              	.LVL49:
+ 439              	.L11:
+ 108:.\LM92.c      ****             //Output string -> [I1][I2][,][f1][f2][°][C][EndOfString']
+ 109:.\LM92.c      ****         }
+ 110:.\LM92.c      ****             else if(F_Temp > 99)
+ 440              		.loc 1 110 0
+ 441 018e 281C     		add	r0, r5, #0
+ 442 0190 3949     		ldr	r1, .L23+16
+ 443 0192 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 444              	.LVL50:
+ 445 0196 0028     		cmp	r0, #0
+ 446 0198 65D0     		beq	.L4
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 11
+
+
+ 111:.\LM92.c      ****             {
+ 112:.\LM92.c      ****                 LM92_Operational_Struct.Temp_Integer[0] = (uint8)F_Temp%10;
+ 447              		.loc 1 112 0
+ 448 019a 281C     		add	r0, r5, #0
+ 449 019c FFF7FEFF 		bl	__aeabi_f2uiz
+ 450              	.LVL51:
+ 451 01a0 C6B2     		uxtb	r6, r0
+ 452 01a2 301C     		mov	r0, r6
+ 453 01a4 0A21     		mov	r1, #10
+ 454 01a6 FFF7FEFF 		bl	__aeabi_uidivmod
+ 455              	.LVL52:
+ 113:.\LM92.c      ****                 LM92_Operational_Struct.Temp_Integer[1] = ((uint8)F_Temp&100)/10;
+ 456              		.loc 1 113 0
+ 457 01aa 6427     		mov	r7, #100
+ 458 01ac 301C     		mov	r0, r6
+ 112:.\LM92.c      ****                 LM92_Operational_Struct.Temp_Integer[1] = ((uint8)F_Temp&100)/10;
+ 459              		.loc 1 112 0
+ 460 01ae 2174     		strb	r1, [r4, #16]
+ 461              		.loc 1 113 0
+ 462 01b0 3840     		and	r0, r7
+ 463 01b2 0A21     		mov	r1, #10
+ 464 01b4 FFF7FEFF 		bl	__aeabi_idiv
+ 465              	.LVL53:
+ 114:.\LM92.c      ****                 LM92_Operational_Struct.Temp_Integer[2] = (uint8)F_Temp/100;
+ 466              		.loc 1 114 0
+ 467 01b8 391C     		mov	r1, r7
+ 113:.\LM92.c      ****                 LM92_Operational_Struct.Temp_Integer[1] = ((uint8)F_Temp&100)/10;
+ 468              		.loc 1 113 0
+ 469 01ba 6074     		strb	r0, [r4, #17]
+ 470              		.loc 1 114 0
+ 471 01bc 301C     		mov	r0, r6
+ 472 01be FFF7FEFF 		bl	__aeabi_uidiv
+ 473              	.LVL54:
+ 474 01c2 C6B2     		uxtb	r6, r0
+ 475 01c4 A674     		strb	r6, [r4, #18]
+ 115:.\LM92.c      ****                 LM92_Operational_Struct.Temp_Fractional[0] = ((uint8)((uint16)F_Temp * 100)%10);
+ 476              		.loc 1 115 0
+ 477 01c6 281C     		add	r0, r5, #0
+ 478 01c8 FFF7FEFF 		bl	__aeabi_f2uiz
+ 479              	.LVL55:
+ 480 01cc 7843     		mul	r0, r7
+ 481 01ce C5B2     		uxtb	r5, r0
+ 482              	.LVL56:
+ 483 01d0 281C     		mov	r0, r5
+ 484 01d2 0A21     		mov	r1, #10
+ 485 01d4 FFF7FEFF 		bl	__aeabi_uidivmod
+ 486              	.LVL57:
+ 116:.\LM92.c      ****                 LM92_Operational_Struct.Temp_Fractional[1] = (((uint8)((uint16)F_Temp * 100)%100)/1
+ 487              		.loc 1 116 0
+ 488 01d8 281C     		mov	r0, r5
+ 115:.\LM92.c      ****                 LM92_Operational_Struct.Temp_Fractional[0] = ((uint8)((uint16)F_Temp * 100)%10);
+ 489              		.loc 1 115 0
+ 490 01da E174     		strb	r1, [r4, #19]
+ 491              		.loc 1 116 0
+ 492 01dc 391C     		mov	r1, r7
+ 493 01de FFF7FEFF 		bl	__aeabi_uidivmod
+ 494              	.LVL58:
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 12
+
+
+ 495 01e2 C8B2     		uxtb	r0, r1
+ 496 01e4 0A21     		mov	r1, #10
+ 497 01e6 FFF7FEFF 		bl	__aeabi_uidiv
+ 498              	.LVL59:
+ 499 01ea 2075     		strb	r0, [r4, #20]
+ 117:.\LM92.c      ****                 
+ 118:.\LM92.c      ****                 BCD_Uchar(LM92_Operational_Struct.Temp_Integer[2]);
+ 500              		.loc 1 118 0
+ 501 01ec 301C     		mov	r0, r6
+ 502 01ee FFF7FEFF 		bl	BCD_Uchar
+ 503              	.LVL60:
+ 119:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[0 + LM92_Operational_Struct.Sign] = *(BCD_Ge
+ 504              		.loc 1 119 0
+ 505 01f2 A578     		ldrb	r5, [r4, #2]
+ 506 01f4 FFF7FEFF 		bl	BCD_GetPointerBuf
+ 507              	.LVL61:
+ 508 01f8 8378     		ldrb	r3, [r0, #2]
+ 509 01fa 6519     		add	r5, r4, r5
+ 510 01fc 6B75     		strb	r3, [r5, #21]
+ 120:.\LM92.c      ****                 BCD_Uchar(LM92_Operational_Struct.Temp_Integer[1]);
+ 511              		.loc 1 120 0
+ 512 01fe 607C     		ldrb	r0, [r4, #17]
+ 513 0200 FFF7FEFF 		bl	BCD_Uchar
+ 514              	.LVL62:
+ 121:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[1 + LM92_Operational_Struct.Sign] = *(BCD_Ge
+ 515              		.loc 1 121 0
+ 516 0204 A578     		ldrb	r5, [r4, #2]
+ 517 0206 FFF7FEFF 		bl	BCD_GetPointerBuf
+ 518              	.LVL63:
+ 519 020a 0135     		add	r5, r5, #1
+ 520 020c 8378     		ldrb	r3, [r0, #2]
+ 521 020e 6519     		add	r5, r4, r5
+ 522 0210 6B75     		strb	r3, [r5, #21]
+ 122:.\LM92.c      ****                 BCD_Uchar(LM92_Operational_Struct.Temp_Integer[0]);
+ 523              		.loc 1 122 0
+ 524 0212 207C     		ldrb	r0, [r4, #16]
+ 525 0214 FFF7FEFF 		bl	BCD_Uchar
+ 526              	.LVL64:
+ 123:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[2 + LM92_Operational_Struct.Sign] = *(BCD_Ge
+ 527              		.loc 1 123 0
+ 528 0218 A578     		ldrb	r5, [r4, #2]
+ 529 021a FFF7FEFF 		bl	BCD_GetPointerBuf
+ 530              	.LVL65:
+ 124:.\LM92.c      ****                 
+ 125:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[3 + LM92_Operational_Struct.Sign] = ',';
+ 531              		.loc 1 125 0
+ 532 021e 2C22     		mov	r2, #44
+ 123:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[2 + LM92_Operational_Struct.Sign] = *(BCD_Ge
+ 533              		.loc 1 123 0
+ 534 0220 8378     		ldrb	r3, [r0, #2]
+ 535 0222 0235     		add	r5, r5, #2
+ 536 0224 6519     		add	r5, r4, r5
+ 537 0226 6B75     		strb	r3, [r5, #21]
+ 538              		.loc 1 125 0
+ 539 0228 A378     		ldrb	r3, [r4, #2]
+ 540 022a E318     		add	r3, r4, r3
+ 541 022c 1A76     		strb	r2, [r3, #24]
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 13
+
+
+ 126:.\LM92.c      ****                 
+ 127:.\LM92.c      ****                 BCD_Uchar(LM92_Operational_Struct.Temp_Fractional[1]);
+ 542              		.loc 1 127 0
+ 543 022e 207D     		ldrb	r0, [r4, #20]
+ 544 0230 FFF7FEFF 		bl	BCD_Uchar
+ 545              	.LVL66:
+ 128:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[4 + LM92_Operational_Struct.Sign] = *(BCD_Ge
+ 546              		.loc 1 128 0
+ 547 0234 A578     		ldrb	r5, [r4, #2]
+ 548 0236 FFF7FEFF 		bl	BCD_GetPointerBuf
+ 549              	.LVL67:
+ 550 023a 0435     		add	r5, r5, #4
+ 551 023c 8378     		ldrb	r3, [r0, #2]
+ 552 023e 6519     		add	r5, r4, r5
+ 553 0240 6B75     		strb	r3, [r5, #21]
+ 129:.\LM92.c      ****                 BCD_Uchar(LM92_Operational_Struct.Temp_Fractional[0]);
+ 554              		.loc 1 129 0
+ 555 0242 E07C     		ldrb	r0, [r4, #19]
+ 556 0244 FFF7FEFF 		bl	BCD_Uchar
+ 557              	.LVL68:
+ 130:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[5 + LM92_Operational_Struct.Sign] = *(BCD_Ge
+ 558              		.loc 1 130 0
+ 559 0248 A578     		ldrb	r5, [r4, #2]
+ 560 024a FFF7FEFF 		bl	BCD_GetPointerBuf
+ 561              	.LVL69:
+ 562 024e 0535     		add	r5, r5, #5
+ 563 0250 8378     		ldrb	r3, [r0, #2]
+ 564 0252 6519     		add	r5, r4, r5
+ 565 0254 6B75     		strb	r3, [r5, #21]
+ 131:.\LM92.c      ****                 
+ 132:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[6 + LM92_Operational_Struct.Sign] = 128;
+ 566              		.loc 1 132 0
+ 567 0256 A378     		ldrb	r3, [r4, #2]
+ 568 0258 E418     		add	r4, r4, r3
+ 569 025a 8023     		mov	r3, #128
+ 570 025c E376     		strb	r3, [r4, #27]
+ 133:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[7 + LM92_Operational_Struct.Sign] = 'C';
+ 571              		.loc 1 133 0
+ 572 025e 3D3B     		sub	r3, r3, #61
+ 573 0260 2377     		strb	r3, [r4, #28]
+ 134:.\LM92.c      ****                 LM92_Operational_Struct.Display_String[8 + LM92_Operational_Struct.Sign] = '\0';
+ 574              		.loc 1 134 0
+ 575 0262 0023     		mov	r3, #0
+ 576 0264 6377     		strb	r3, [r4, #29]
+ 577              	.L4:
+ 135:.\LM92.c      ****                 //Output string -> [I1][I2][I3][,][f1][f2][°][C][EndOfString']
+ 136:.\LM92.c      ****             }
+ 137:.\LM92.c      ****     
+ 138:.\LM92.c      ****     
+ 139:.\LM92.c      **** }
+ 578              		.loc 1 139 0
+ 579              		@ sp needed
+ 580 0266 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 581              	.L24:
+ 582              		.align	2
+ 583              	.L23:
+ 584 0268 00000000 		.word	LM92_Operational_Struct
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 14
+
+
+ 585 026c 0000B03F 		.word	1068498944
+ 586 0270 00001041 		.word	1091567616
+ 587 0274 0000C842 		.word	1120403456
+ 588 0278 0000C642 		.word	1120272384
+ 589              		.cfi_endproc
+ 590              	.LFE34:
+ 591              		.size	LM92_GetTemperature, .-LM92_GetTemperature
+ 592              		.global	LM92_I2C_ADRESS
+ 593              		.comm	LM92_Operational_Struct,32,2
+ 594              		.data
+ 595              		.align	2
+ 596              		.set	.LANCHOR0,. + 0
+ 597              		.type	LM92_I2C_ADRESS, %object
+ 598              		.size	LM92_I2C_ADRESS, 4
+ 599              	LM92_I2C_ADRESS:
+ 600 0000 4B000000 		.word	75
+ 601              		.text
+ 602              	.Letext0:
+ 603              		.file 2 "c:\\my programs\\psoc\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.3\\arm-none
+ 604              		.file 3 "c:\\my programs\\psoc\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.3\\arm-none
+ 605              		.file 4 "Generated_Source\\PSoC4/cytypes.h"
+ 606              		.file 5 "./LM92.h"
+ 607              		.file 6 "./bcd.h"
+ 608              		.section	.debug_info,"",%progbits
+ 609              	.Ldebug_info0:
+ 610 0000 1E040000 		.4byte	0x41e
+ 611 0004 0400     		.2byte	0x4
+ 612 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 613 000a 04       		.byte	0x4
+ 614 000b 01       		.uleb128 0x1
+ 615 000c 13000000 		.4byte	.LASF38
+ 616 0010 01       		.byte	0x1
+ 617 0011 E6000000 		.4byte	.LASF39
+ 618 0015 EF000000 		.4byte	.LASF40
+ 619 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 620 001d 00000000 		.4byte	0
+ 621 0021 00000000 		.4byte	.Ldebug_line0
+ 622 0025 02       		.uleb128 0x2
+ 623 0026 01       		.byte	0x1
+ 624 0027 06       		.byte	0x6
+ 625 0028 8C020000 		.4byte	.LASF0
+ 626 002c 03       		.uleb128 0x3
+ 627 002d 09000000 		.4byte	.LASF9
+ 628 0031 02       		.byte	0x2
+ 629 0032 1D       		.byte	0x1d
+ 630 0033 37000000 		.4byte	0x37
+ 631 0037 02       		.uleb128 0x2
+ 632 0038 01       		.byte	0x1
+ 633 0039 08       		.byte	0x8
+ 634 003a 65010000 		.4byte	.LASF1
+ 635 003e 02       		.uleb128 0x2
+ 636 003f 02       		.byte	0x2
+ 637 0040 05       		.byte	0x5
+ 638 0041 8A010000 		.4byte	.LASF2
+ 639 0045 02       		.uleb128 0x2
+ 640 0046 02       		.byte	0x2
+ 641 0047 07       		.byte	0x7
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 15
+
+
+ 642 0048 98020000 		.4byte	.LASF3
+ 643 004c 02       		.uleb128 0x2
+ 644 004d 04       		.byte	0x4
+ 645 004e 05       		.byte	0x5
+ 646 004f 71020000 		.4byte	.LASF4
+ 647 0053 02       		.uleb128 0x2
+ 648 0054 04       		.byte	0x4
+ 649 0055 07       		.byte	0x7
+ 650 0056 2F010000 		.4byte	.LASF5
+ 651 005a 02       		.uleb128 0x2
+ 652 005b 08       		.byte	0x8
+ 653 005c 05       		.byte	0x5
+ 654 005d 30020000 		.4byte	.LASF6
+ 655 0061 02       		.uleb128 0x2
+ 656 0062 08       		.byte	0x8
+ 657 0063 07       		.byte	0x7
+ 658 0064 CE010000 		.4byte	.LASF7
+ 659 0068 04       		.uleb128 0x4
+ 660 0069 04       		.byte	0x4
+ 661 006a 05       		.byte	0x5
+ 662 006b 696E7400 		.ascii	"int\000"
+ 663 006f 02       		.uleb128 0x2
+ 664 0070 04       		.byte	0x4
+ 665 0071 07       		.byte	0x7
+ 666 0072 C1010000 		.4byte	.LASF8
+ 667 0076 03       		.uleb128 0x3
+ 668 0077 C7000000 		.4byte	.LASF10
+ 669 007b 03       		.byte	0x3
+ 670 007c 15       		.byte	0x15
+ 671 007d 2C000000 		.4byte	0x2c
+ 672 0081 03       		.uleb128 0x3
+ 673 0082 64020000 		.4byte	.LASF11
+ 674 0086 04       		.byte	0x4
+ 675 0087 C2       		.byte	0xc2
+ 676 0088 37000000 		.4byte	0x37
+ 677 008c 03       		.uleb128 0x3
+ 678 008d A1010000 		.4byte	.LASF12
+ 679 0091 04       		.byte	0x4
+ 680 0092 C3       		.byte	0xc3
+ 681 0093 45000000 		.4byte	0x45
+ 682 0097 03       		.uleb128 0x3
+ 683 0098 A8010000 		.4byte	.LASF13
+ 684 009c 04       		.byte	0x4
+ 685 009d C4       		.byte	0xc4
+ 686 009e 53000000 		.4byte	0x53
+ 687 00a2 02       		.uleb128 0x2
+ 688 00a3 04       		.byte	0x4
+ 689 00a4 04       		.byte	0x4
+ 690 00a5 E0000000 		.4byte	.LASF14
+ 691 00a9 02       		.uleb128 0x2
+ 692 00aa 08       		.byte	0x8
+ 693 00ab 04       		.byte	0x4
+ 694 00ac 73010000 		.4byte	.LASF15
+ 695 00b0 02       		.uleb128 0x2
+ 696 00b1 01       		.byte	0x1
+ 697 00b2 08       		.byte	0x8
+ 698 00b3 3E020000 		.4byte	.LASF16
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 16
+
+
+ 699 00b7 05       		.uleb128 0x5
+ 700 00b8 97000000 		.4byte	0x97
+ 701 00bc 02       		.uleb128 0x2
+ 702 00bd 04       		.byte	0x4
+ 703 00be 07       		.byte	0x7
+ 704 00bf 27020000 		.4byte	.LASF17
+ 705 00c3 06       		.uleb128 0x6
+ 706 00c4 20       		.byte	0x20
+ 707 00c5 05       		.byte	0x5
+ 708 00c6 27       		.byte	0x27
+ 709 00c7 5C010000 		.4byte	0x15c
+ 710 00cb 07       		.uleb128 0x7
+ 711 00cc 00000000 		.4byte	.LASF18
+ 712 00d0 05       		.byte	0x5
+ 713 00d1 29       		.byte	0x29
+ 714 00d2 8C000000 		.4byte	0x8c
+ 715 00d6 00       		.byte	0
+ 716 00d7 07       		.uleb128 0x7
+ 717 00d8 0F020000 		.4byte	.LASF19
+ 718 00dc 05       		.byte	0x5
+ 719 00dd 2A       		.byte	0x2a
+ 720 00de 81000000 		.4byte	0x81
+ 721 00e2 02       		.byte	0x2
+ 722 00e3 07       		.uleb128 0x7
+ 723 00e4 B1000000 		.4byte	.LASF20
+ 724 00e8 05       		.byte	0x5
+ 725 00e9 2B       		.byte	0x2b
+ 726 00ea 81000000 		.4byte	0x81
+ 727 00ee 03       		.byte	0x3
+ 728 00ef 07       		.uleb128 0x7
+ 729 00f0 6A020000 		.4byte	.LASF21
+ 730 00f4 05       		.byte	0x5
+ 731 00f5 2C       		.byte	0x2c
+ 732 00f6 81000000 		.4byte	0x81
+ 733 00fa 04       		.byte	0x4
+ 734 00fb 07       		.uleb128 0x7
+ 735 00fc 52020000 		.4byte	.LASF22
+ 736 0100 05       		.byte	0x5
+ 737 0101 2D       		.byte	0x2d
+ 738 0102 8C000000 		.4byte	0x8c
+ 739 0106 06       		.byte	0x6
+ 740 0107 07       		.uleb128 0x7
+ 741 0108 47010000 		.4byte	.LASF23
+ 742 010c 05       		.byte	0x5
+ 743 010d 2E       		.byte	0x2e
+ 744 010e 8C000000 		.4byte	0x8c
+ 745 0112 08       		.byte	0x8
+ 746 0113 07       		.uleb128 0x7
+ 747 0114 AB020000 		.4byte	.LASF24
+ 748 0118 05       		.byte	0x5
+ 749 0119 2F       		.byte	0x2f
+ 750 011a 8C000000 		.4byte	0x8c
+ 751 011e 0A       		.byte	0xa
+ 752 011f 07       		.uleb128 0x7
+ 753 0120 57020000 		.4byte	.LASF25
+ 754 0124 05       		.byte	0x5
+ 755 0125 30       		.byte	0x30
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 17
+
+
+ 756 0126 8C000000 		.4byte	0x8c
+ 757 012a 0C       		.byte	0xc
+ 758 012b 07       		.uleb128 0x7
+ 759 012c 43020000 		.4byte	.LASF26
+ 760 0130 05       		.byte	0x5
+ 761 0131 31       		.byte	0x31
+ 762 0132 8C000000 		.4byte	0x8c
+ 763 0136 0E       		.byte	0xe
+ 764 0137 07       		.uleb128 0x7
+ 765 0138 94010000 		.4byte	.LASF27
+ 766 013c 05       		.byte	0x5
+ 767 013d 32       		.byte	0x32
+ 768 013e 5C010000 		.4byte	0x15c
+ 769 0142 10       		.byte	0x10
+ 770 0143 07       		.uleb128 0x7
+ 771 0144 A1000000 		.4byte	.LASF28
+ 772 0148 05       		.byte	0x5
+ 773 0149 33       		.byte	0x33
+ 774 014a 6C010000 		.4byte	0x16c
+ 775 014e 13       		.byte	0x13
+ 776 014f 07       		.uleb128 0x7
+ 777 0150 B8000000 		.4byte	.LASF29
+ 778 0154 05       		.byte	0x5
+ 779 0155 34       		.byte	0x34
+ 780 0156 7C010000 		.4byte	0x17c
+ 781 015a 15       		.byte	0x15
+ 782 015b 00       		.byte	0
+ 783 015c 08       		.uleb128 0x8
+ 784 015d 81000000 		.4byte	0x81
+ 785 0161 6C010000 		.4byte	0x16c
+ 786 0165 09       		.uleb128 0x9
+ 787 0166 BC000000 		.4byte	0xbc
+ 788 016a 02       		.byte	0x2
+ 789 016b 00       		.byte	0
+ 790 016c 08       		.uleb128 0x8
+ 791 016d 81000000 		.4byte	0x81
+ 792 0171 7C010000 		.4byte	0x17c
+ 793 0175 09       		.uleb128 0x9
+ 794 0176 BC000000 		.4byte	0xbc
+ 795 017a 01       		.byte	0x1
+ 796 017b 00       		.byte	0
+ 797 017c 08       		.uleb128 0x8
+ 798 017d B0000000 		.4byte	0xb0
+ 799 0181 8C010000 		.4byte	0x18c
+ 800 0185 09       		.uleb128 0x9
+ 801 0186 BC000000 		.4byte	0xbc
+ 802 018a 09       		.byte	0x9
+ 803 018b 00       		.byte	0
+ 804 018c 03       		.uleb128 0x3
+ 805 018d EF010000 		.4byte	.LASF30
+ 806 0191 05       		.byte	0x5
+ 807 0192 37       		.byte	0x37
+ 808 0193 C3000000 		.4byte	0xc3
+ 809 0197 02       		.uleb128 0x2
+ 810 0198 08       		.byte	0x8
+ 811 0199 04       		.byte	0x4
+ 812 019a 14020000 		.4byte	.LASF31
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 18
+
+
+ 813 019e 0A       		.uleb128 0xa
+ 814 019f 7A020000 		.4byte	.LASF32
+ 815 01a3 01       		.byte	0x1
+ 816 01a4 1B       		.byte	0x1b
+ 817 01a5 00000000 		.4byte	.LFB33
+ 818 01a9 A8000000 		.4byte	.LFE33-.LFB33
+ 819 01ad 01       		.uleb128 0x1
+ 820 01ae 9C       		.byte	0x9c
+ 821 01af 90020000 		.4byte	0x290
+ 822 01b3 0B       		.uleb128 0xb
+ 823 01b4 41010000 		.4byte	.LASF34
+ 824 01b8 01       		.byte	0x1
+ 825 01b9 1D       		.byte	0x1d
+ 826 01ba 6C010000 		.4byte	0x16c
+ 827 01be 02       		.uleb128 0x2
+ 828 01bf 91       		.byte	0x91
+ 829 01c0 6C       		.sleb128 -20
+ 830 01c1 0C       		.uleb128 0xc
+ 831 01c2 12000000 		.4byte	.LVL0
+ 832 01c6 D5030000 		.4byte	0x3d5
+ 833 01ca DF010000 		.4byte	0x1df
+ 834 01ce 0D       		.uleb128 0xd
+ 835 01cf 01       		.uleb128 0x1
+ 836 01d0 53       		.byte	0x53
+ 837 01d1 01       		.uleb128 0x1
+ 838 01d2 40       		.byte	0x40
+ 839 01d3 0D       		.uleb128 0xd
+ 840 01d4 01       		.uleb128 0x1
+ 841 01d5 52       		.byte	0x52
+ 842 01d6 01       		.uleb128 0x1
+ 843 01d7 30       		.byte	0x30
+ 844 01d8 0D       		.uleb128 0xd
+ 845 01d9 01       		.uleb128 0x1
+ 846 01da 51       		.byte	0x51
+ 847 01db 02       		.uleb128 0x2
+ 848 01dc 74       		.byte	0x74
+ 849 01dd 00       		.sleb128 0
+ 850 01de 00       		.byte	0
+ 851 01df 0C       		.uleb128 0xc
+ 852 01e0 2C000000 		.4byte	.LVL1
+ 853 01e4 D5030000 		.4byte	0x3d5
+ 854 01e8 FD010000 		.4byte	0x1fd
+ 855 01ec 0D       		.uleb128 0xd
+ 856 01ed 01       		.uleb128 0x1
+ 857 01ee 53       		.byte	0x53
+ 858 01ef 01       		.uleb128 0x1
+ 859 01f0 40       		.byte	0x40
+ 860 01f1 0D       		.uleb128 0xd
+ 861 01f2 01       		.uleb128 0x1
+ 862 01f3 52       		.byte	0x52
+ 863 01f4 01       		.uleb128 0x1
+ 864 01f5 37       		.byte	0x37
+ 865 01f6 0D       		.uleb128 0xd
+ 866 01f7 01       		.uleb128 0x1
+ 867 01f8 51       		.byte	0x51
+ 868 01f9 02       		.uleb128 0x2
+ 869 01fa 74       		.byte	0x74
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 19
+
+
+ 870 01fb 00       		.sleb128 0
+ 871 01fc 00       		.byte	0
+ 872 01fd 0C       		.uleb128 0xc
+ 873 01fe 42000000 		.4byte	.LVL2
+ 874 0202 D5030000 		.4byte	0x3d5
+ 875 0206 1B020000 		.4byte	0x21b
+ 876 020a 0D       		.uleb128 0xd
+ 877 020b 01       		.uleb128 0x1
+ 878 020c 53       		.byte	0x53
+ 879 020d 01       		.uleb128 0x1
+ 880 020e 38       		.byte	0x38
+ 881 020f 0D       		.uleb128 0xd
+ 882 0210 01       		.uleb128 0x1
+ 883 0211 52       		.byte	0x52
+ 884 0212 01       		.uleb128 0x1
+ 885 0213 31       		.byte	0x31
+ 886 0214 0D       		.uleb128 0xd
+ 887 0215 01       		.uleb128 0x1
+ 888 0216 51       		.byte	0x51
+ 889 0217 02       		.uleb128 0x2
+ 890 0218 74       		.byte	0x74
+ 891 0219 00       		.sleb128 0
+ 892 021a 00       		.byte	0
+ 893 021b 0C       		.uleb128 0xc
+ 894 021c 52000000 		.4byte	.LVL3
+ 895 0220 D5030000 		.4byte	0x3d5
+ 896 0224 39020000 		.4byte	0x239
+ 897 0228 0D       		.uleb128 0xd
+ 898 0229 01       		.uleb128 0x1
+ 899 022a 53       		.byte	0x53
+ 900 022b 01       		.uleb128 0x1
+ 901 022c 40       		.byte	0x40
+ 902 022d 0D       		.uleb128 0xd
+ 903 022e 01       		.uleb128 0x1
+ 904 022f 52       		.byte	0x52
+ 905 0230 01       		.uleb128 0x1
+ 906 0231 33       		.byte	0x33
+ 907 0232 0D       		.uleb128 0xd
+ 908 0233 01       		.uleb128 0x1
+ 909 0234 51       		.byte	0x51
+ 910 0235 02       		.uleb128 0x2
+ 911 0236 74       		.byte	0x74
+ 912 0237 00       		.sleb128 0
+ 913 0238 00       		.byte	0
+ 914 0239 0C       		.uleb128 0xc
+ 915 023a 68000000 		.4byte	.LVL4
+ 916 023e D5030000 		.4byte	0x3d5
+ 917 0242 57020000 		.4byte	0x257
+ 918 0246 0D       		.uleb128 0xd
+ 919 0247 01       		.uleb128 0x1
+ 920 0248 53       		.byte	0x53
+ 921 0249 01       		.uleb128 0x1
+ 922 024a 40       		.byte	0x40
+ 923 024b 0D       		.uleb128 0xd
+ 924 024c 01       		.uleb128 0x1
+ 925 024d 52       		.byte	0x52
+ 926 024e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 20
+
+
+ 927 024f 35       		.byte	0x35
+ 928 0250 0D       		.uleb128 0xd
+ 929 0251 01       		.uleb128 0x1
+ 930 0252 51       		.byte	0x51
+ 931 0253 02       		.uleb128 0x2
+ 932 0254 74       		.byte	0x74
+ 933 0255 00       		.sleb128 0
+ 934 0256 00       		.byte	0
+ 935 0257 0C       		.uleb128 0xc
+ 936 0258 7E000000 		.4byte	.LVL5
+ 937 025c D5030000 		.4byte	0x3d5
+ 938 0260 75020000 		.4byte	0x275
+ 939 0264 0D       		.uleb128 0xd
+ 940 0265 01       		.uleb128 0x1
+ 941 0266 53       		.byte	0x53
+ 942 0267 01       		.uleb128 0x1
+ 943 0268 40       		.byte	0x40
+ 944 0269 0D       		.uleb128 0xd
+ 945 026a 01       		.uleb128 0x1
+ 946 026b 52       		.byte	0x52
+ 947 026c 01       		.uleb128 0x1
+ 948 026d 34       		.byte	0x34
+ 949 026e 0D       		.uleb128 0xd
+ 950 026f 01       		.uleb128 0x1
+ 951 0270 51       		.byte	0x51
+ 952 0271 02       		.uleb128 0x2
+ 953 0272 74       		.byte	0x74
+ 954 0273 00       		.sleb128 0
+ 955 0274 00       		.byte	0
+ 956 0275 0E       		.uleb128 0xe
+ 957 0276 94000000 		.4byte	.LVL6
+ 958 027a D5030000 		.4byte	0x3d5
+ 959 027e 0D       		.uleb128 0xd
+ 960 027f 01       		.uleb128 0x1
+ 961 0280 53       		.byte	0x53
+ 962 0281 01       		.uleb128 0x1
+ 963 0282 40       		.byte	0x40
+ 964 0283 0D       		.uleb128 0xd
+ 965 0284 01       		.uleb128 0x1
+ 966 0285 52       		.byte	0x52
+ 967 0286 01       		.uleb128 0x1
+ 968 0287 32       		.byte	0x32
+ 969 0288 0D       		.uleb128 0xd
+ 970 0289 01       		.uleb128 0x1
+ 971 028a 51       		.byte	0x51
+ 972 028b 02       		.uleb128 0x2
+ 973 028c 74       		.byte	0x74
+ 974 028d 00       		.sleb128 0
+ 975 028e 00       		.byte	0
+ 976 028f 00       		.byte	0
+ 977 0290 0F       		.uleb128 0xf
+ 978 0291 FB010000 		.4byte	.LASF33
+ 979 0295 01       		.byte	0x1
+ 980 0296 2F       		.byte	0x2f
+ 981 0297 00000000 		.4byte	.LFB34
+ 982 029b 7C020000 		.4byte	.LFE34-.LFB34
+ 983 029f 01       		.uleb128 0x1
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 21
+
+
+ 984 02a0 9C       		.byte	0x9c
+ 985 02a1 AE030000 		.4byte	0x3ae
+ 986 02a5 10       		.uleb128 0x10
+ 987 02a6 20020000 		.4byte	.LASF35
+ 988 02aa 01       		.byte	0x1
+ 989 02ab 31       		.byte	0x31
+ 990 02ac A2000000 		.4byte	0xa2
+ 991 02b0 00000000 		.4byte	.LLST0
+ 992 02b4 0C       		.uleb128 0xc
+ 993 02b5 82000000 		.4byte	.LVL23
+ 994 02b9 FF030000 		.4byte	0x3ff
+ 995 02bd C8020000 		.4byte	0x2c8
+ 996 02c1 0D       		.uleb128 0xd
+ 997 02c2 01       		.uleb128 0x1
+ 998 02c3 50       		.byte	0x50
+ 999 02c4 02       		.uleb128 0x2
+ 1000 02c5 77       		.byte	0x77
+ 1001 02c6 00       		.sleb128 0
+ 1002 02c7 00       		.byte	0
+ 1003 02c8 11       		.uleb128 0x11
+ 1004 02c9 88000000 		.4byte	.LVL24
+ 1005 02cd 10040000 		.4byte	0x410
+ 1006 02d1 11       		.uleb128 0x11
+ 1007 02d2 94000000 		.4byte	.LVL25
+ 1008 02d6 FF030000 		.4byte	0x3ff
+ 1009 02da 11       		.uleb128 0x11
+ 1010 02db A0000000 		.4byte	.LVL26
+ 1011 02df 10040000 		.4byte	0x410
+ 1012 02e3 11       		.uleb128 0x11
+ 1013 02e4 AA000000 		.4byte	.LVL27
+ 1014 02e8 FF030000 		.4byte	0x3ff
+ 1015 02ec 11       		.uleb128 0x11
+ 1016 02ed B0000000 		.4byte	.LVL28
+ 1017 02f1 10040000 		.4byte	0x410
+ 1018 02f5 0C       		.uleb128 0xc
+ 1019 02f6 2E010000 		.4byte	.LVL41
+ 1020 02fa FF030000 		.4byte	0x3ff
+ 1021 02fe 09030000 		.4byte	0x309
+ 1022 0302 0D       		.uleb128 0xd
+ 1023 0303 01       		.uleb128 0x1
+ 1024 0304 50       		.byte	0x50
+ 1025 0305 02       		.uleb128 0x2
+ 1026 0306 77       		.byte	0x77
+ 1027 0307 00       		.sleb128 0
+ 1028 0308 00       		.byte	0
+ 1029 0309 11       		.uleb128 0x11
+ 1030 030a 34010000 		.4byte	.LVL42
+ 1031 030e 10040000 		.4byte	0x410
+ 1032 0312 11       		.uleb128 0x11
+ 1033 0313 40010000 		.4byte	.LVL43
+ 1034 0317 FF030000 		.4byte	0x3ff
+ 1035 031b 11       		.uleb128 0x11
+ 1036 031c 46010000 		.4byte	.LVL44
+ 1037 0320 10040000 		.4byte	0x410
+ 1038 0324 11       		.uleb128 0x11
+ 1039 0325 5C010000 		.4byte	.LVL45
+ 1040 0329 FF030000 		.4byte	0x3ff
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 22
+
+
+ 1041 032d 11       		.uleb128 0x11
+ 1042 032e 62010000 		.4byte	.LVL46
+ 1043 0332 10040000 		.4byte	0x410
+ 1044 0336 11       		.uleb128 0x11
+ 1045 0337 70010000 		.4byte	.LVL47
+ 1046 033b FF030000 		.4byte	0x3ff
+ 1047 033f 11       		.uleb128 0x11
+ 1048 0340 76010000 		.4byte	.LVL48
+ 1049 0344 10040000 		.4byte	0x410
+ 1050 0348 0C       		.uleb128 0xc
+ 1051 0349 F2010000 		.4byte	.LVL60
+ 1052 034d FF030000 		.4byte	0x3ff
+ 1053 0351 5C030000 		.4byte	0x35c
+ 1054 0355 0D       		.uleb128 0xd
+ 1055 0356 01       		.uleb128 0x1
+ 1056 0357 50       		.byte	0x50
+ 1057 0358 02       		.uleb128 0x2
+ 1058 0359 76       		.byte	0x76
+ 1059 035a 00       		.sleb128 0
+ 1060 035b 00       		.byte	0
+ 1061 035c 11       		.uleb128 0x11
+ 1062 035d F8010000 		.4byte	.LVL61
+ 1063 0361 10040000 		.4byte	0x410
+ 1064 0365 11       		.uleb128 0x11
+ 1065 0366 04020000 		.4byte	.LVL62
+ 1066 036a FF030000 		.4byte	0x3ff
+ 1067 036e 11       		.uleb128 0x11
+ 1068 036f 0A020000 		.4byte	.LVL63
+ 1069 0373 10040000 		.4byte	0x410
+ 1070 0377 11       		.uleb128 0x11
+ 1071 0378 18020000 		.4byte	.LVL64
+ 1072 037c FF030000 		.4byte	0x3ff
+ 1073 0380 11       		.uleb128 0x11
+ 1074 0381 1E020000 		.4byte	.LVL65
+ 1075 0385 10040000 		.4byte	0x410
+ 1076 0389 11       		.uleb128 0x11
+ 1077 038a 34020000 		.4byte	.LVL66
+ 1078 038e FF030000 		.4byte	0x3ff
+ 1079 0392 11       		.uleb128 0x11
+ 1080 0393 3A020000 		.4byte	.LVL67
+ 1081 0397 10040000 		.4byte	0x410
+ 1082 039b 11       		.uleb128 0x11
+ 1083 039c 48020000 		.4byte	.LVL68
+ 1084 03a0 FF030000 		.4byte	0x3ff
+ 1085 03a4 11       		.uleb128 0x11
+ 1086 03a5 4E020000 		.4byte	.LVL69
+ 1087 03a9 10040000 		.4byte	0x410
+ 1088 03ad 00       		.byte	0
+ 1089 03ae 12       		.uleb128 0x12
+ 1090 03af 4D010000 		.4byte	.LASF36
+ 1091 03b3 05       		.byte	0x5
+ 1092 03b4 39       		.byte	0x39
+ 1093 03b5 8C010000 		.4byte	0x18c
+ 1094 03b9 05       		.uleb128 0x5
+ 1095 03ba 03       		.byte	0x3
+ 1096 03bb 00000000 		.4byte	LM92_Operational_Struct
+ 1097 03bf 12       		.uleb128 0x12
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 23
+
+
+ 1098 03c0 7A010000 		.4byte	.LASF37
+ 1099 03c4 01       		.byte	0x1
+ 1100 03c5 11       		.byte	0x11
+ 1101 03c6 D0030000 		.4byte	0x3d0
+ 1102 03ca 05       		.uleb128 0x5
+ 1103 03cb 03       		.byte	0x3
+ 1104 03cc 00000000 		.4byte	LM92_I2C_ADRESS
+ 1105 03d0 13       		.uleb128 0x13
+ 1106 03d1 B7000000 		.4byte	0xb7
+ 1107 03d5 14       		.uleb128 0x14
+ 1108 03d6 CF000000 		.4byte	.LASF41
+ 1109 03da 01       		.byte	0x1
+ 1110 03db 14       		.byte	0x14
+ 1111 03dc 81000000 		.4byte	0x81
+ 1112 03e0 F9030000 		.4byte	0x3f9
+ 1113 03e4 15       		.uleb128 0x15
+ 1114 03e5 97000000 		.4byte	0x97
+ 1115 03e9 15       		.uleb128 0x15
+ 1116 03ea F9030000 		.4byte	0x3f9
+ 1117 03ee 15       		.uleb128 0x15
+ 1118 03ef 81000000 		.4byte	0x81
+ 1119 03f3 15       		.uleb128 0x15
+ 1120 03f4 81000000 		.4byte	0x81
+ 1121 03f8 00       		.byte	0
+ 1122 03f9 16       		.uleb128 0x16
+ 1123 03fa 04       		.byte	0x4
+ 1124 03fb 81000000 		.4byte	0x81
+ 1125 03ff 17       		.uleb128 0x17
+ 1126 0400 E5010000 		.4byte	.LASF42
+ 1127 0404 06       		.byte	0x6
+ 1128 0405 50       		.byte	0x50
+ 1129 0406 10040000 		.4byte	0x410
+ 1130 040a 15       		.uleb128 0x15
+ 1131 040b 76000000 		.4byte	0x76
+ 1132 040f 00       		.byte	0
+ 1133 0410 18       		.uleb128 0x18
+ 1134 0411 AF010000 		.4byte	.LASF43
+ 1135 0415 06       		.byte	0x6
+ 1136 0416 39       		.byte	0x39
+ 1137 0417 1B040000 		.4byte	0x41b
+ 1138 041b 16       		.uleb128 0x16
+ 1139 041c 04       		.byte	0x4
+ 1140 041d 76000000 		.4byte	0x76
+ 1141 0421 00       		.byte	0
+ 1142              		.section	.debug_abbrev,"",%progbits
+ 1143              	.Ldebug_abbrev0:
+ 1144 0000 01       		.uleb128 0x1
+ 1145 0001 11       		.uleb128 0x11
+ 1146 0002 01       		.byte	0x1
+ 1147 0003 25       		.uleb128 0x25
+ 1148 0004 0E       		.uleb128 0xe
+ 1149 0005 13       		.uleb128 0x13
+ 1150 0006 0B       		.uleb128 0xb
+ 1151 0007 03       		.uleb128 0x3
+ 1152 0008 0E       		.uleb128 0xe
+ 1153 0009 1B       		.uleb128 0x1b
+ 1154 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 24
+
+
+ 1155 000b 55       		.uleb128 0x55
+ 1156 000c 17       		.uleb128 0x17
+ 1157 000d 11       		.uleb128 0x11
+ 1158 000e 01       		.uleb128 0x1
+ 1159 000f 10       		.uleb128 0x10
+ 1160 0010 17       		.uleb128 0x17
+ 1161 0011 00       		.byte	0
+ 1162 0012 00       		.byte	0
+ 1163 0013 02       		.uleb128 0x2
+ 1164 0014 24       		.uleb128 0x24
+ 1165 0015 00       		.byte	0
+ 1166 0016 0B       		.uleb128 0xb
+ 1167 0017 0B       		.uleb128 0xb
+ 1168 0018 3E       		.uleb128 0x3e
+ 1169 0019 0B       		.uleb128 0xb
+ 1170 001a 03       		.uleb128 0x3
+ 1171 001b 0E       		.uleb128 0xe
+ 1172 001c 00       		.byte	0
+ 1173 001d 00       		.byte	0
+ 1174 001e 03       		.uleb128 0x3
+ 1175 001f 16       		.uleb128 0x16
+ 1176 0020 00       		.byte	0
+ 1177 0021 03       		.uleb128 0x3
+ 1178 0022 0E       		.uleb128 0xe
+ 1179 0023 3A       		.uleb128 0x3a
+ 1180 0024 0B       		.uleb128 0xb
+ 1181 0025 3B       		.uleb128 0x3b
+ 1182 0026 0B       		.uleb128 0xb
+ 1183 0027 49       		.uleb128 0x49
+ 1184 0028 13       		.uleb128 0x13
+ 1185 0029 00       		.byte	0
+ 1186 002a 00       		.byte	0
+ 1187 002b 04       		.uleb128 0x4
+ 1188 002c 24       		.uleb128 0x24
+ 1189 002d 00       		.byte	0
+ 1190 002e 0B       		.uleb128 0xb
+ 1191 002f 0B       		.uleb128 0xb
+ 1192 0030 3E       		.uleb128 0x3e
+ 1193 0031 0B       		.uleb128 0xb
+ 1194 0032 03       		.uleb128 0x3
+ 1195 0033 08       		.uleb128 0x8
+ 1196 0034 00       		.byte	0
+ 1197 0035 00       		.byte	0
+ 1198 0036 05       		.uleb128 0x5
+ 1199 0037 35       		.uleb128 0x35
+ 1200 0038 00       		.byte	0
+ 1201 0039 49       		.uleb128 0x49
+ 1202 003a 13       		.uleb128 0x13
+ 1203 003b 00       		.byte	0
+ 1204 003c 00       		.byte	0
+ 1205 003d 06       		.uleb128 0x6
+ 1206 003e 13       		.uleb128 0x13
+ 1207 003f 01       		.byte	0x1
+ 1208 0040 0B       		.uleb128 0xb
+ 1209 0041 0B       		.uleb128 0xb
+ 1210 0042 3A       		.uleb128 0x3a
+ 1211 0043 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 25
+
+
+ 1212 0044 3B       		.uleb128 0x3b
+ 1213 0045 0B       		.uleb128 0xb
+ 1214 0046 01       		.uleb128 0x1
+ 1215 0047 13       		.uleb128 0x13
+ 1216 0048 00       		.byte	0
+ 1217 0049 00       		.byte	0
+ 1218 004a 07       		.uleb128 0x7
+ 1219 004b 0D       		.uleb128 0xd
+ 1220 004c 00       		.byte	0
+ 1221 004d 03       		.uleb128 0x3
+ 1222 004e 0E       		.uleb128 0xe
+ 1223 004f 3A       		.uleb128 0x3a
+ 1224 0050 0B       		.uleb128 0xb
+ 1225 0051 3B       		.uleb128 0x3b
+ 1226 0052 0B       		.uleb128 0xb
+ 1227 0053 49       		.uleb128 0x49
+ 1228 0054 13       		.uleb128 0x13
+ 1229 0055 38       		.uleb128 0x38
+ 1230 0056 0B       		.uleb128 0xb
+ 1231 0057 00       		.byte	0
+ 1232 0058 00       		.byte	0
+ 1233 0059 08       		.uleb128 0x8
+ 1234 005a 01       		.uleb128 0x1
+ 1235 005b 01       		.byte	0x1
+ 1236 005c 49       		.uleb128 0x49
+ 1237 005d 13       		.uleb128 0x13
+ 1238 005e 01       		.uleb128 0x1
+ 1239 005f 13       		.uleb128 0x13
+ 1240 0060 00       		.byte	0
+ 1241 0061 00       		.byte	0
+ 1242 0062 09       		.uleb128 0x9
+ 1243 0063 21       		.uleb128 0x21
+ 1244 0064 00       		.byte	0
+ 1245 0065 49       		.uleb128 0x49
+ 1246 0066 13       		.uleb128 0x13
+ 1247 0067 2F       		.uleb128 0x2f
+ 1248 0068 0B       		.uleb128 0xb
+ 1249 0069 00       		.byte	0
+ 1250 006a 00       		.byte	0
+ 1251 006b 0A       		.uleb128 0xa
+ 1252 006c 2E       		.uleb128 0x2e
+ 1253 006d 01       		.byte	0x1
+ 1254 006e 3F       		.uleb128 0x3f
+ 1255 006f 19       		.uleb128 0x19
+ 1256 0070 03       		.uleb128 0x3
+ 1257 0071 0E       		.uleb128 0xe
+ 1258 0072 3A       		.uleb128 0x3a
+ 1259 0073 0B       		.uleb128 0xb
+ 1260 0074 3B       		.uleb128 0x3b
+ 1261 0075 0B       		.uleb128 0xb
+ 1262 0076 11       		.uleb128 0x11
+ 1263 0077 01       		.uleb128 0x1
+ 1264 0078 12       		.uleb128 0x12
+ 1265 0079 06       		.uleb128 0x6
+ 1266 007a 40       		.uleb128 0x40
+ 1267 007b 18       		.uleb128 0x18
+ 1268 007c 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 26
+
+
+ 1269 007e 19       		.uleb128 0x19
+ 1270 007f 01       		.uleb128 0x1
+ 1271 0080 13       		.uleb128 0x13
+ 1272 0081 00       		.byte	0
+ 1273 0082 00       		.byte	0
+ 1274 0083 0B       		.uleb128 0xb
+ 1275 0084 34       		.uleb128 0x34
+ 1276 0085 00       		.byte	0
+ 1277 0086 03       		.uleb128 0x3
+ 1278 0087 0E       		.uleb128 0xe
+ 1279 0088 3A       		.uleb128 0x3a
+ 1280 0089 0B       		.uleb128 0xb
+ 1281 008a 3B       		.uleb128 0x3b
+ 1282 008b 0B       		.uleb128 0xb
+ 1283 008c 49       		.uleb128 0x49
+ 1284 008d 13       		.uleb128 0x13
+ 1285 008e 02       		.uleb128 0x2
+ 1286 008f 18       		.uleb128 0x18
+ 1287 0090 00       		.byte	0
+ 1288 0091 00       		.byte	0
+ 1289 0092 0C       		.uleb128 0xc
+ 1290 0093 898201   		.uleb128 0x4109
+ 1291 0096 01       		.byte	0x1
+ 1292 0097 11       		.uleb128 0x11
+ 1293 0098 01       		.uleb128 0x1
+ 1294 0099 31       		.uleb128 0x31
+ 1295 009a 13       		.uleb128 0x13
+ 1296 009b 01       		.uleb128 0x1
+ 1297 009c 13       		.uleb128 0x13
+ 1298 009d 00       		.byte	0
+ 1299 009e 00       		.byte	0
+ 1300 009f 0D       		.uleb128 0xd
+ 1301 00a0 8A8201   		.uleb128 0x410a
+ 1302 00a3 00       		.byte	0
+ 1303 00a4 02       		.uleb128 0x2
+ 1304 00a5 18       		.uleb128 0x18
+ 1305 00a6 9142     		.uleb128 0x2111
+ 1306 00a8 18       		.uleb128 0x18
+ 1307 00a9 00       		.byte	0
+ 1308 00aa 00       		.byte	0
+ 1309 00ab 0E       		.uleb128 0xe
+ 1310 00ac 898201   		.uleb128 0x4109
+ 1311 00af 01       		.byte	0x1
+ 1312 00b0 11       		.uleb128 0x11
+ 1313 00b1 01       		.uleb128 0x1
+ 1314 00b2 31       		.uleb128 0x31
+ 1315 00b3 13       		.uleb128 0x13
+ 1316 00b4 00       		.byte	0
+ 1317 00b5 00       		.byte	0
+ 1318 00b6 0F       		.uleb128 0xf
+ 1319 00b7 2E       		.uleb128 0x2e
+ 1320 00b8 01       		.byte	0x1
+ 1321 00b9 3F       		.uleb128 0x3f
+ 1322 00ba 19       		.uleb128 0x19
+ 1323 00bb 03       		.uleb128 0x3
+ 1324 00bc 0E       		.uleb128 0xe
+ 1325 00bd 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 27
+
+
+ 1326 00be 0B       		.uleb128 0xb
+ 1327 00bf 3B       		.uleb128 0x3b
+ 1328 00c0 0B       		.uleb128 0xb
+ 1329 00c1 11       		.uleb128 0x11
+ 1330 00c2 01       		.uleb128 0x1
+ 1331 00c3 12       		.uleb128 0x12
+ 1332 00c4 06       		.uleb128 0x6
+ 1333 00c5 40       		.uleb128 0x40
+ 1334 00c6 18       		.uleb128 0x18
+ 1335 00c7 9642     		.uleb128 0x2116
+ 1336 00c9 19       		.uleb128 0x19
+ 1337 00ca 01       		.uleb128 0x1
+ 1338 00cb 13       		.uleb128 0x13
+ 1339 00cc 00       		.byte	0
+ 1340 00cd 00       		.byte	0
+ 1341 00ce 10       		.uleb128 0x10
+ 1342 00cf 34       		.uleb128 0x34
+ 1343 00d0 00       		.byte	0
+ 1344 00d1 03       		.uleb128 0x3
+ 1345 00d2 0E       		.uleb128 0xe
+ 1346 00d3 3A       		.uleb128 0x3a
+ 1347 00d4 0B       		.uleb128 0xb
+ 1348 00d5 3B       		.uleb128 0x3b
+ 1349 00d6 0B       		.uleb128 0xb
+ 1350 00d7 49       		.uleb128 0x49
+ 1351 00d8 13       		.uleb128 0x13
+ 1352 00d9 02       		.uleb128 0x2
+ 1353 00da 17       		.uleb128 0x17
+ 1354 00db 00       		.byte	0
+ 1355 00dc 00       		.byte	0
+ 1356 00dd 11       		.uleb128 0x11
+ 1357 00de 898201   		.uleb128 0x4109
+ 1358 00e1 00       		.byte	0
+ 1359 00e2 11       		.uleb128 0x11
+ 1360 00e3 01       		.uleb128 0x1
+ 1361 00e4 31       		.uleb128 0x31
+ 1362 00e5 13       		.uleb128 0x13
+ 1363 00e6 00       		.byte	0
+ 1364 00e7 00       		.byte	0
+ 1365 00e8 12       		.uleb128 0x12
+ 1366 00e9 34       		.uleb128 0x34
+ 1367 00ea 00       		.byte	0
+ 1368 00eb 03       		.uleb128 0x3
+ 1369 00ec 0E       		.uleb128 0xe
+ 1370 00ed 3A       		.uleb128 0x3a
+ 1371 00ee 0B       		.uleb128 0xb
+ 1372 00ef 3B       		.uleb128 0x3b
+ 1373 00f0 0B       		.uleb128 0xb
+ 1374 00f1 49       		.uleb128 0x49
+ 1375 00f2 13       		.uleb128 0x13
+ 1376 00f3 3F       		.uleb128 0x3f
+ 1377 00f4 19       		.uleb128 0x19
+ 1378 00f5 02       		.uleb128 0x2
+ 1379 00f6 18       		.uleb128 0x18
+ 1380 00f7 00       		.byte	0
+ 1381 00f8 00       		.byte	0
+ 1382 00f9 13       		.uleb128 0x13
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 28
+
+
+ 1383 00fa 26       		.uleb128 0x26
+ 1384 00fb 00       		.byte	0
+ 1385 00fc 49       		.uleb128 0x49
+ 1386 00fd 13       		.uleb128 0x13
+ 1387 00fe 00       		.byte	0
+ 1388 00ff 00       		.byte	0
+ 1389 0100 14       		.uleb128 0x14
+ 1390 0101 2E       		.uleb128 0x2e
+ 1391 0102 01       		.byte	0x1
+ 1392 0103 3F       		.uleb128 0x3f
+ 1393 0104 19       		.uleb128 0x19
+ 1394 0105 03       		.uleb128 0x3
+ 1395 0106 0E       		.uleb128 0xe
+ 1396 0107 3A       		.uleb128 0x3a
+ 1397 0108 0B       		.uleb128 0xb
+ 1398 0109 3B       		.uleb128 0x3b
+ 1399 010a 0B       		.uleb128 0xb
+ 1400 010b 27       		.uleb128 0x27
+ 1401 010c 19       		.uleb128 0x19
+ 1402 010d 49       		.uleb128 0x49
+ 1403 010e 13       		.uleb128 0x13
+ 1404 010f 3C       		.uleb128 0x3c
+ 1405 0110 19       		.uleb128 0x19
+ 1406 0111 01       		.uleb128 0x1
+ 1407 0112 13       		.uleb128 0x13
+ 1408 0113 00       		.byte	0
+ 1409 0114 00       		.byte	0
+ 1410 0115 15       		.uleb128 0x15
+ 1411 0116 05       		.uleb128 0x5
+ 1412 0117 00       		.byte	0
+ 1413 0118 49       		.uleb128 0x49
+ 1414 0119 13       		.uleb128 0x13
+ 1415 011a 00       		.byte	0
+ 1416 011b 00       		.byte	0
+ 1417 011c 16       		.uleb128 0x16
+ 1418 011d 0F       		.uleb128 0xf
+ 1419 011e 00       		.byte	0
+ 1420 011f 0B       		.uleb128 0xb
+ 1421 0120 0B       		.uleb128 0xb
+ 1422 0121 49       		.uleb128 0x49
+ 1423 0122 13       		.uleb128 0x13
+ 1424 0123 00       		.byte	0
+ 1425 0124 00       		.byte	0
+ 1426 0125 17       		.uleb128 0x17
+ 1427 0126 2E       		.uleb128 0x2e
+ 1428 0127 01       		.byte	0x1
+ 1429 0128 3F       		.uleb128 0x3f
+ 1430 0129 19       		.uleb128 0x19
+ 1431 012a 03       		.uleb128 0x3
+ 1432 012b 0E       		.uleb128 0xe
+ 1433 012c 3A       		.uleb128 0x3a
+ 1434 012d 0B       		.uleb128 0xb
+ 1435 012e 3B       		.uleb128 0x3b
+ 1436 012f 0B       		.uleb128 0xb
+ 1437 0130 27       		.uleb128 0x27
+ 1438 0131 19       		.uleb128 0x19
+ 1439 0132 3C       		.uleb128 0x3c
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 29
+
+
+ 1440 0133 19       		.uleb128 0x19
+ 1441 0134 01       		.uleb128 0x1
+ 1442 0135 13       		.uleb128 0x13
+ 1443 0136 00       		.byte	0
+ 1444 0137 00       		.byte	0
+ 1445 0138 18       		.uleb128 0x18
+ 1446 0139 2E       		.uleb128 0x2e
+ 1447 013a 00       		.byte	0
+ 1448 013b 3F       		.uleb128 0x3f
+ 1449 013c 19       		.uleb128 0x19
+ 1450 013d 03       		.uleb128 0x3
+ 1451 013e 0E       		.uleb128 0xe
+ 1452 013f 3A       		.uleb128 0x3a
+ 1453 0140 0B       		.uleb128 0xb
+ 1454 0141 3B       		.uleb128 0x3b
+ 1455 0142 0B       		.uleb128 0xb
+ 1456 0143 27       		.uleb128 0x27
+ 1457 0144 19       		.uleb128 0x19
+ 1458 0145 49       		.uleb128 0x49
+ 1459 0146 13       		.uleb128 0x13
+ 1460 0147 3C       		.uleb128 0x3c
+ 1461 0148 19       		.uleb128 0x19
+ 1462 0149 00       		.byte	0
+ 1463 014a 00       		.byte	0
+ 1464 014b 00       		.byte	0
+ 1465              		.section	.debug_loc,"",%progbits
+ 1466              	.Ldebug_loc0:
+ 1467              	.LLST0:
+ 1468 0000 1A000000 		.4byte	.LVL10
+ 1469 0004 1D000000 		.4byte	.LVL11-1
+ 1470 0008 0100     		.2byte	0x1
+ 1471 000a 50       		.byte	0x50
+ 1472 000b 1D000000 		.4byte	.LVL11-1
+ 1473 000f 2C000000 		.4byte	.LVL12
+ 1474 0013 0100     		.2byte	0x1
+ 1475 0015 55       		.byte	0x55
+ 1476 0016 30000000 		.4byte	.LVL13
+ 1477 001a 60000000 		.4byte	.LVL19
+ 1478 001e 0100     		.2byte	0x1
+ 1479 0020 55       		.byte	0x55
+ 1480 0021 C8000000 		.4byte	.LVL29
+ 1481 0025 CD000000 		.4byte	.LVL30-1
+ 1482 0029 0100     		.2byte	0x1
+ 1483 002b 50       		.byte	0x50
+ 1484 002c CD000000 		.4byte	.LVL30-1
+ 1485 0030 0C010000 		.4byte	.LVL37
+ 1486 0034 0100     		.2byte	0x1
+ 1487 0036 55       		.byte	0x55
+ 1488 0037 8E010000 		.4byte	.LVL49
+ 1489 003b D0010000 		.4byte	.LVL56
+ 1490 003f 0100     		.2byte	0x1
+ 1491 0041 55       		.byte	0x55
+ 1492 0042 00000000 		.4byte	0
+ 1493 0046 00000000 		.4byte	0
+ 1494              		.section	.debug_aranges,"",%progbits
+ 1495 0000 24000000 		.4byte	0x24
+ 1496 0004 0200     		.2byte	0x2
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 30
+
+
+ 1497 0006 00000000 		.4byte	.Ldebug_info0
+ 1498 000a 04       		.byte	0x4
+ 1499 000b 00       		.byte	0
+ 1500 000c 0000     		.2byte	0
+ 1501 000e 0000     		.2byte	0
+ 1502 0010 00000000 		.4byte	.LFB33
+ 1503 0014 A8000000 		.4byte	.LFE33-.LFB33
+ 1504 0018 00000000 		.4byte	.LFB34
+ 1505 001c 7C020000 		.4byte	.LFE34-.LFB34
+ 1506 0020 00000000 		.4byte	0
+ 1507 0024 00000000 		.4byte	0
+ 1508              		.section	.debug_ranges,"",%progbits
+ 1509              	.Ldebug_ranges0:
+ 1510 0000 00000000 		.4byte	.LFB33
+ 1511 0004 A8000000 		.4byte	.LFE33
+ 1512 0008 00000000 		.4byte	.LFB34
+ 1513 000c 7C020000 		.4byte	.LFE34
+ 1514 0010 00000000 		.4byte	0
+ 1515 0014 00000000 		.4byte	0
+ 1516              		.section	.debug_line,"",%progbits
+ 1517              	.Ldebug_line0:
+ 1518 0000 D1010000 		.section	.debug_str,"MS",%progbits,1
+ 1518      02003C01 
+ 1518      00000201 
+ 1518      FB0E0D00 
+ 1518      01010101 
+ 1519              	.LASF18:
+ 1520 0000 54656D70 		.ascii	"Temp_Reg\000"
+ 1520      5F526567 
+ 1520      00
+ 1521              	.LASF9:
+ 1522 0009 5F5F7569 		.ascii	"__uint8_t\000"
+ 1522      6E74385F 
+ 1522      7400
+ 1523              	.LASF38:
+ 1524 0013 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1524      4320342E 
+ 1524      392E3320 
+ 1524      32303135 
+ 1524      30333033 
+ 1525 0046 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1525      20726576 
+ 1525      6973696F 
+ 1525      6E203232 
+ 1525      31323230 
+ 1526 0079 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 1526      66756E63 
+ 1526      74696F6E 
+ 1526      2D736563 
+ 1526      74696F6E 
+ 1527              	.LASF28:
+ 1528 00a1 54656D70 		.ascii	"Temp_Fractional\000"
+ 1528      5F467261 
+ 1528      6374696F 
+ 1528      6E616C00 
+ 1529              	.LASF20:
+ 1530 00b1 53746174 		.ascii	"Status\000"
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 31
+
+
+ 1530      757300
+ 1531              	.LASF29:
+ 1532 00b8 44697370 		.ascii	"Display_String\000"
+ 1532      6C61795F 
+ 1532      53747269 
+ 1532      6E6700
+ 1533              	.LASF10:
+ 1534 00c7 75696E74 		.ascii	"uint8_t\000"
+ 1534      385F7400 
+ 1535              	.LASF41:
+ 1536 00cf 4932435F 		.ascii	"I2C_ReadRegister\000"
+ 1536      52656164 
+ 1536      52656769 
+ 1536      73746572 
+ 1536      00
+ 1537              	.LASF14:
+ 1538 00e0 666C6F61 		.ascii	"float\000"
+ 1538      7400
+ 1539              	.LASF39:
+ 1540 00e6 2E5C4C4D 		.ascii	".\\LM92.c\000"
+ 1540      39322E63 
+ 1540      00
+ 1541              	.LASF40:
+ 1542 00ef 433A5C55 		.ascii	"C:\\Users\\Vit\\Documents\\PSoC Creator\\SensorTest"
+ 1542      73657273 
+ 1542      5C566974 
+ 1542      5C446F63 
+ 1542      756D656E 
+ 1543 011d 5C53656E 		.ascii	"\\SensorTest.cydsn\000"
+ 1543      736F7254 
+ 1543      6573742E 
+ 1543      63796473 
+ 1543      6E00
+ 1544              	.LASF5:
+ 1545 012f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1545      20756E73 
+ 1545      69676E65 
+ 1545      6420696E 
+ 1545      7400
+ 1546              	.LASF34:
+ 1547 0141 42756665 		.ascii	"Bufer\000"
+ 1547      7200
+ 1548              	.LASF23:
+ 1549 0147 545F4C6F 		.ascii	"T_Low\000"
+ 1549      7700
+ 1550              	.LASF36:
+ 1551 014d 4C4D3932 		.ascii	"LM92_Operational_Struct\000"
+ 1551      5F4F7065 
+ 1551      72617469 
+ 1551      6F6E616C 
+ 1551      5F537472 
+ 1552              	.LASF1:
+ 1553 0165 756E7369 		.ascii	"unsigned char\000"
+ 1553      676E6564 
+ 1553      20636861 
+ 1553      7200
+ 1554              	.LASF15:
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 32
+
+
+ 1555 0173 646F7562 		.ascii	"double\000"
+ 1555      6C6500
+ 1556              	.LASF37:
+ 1557 017a 4C4D3932 		.ascii	"LM92_I2C_ADRESS\000"
+ 1557      5F493243 
+ 1557      5F414452 
+ 1557      45535300 
+ 1558              	.LASF2:
+ 1559 018a 73686F72 		.ascii	"short int\000"
+ 1559      7420696E 
+ 1559      7400
+ 1560              	.LASF27:
+ 1561 0194 54656D70 		.ascii	"Temp_Integer\000"
+ 1561      5F496E74 
+ 1561      65676572 
+ 1561      00
+ 1562              	.LASF12:
+ 1563 01a1 75696E74 		.ascii	"uint16\000"
+ 1563      313600
+ 1564              	.LASF13:
+ 1565 01a8 75696E74 		.ascii	"uint32\000"
+ 1565      333200
+ 1566              	.LASF43:
+ 1567 01af 4243445F 		.ascii	"BCD_GetPointerBuf\000"
+ 1567      47657450 
+ 1567      6F696E74 
+ 1567      65724275 
+ 1567      6600
+ 1568              	.LASF8:
+ 1569 01c1 756E7369 		.ascii	"unsigned int\000"
+ 1569      676E6564 
+ 1569      20696E74 
+ 1569      00
+ 1570              	.LASF7:
+ 1571 01ce 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1571      206C6F6E 
+ 1571      6720756E 
+ 1571      7369676E 
+ 1571      65642069 
+ 1572              	.LASF42:
+ 1573 01e5 4243445F 		.ascii	"BCD_Uchar\000"
+ 1573      55636861 
+ 1573      7200
+ 1574              	.LASF30:
+ 1575 01ef 4C4D3932 		.ascii	"LM92_Struct\000"
+ 1575      5F537472 
+ 1575      75637400 
+ 1576              	.LASF33:
+ 1577 01fb 4C4D3932 		.ascii	"LM92_GetTemperature\000"
+ 1577      5F476574 
+ 1577      54656D70 
+ 1577      65726174 
+ 1577      75726500 
+ 1578              	.LASF19:
+ 1579 020f 5369676E 		.ascii	"Sign\000"
+ 1579      00
+ 1580              	.LASF31:
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 33
+
+
+ 1581 0214 6C6F6E67 		.ascii	"long double\000"
+ 1581      20646F75 
+ 1581      626C6500 
+ 1582              	.LASF35:
+ 1583 0220 465F5465 		.ascii	"F_Temp\000"
+ 1583      6D7000
+ 1584              	.LASF17:
+ 1585 0227 73697A65 		.ascii	"sizetype\000"
+ 1585      74797065 
+ 1585      00
+ 1586              	.LASF6:
+ 1587 0230 6C6F6E67 		.ascii	"long long int\000"
+ 1587      206C6F6E 
+ 1587      6720696E 
+ 1587      7400
+ 1588              	.LASF16:
+ 1589 023e 63686172 		.ascii	"char\000"
+ 1589      00
+ 1590              	.LASF26:
+ 1591 0243 4D616E75 		.ascii	"Manufacture_ID\000"
+ 1591      66616374 
+ 1591      7572655F 
+ 1591      494400
+ 1592              	.LASF22:
+ 1593 0252 545F4849 		.ascii	"T_HI\000"
+ 1593      00
+ 1594              	.LASF25:
+ 1595 0257 545F4879 		.ascii	"T_Hysteresis\000"
+ 1595      73746572 
+ 1595      65736973 
+ 1595      00
+ 1596              	.LASF11:
+ 1597 0264 75696E74 		.ascii	"uint8\000"
+ 1597      3800
+ 1598              	.LASF21:
+ 1599 026a 436F6E66 		.ascii	"Config\000"
+ 1599      696700
+ 1600              	.LASF4:
+ 1601 0271 6C6F6E67 		.ascii	"long int\000"
+ 1601      20696E74 
+ 1601      00
+ 1602              	.LASF32:
+ 1603 027a 4C4D3932 		.ascii	"LM92_GetRegisters\000"
+ 1603      5F476574 
+ 1603      52656769 
+ 1603      73746572 
+ 1603      7300
+ 1604              	.LASF0:
+ 1605 028c 7369676E 		.ascii	"signed char\000"
+ 1605      65642063 
+ 1605      68617200 
+ 1606              	.LASF3:
+ 1607 0298 73686F72 		.ascii	"short unsigned int\000"
+ 1607      7420756E 
+ 1607      7369676E 
+ 1607      65642069 
+ 1607      6E7400
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cccDTN3f.s 			page 34
+
+
+ 1608              	.LASF24:
+ 1609 02ab 545F4372 		.ascii	"T_Crit\000"
+ 1609      697400
+ 1610              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

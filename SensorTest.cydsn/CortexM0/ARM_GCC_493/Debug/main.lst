@@ -1,0 +1,2731 @@
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LM92_Action,"ax",%progbits
+  18              		.align	1
+  19              		.global	LM92_Action
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	LM92_Action, %function
+  23              	LM92_Action:
+  24              	.LFB35:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** #include <SSD1306.h>
+  14:.\main.c      **** #include <LM92.h>
+  15:.\main.c      **** #include <BCD.h>
+  16:.\main.c      **** #include <string.h>
+  17:.\main.c      **** #include <TaskDispatcher.h>
+  18:.\main.c      **** #include <Battery.h>
+  19:.\main.c      **** 
+  20:.\main.c      **** 
+  21:.\main.c      **** void Battery_Get_Volts();
+  22:.\main.c      **** void ADC_Get_Battery_Volts();
+  23:.\main.c      **** 
+  24:.\main.c      **** uint32 I2C_SendBuffer(uint32_t DevAddress, uint8_t *pData, uint16_t Size)
+  25:.\main.c      **** {
+  26:.\main.c      ****     volatile uint32 Error;
+  27:.\main.c      ****     I2C_I2CMasterClearStatus();
+  28:.\main.c      ****     Error = I2C_I2CMasterWriteBuf(DevAddress, pData, Size, I2C_I2C_MODE_COMPLETE_XFER);
+  29:.\main.c      ****     while((I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT) == 0)
+  30:.\main.c      ****     {
+  31:.\main.c      ****         
+  32:.\main.c      ****     }
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 2
+
+
+  33:.\main.c      ****     return Error;
+  34:.\main.c      **** }
+  35:.\main.c      **** 
+  36:.\main.c      **** uint8 I2C_ReadRegister(uint32 Adress, uint8 *pData, uint8 Register, uint8 Registers_Lenght_Bit)
+  37:.\main.c      **** {
+  38:.\main.c      ****     uint8_t Error;
+  39:.\main.c      ****     uint8 Reg[1] = {Register};
+  40:.\main.c      ****     I2C_I2CMasterClearStatus();
+  41:.\main.c      ****     Error = I2C_I2CMasterWriteBuf(Adress, Reg, 1, I2C_I2C_MODE_NO_STOP);
+  42:.\main.c      ****     while((I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT) == 0)
+  43:.\main.c      ****     {
+  44:.\main.c      ****         
+  45:.\main.c      ****     }
+  46:.\main.c      ****     I2C_I2CMasterClearStatus();
+  47:.\main.c      ****     Error = I2C_I2CMasterReadBuf(Adress, pData, (Registers_Lenght_Bit/8), I2C_I2C_MODE_REPEAT_START
+  48:.\main.c      ****     while((I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT) == 0)
+  49:.\main.c      ****     {
+  50:.\main.c      ****         
+  51:.\main.c      ****     }
+  52:.\main.c      ****     I2C_I2CMasterClearStatus();
+  53:.\main.c      ****     return (uint8)Error;
+  54:.\main.c      **** }
+  55:.\main.c      **** 
+  56:.\main.c      **** void LM92_Action()
+  57:.\main.c      **** {
+  26              		.loc 1 57 0
+  27              		.cfi_startproc
+  28 0000 08B5     		push	{r3, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 3, -8
+  31              		.cfi_offset 14, -4
+  58:.\main.c      ****     LM92_GetRegisters();
+  32              		.loc 1 58 0
+  33 0002 FFF7FEFF 		bl	LM92_GetRegisters
+  34              	.LVL0:
+  59:.\main.c      ****     LM92_GetTemperature();
+  35              		.loc 1 59 0
+  36 0006 FFF7FEFF 		bl	LM92_GetTemperature
+  37              	.LVL1:
+  60:.\main.c      ****     LCD_GotoXY(0,0);
+  38              		.loc 1 60 0
+  39 000a 0020     		mov	r0, #0
+  40 000c 011C     		mov	r1, r0
+  41 000e FFF7FEFF 		bl	LCD_GotoXY
+  42              	.LVL2:
+  61:.\main.c      ****     LCD_FStr("LM92 Temp: ");
+  43              		.loc 1 61 0
+  44 0012 0948     		ldr	r0, .L2
+  45 0014 FFF7FEFF 		bl	LCD_FStr
+  46              	.LVL3:
+  62:.\main.c      ****     LCD_GotoXY(11,0);
+  47              		.loc 1 62 0
+  48 0018 0021     		mov	r1, #0
+  49 001a 0B20     		mov	r0, #11
+  50 001c FFF7FEFF 		bl	LCD_GotoXY
+  51              	.LVL4:
+  63:.\main.c      ****     LCD_FStr(LM92_Operational_Struct.Display_String);
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 3
+
+
+  52              		.loc 1 63 0
+  53 0020 0648     		ldr	r0, .L2+4
+  54 0022 FFF7FEFF 		bl	LCD_FStr
+  55              	.LVL5:
+  64:.\main.c      ****     LCD_Update();
+  56              		.loc 1 64 0
+  57 0026 FFF7FEFF 		bl	LCD_Update
+  58              	.LVL6:
+  65:.\main.c      ****     SetTimerTask(LM92_Action, 500);
+  59              		.loc 1 65 0
+  60 002a FA21     		mov	r1, #250
+  61 002c 0448     		ldr	r0, .L2+8
+  62 002e 4900     		lsl	r1, r1, #1
+  63 0030 FFF7FEFF 		bl	SetTimerTask
+  64              	.LVL7:
+  66:.\main.c      **** }
+  65              		.loc 1 66 0
+  66              		@ sp needed
+  67 0034 08BD     		pop	{r3, pc}
+  68              	.L3:
+  69 0036 C046     		.align	2
+  70              	.L2:
+  71 0038 00000000 		.word	.LC0
+  72 003c 15000000 		.word	LM92_Operational_Struct+21
+  73 0040 00000000 		.word	LM92_Action
+  74              		.cfi_endproc
+  75              	.LFE35:
+  76              		.size	LM92_Action, .-LM92_Action
+  77              		.section	.text.ADC_Start_Convert_Task,"ax",%progbits
+  78              		.align	1
+  79              		.global	ADC_Start_Convert_Task
+  80              		.code	16
+  81              		.thumb_func
+  82              		.type	ADC_Start_Convert_Task, %function
+  83              	ADC_Start_Convert_Task:
+  84              	.LFB36:
+  67:.\main.c      **** 
+  68:.\main.c      **** void ADC_Start_Convert_Task()
+  69:.\main.c      **** {
+  85              		.loc 1 69 0
+  86              		.cfi_startproc
+  87 0000 08B5     		push	{r3, lr}
+  88              		.cfi_def_cfa_offset 8
+  89              		.cfi_offset 3, -8
+  90              		.cfi_offset 14, -4
+  70:.\main.c      ****     ADC_StartConvert();
+  91              		.loc 1 70 0
+  92 0002 FFF7FEFF 		bl	ADC_StartConvert
+  93              	.LVL8:
+  71:.\main.c      ****     SetTimerTask(ADC_Get_Battery_Volts, 10);
+  94              		.loc 1 71 0
+  95 0006 0248     		ldr	r0, .L5
+  96 0008 0A21     		mov	r1, #10
+  97 000a FFF7FEFF 		bl	SetTimerTask
+  98              	.LVL9:
+  72:.\main.c      **** }
+  99              		.loc 1 72 0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 4
+
+
+ 100              		@ sp needed
+ 101 000e 08BD     		pop	{r3, pc}
+ 102              	.L6:
+ 103              		.align	2
+ 104              	.L5:
+ 105 0010 00000000 		.word	ADC_Get_Battery_Volts
+ 106              		.cfi_endproc
+ 107              	.LFE36:
+ 108              		.size	ADC_Start_Convert_Task, .-ADC_Start_Convert_Task
+ 109              		.section	.text.ADC_Get_Battery_Volts,"ax",%progbits
+ 110              		.align	1
+ 111              		.global	ADC_Get_Battery_Volts
+ 112              		.code	16
+ 113              		.thumb_func
+ 114              		.type	ADC_Get_Battery_Volts, %function
+ 115              	ADC_Get_Battery_Volts:
+ 116              	.LFB37:
+  73:.\main.c      **** 
+  74:.\main.c      **** void ADC_Get_Battery_Volts()
+  75:.\main.c      **** {
+ 117              		.loc 1 75 0
+ 118              		.cfi_startproc
+ 119 0000 08B5     		push	{r3, lr}
+ 120              		.cfi_def_cfa_offset 8
+ 121              		.cfi_offset 3, -8
+ 122              		.cfi_offset 14, -4
+  76:.\main.c      ****     if(ADC_IsEndConversion(ADC_RETURN_STATUS))
+ 123              		.loc 1 76 0
+ 124 0002 0120     		mov	r0, #1
+ 125 0004 FFF7FEFF 		bl	ADC_IsEndConversion
+ 126              	.LVL10:
+ 127 0008 0028     		cmp	r0, #0
+ 128 000a 18D0     		beq	.L8
+ 129              	.LBB4:
+ 130              	.LBB5:
+  77:.\main.c      ****     {
+  78:.\main.c      ****         Battery_Operation_Struct.ADC_Result = ADC_GetResult16(0);
+ 131              		.loc 1 78 0
+ 132 000c 0020     		mov	r0, #0
+ 133 000e FFF7FEFF 		bl	ADC_GetResult16
+ 134              	.LVL11:
+ 135 0012 0D4B     		ldr	r3, .L12
+ 136 0014 1880     		strh	r0, [r3]
+  79:.\main.c      ****         Battery_Get_Volts();
+ 137              		.loc 1 79 0
+ 138 0016 FFF7FEFF 		bl	Battery_Get_Volts
+ 139              	.LVL12:
+  80:.\main.c      ****         LCD_GotoXY(0,1);
+ 140              		.loc 1 80 0
+ 141 001a 0121     		mov	r1, #1
+ 142 001c 0020     		mov	r0, #0
+ 143 001e FFF7FEFF 		bl	LCD_GotoXY
+ 144              	.LVL13:
+  81:.\main.c      ****         LCD_FStr("Battery: ");
+ 145              		.loc 1 81 0
+ 146 0022 0A48     		ldr	r0, .L12+4
+ 147 0024 FFF7FEFF 		bl	LCD_FStr
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 5
+
+
+ 148              	.LVL14:
+  82:.\main.c      ****         LCD_GotoXY(9,1);
+ 149              		.loc 1 82 0
+ 150 0028 0121     		mov	r1, #1
+ 151 002a 0920     		mov	r0, #9
+ 152 002c FFF7FEFF 		bl	LCD_GotoXY
+ 153              	.LVL15:
+  83:.\main.c      ****         LCD_FStr(Battery_Operation_Struct.Display_String);
+ 154              		.loc 1 83 0
+ 155 0030 0748     		ldr	r0, .L12+8
+ 156 0032 FFF7FEFF 		bl	LCD_FStr
+ 157              	.LVL16:
+  84:.\main.c      ****         SetTimerTask(ADC_Start_Convert_Task, 1000);
+ 158              		.loc 1 84 0
+ 159 0036 FA21     		mov	r1, #250
+ 160 0038 0648     		ldr	r0, .L12+12
+ 161 003a 8900     		lsl	r1, r1, #2
+ 162 003c 01E0     		b	.L10
+ 163              	.L8:
+ 164              	.LBE5:
+ 165              	.LBE4:
+  85:.\main.c      ****     }
+  86:.\main.c      ****     else
+  87:.\main.c      ****     {
+  88:.\main.c      ****         SetTimerTask(ADC_Get_Battery_Volts, 10);
+ 166              		.loc 1 88 0
+ 167 003e 0A21     		mov	r1, #10
+ 168 0040 0548     		ldr	r0, .L12+16
+ 169              	.L10:
+ 170 0042 FFF7FEFF 		bl	SetTimerTask
+ 171              	.LVL17:
+  89:.\main.c      ****     }
+  90:.\main.c      **** }
+ 172              		.loc 1 90 0
+ 173              		@ sp needed
+ 174 0046 08BD     		pop	{r3, pc}
+ 175              	.L13:
+ 176              		.align	2
+ 177              	.L12:
+ 178 0048 00000000 		.word	Battery_Operation_Struct
+ 179 004c 0C000000 		.word	.LC6
+ 180 0050 04000000 		.word	Battery_Operation_Struct+4
+ 181 0054 00000000 		.word	ADC_Start_Convert_Task
+ 182 0058 00000000 		.word	ADC_Get_Battery_Volts
+ 183              		.cfi_endproc
+ 184              	.LFE37:
+ 185              		.size	ADC_Get_Battery_Volts, .-ADC_Get_Battery_Volts
+ 186              		.section	.text.I2C_SendBuffer,"ax",%progbits
+ 187              		.align	1
+ 188              		.global	I2C_SendBuffer
+ 189              		.code	16
+ 190              		.thumb_func
+ 191              		.type	I2C_SendBuffer, %function
+ 192              	I2C_SendBuffer:
+ 193              	.LFB33:
+  25:.\main.c      ****     volatile uint32 Error;
+ 194              		.loc 1 25 0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 6
+
+
+ 195              		.cfi_startproc
+ 196              	.LVL18:
+ 197 0000 73B5     		push	{r0, r1, r4, r5, r6, lr}
+ 198              		.cfi_def_cfa_offset 24
+ 199              		.cfi_offset 0, -24
+ 200              		.cfi_offset 1, -20
+ 201              		.cfi_offset 4, -16
+ 202              		.cfi_offset 5, -12
+ 203              		.cfi_offset 6, -8
+ 204              		.cfi_offset 14, -4
+  25:.\main.c      ****     volatile uint32 Error;
+ 205              		.loc 1 25 0
+ 206 0002 061C     		mov	r6, r0
+ 207 0004 0D1C     		mov	r5, r1
+ 208 0006 141C     		mov	r4, r2
+  27:.\main.c      ****     Error = I2C_I2CMasterWriteBuf(DevAddress, pData, Size, I2C_I2C_MODE_COMPLETE_XFER);
+ 209              		.loc 1 27 0
+ 210 0008 FFF7FEFF 		bl	I2C_I2CMasterClearStatus
+ 211              	.LVL19:
+  28:.\main.c      ****     while((I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT) == 0)
+ 212              		.loc 1 28 0
+ 213 000c 301C     		mov	r0, r6
+ 214 000e 291C     		mov	r1, r5
+ 215 0010 221C     		mov	r2, r4
+ 216 0012 0023     		mov	r3, #0
+ 217 0014 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
+ 218              	.LVL20:
+ 219 0018 0190     		str	r0, [sp, #4]
+ 220              	.L15:
+  29:.\main.c      ****     {
+ 221              		.loc 1 29 0 discriminator 1
+ 222 001a FFF7FEFF 		bl	I2C_I2CMasterStatus
+ 223              	.LVL21:
+ 224 001e 8307     		lsl	r3, r0, #30
+ 225 0020 FBD5     		bpl	.L15
+  33:.\main.c      **** }
+ 226              		.loc 1 33 0
+ 227 0022 0198     		ldr	r0, [sp, #4]
+  34:.\main.c      **** 
+ 228              		.loc 1 34 0
+ 229              		@ sp needed
+ 230              	.LVL22:
+ 231              	.LVL23:
+ 232 0024 76BD     		pop	{r1, r2, r4, r5, r6, pc}
+ 233              		.cfi_endproc
+ 234              	.LFE33:
+ 235              		.size	I2C_SendBuffer, .-I2C_SendBuffer
+ 236              		.section	.text.I2C_ReadRegister,"ax",%progbits
+ 237              		.align	1
+ 238              		.global	I2C_ReadRegister
+ 239              		.code	16
+ 240              		.thumb_func
+ 241              		.type	I2C_ReadRegister, %function
+ 242              	I2C_ReadRegister:
+ 243              	.LFB34:
+  37:.\main.c      ****     uint8_t Error;
+ 244              		.loc 1 37 0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 7
+
+
+ 245              		.cfi_startproc
+ 246              	.LVL24:
+ 247 0000 F7B5     		push	{r0, r1, r2, r4, r5, r6, r7, lr}
+ 248              		.cfi_def_cfa_offset 32
+ 249              		.cfi_offset 0, -32
+ 250              		.cfi_offset 1, -28
+ 251              		.cfi_offset 2, -24
+ 252              		.cfi_offset 4, -20
+ 253              		.cfi_offset 5, -16
+ 254              		.cfi_offset 6, -12
+ 255              		.cfi_offset 7, -8
+ 256              		.cfi_offset 14, -4
+  37:.\main.c      ****     uint8_t Error;
+ 257              		.loc 1 37 0
+ 258 0002 051C     		mov	r5, r0
+  39:.\main.c      ****     I2C_I2CMasterClearStatus();
+ 259              		.loc 1 39 0
+ 260 0004 01AF     		add	r7, sp, #4
+  37:.\main.c      ****     uint8_t Error;
+ 261              		.loc 1 37 0
+ 262 0006 0E1C     		mov	r6, r1
+ 263 0008 1C1C     		mov	r4, r3
+  39:.\main.c      ****     I2C_I2CMasterClearStatus();
+ 264              		.loc 1 39 0
+ 265 000a 3A70     		strb	r2, [r7]
+  40:.\main.c      ****     Error = I2C_I2CMasterWriteBuf(Adress, Reg, 1, I2C_I2C_MODE_NO_STOP);
+ 266              		.loc 1 40 0
+ 267 000c FFF7FEFF 		bl	I2C_I2CMasterClearStatus
+ 268              	.LVL25:
+  41:.\main.c      ****     while((I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT) == 0)
+ 269              		.loc 1 41 0
+ 270 0010 281C     		mov	r0, r5
+ 271 0012 391C     		mov	r1, r7
+ 272 0014 0122     		mov	r2, #1
+ 273 0016 0223     		mov	r3, #2
+ 274 0018 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
+ 275              	.LVL26:
+ 276              	.L18:
+  42:.\main.c      ****     {
+ 277              		.loc 1 42 0 discriminator 1
+ 278 001c FFF7FEFF 		bl	I2C_I2CMasterStatus
+ 279              	.LVL27:
+ 280 0020 8307     		lsl	r3, r0, #30
+ 281 0022 FBD5     		bpl	.L18
+  46:.\main.c      ****     Error = I2C_I2CMasterReadBuf(Adress, pData, (Registers_Lenght_Bit/8), I2C_I2C_MODE_REPEAT_START
+ 282              		.loc 1 46 0
+ 283 0024 FFF7FEFF 		bl	I2C_I2CMasterClearStatus
+ 284              	.LVL28:
+  47:.\main.c      ****     while((I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT) == 0)
+ 285              		.loc 1 47 0
+ 286 0028 E208     		lsr	r2, r4, #3
+ 287 002a 281C     		mov	r0, r5
+ 288 002c 311C     		mov	r1, r6
+ 289 002e 0123     		mov	r3, #1
+ 290 0030 FFF7FEFF 		bl	I2C_I2CMasterReadBuf
+ 291              	.LVL29:
+ 292 0034 C4B2     		uxtb	r4, r0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 8
+
+
+ 293              	.LVL30:
+ 294              	.L19:
+  48:.\main.c      ****     {
+ 295              		.loc 1 48 0 discriminator 1
+ 296 0036 FFF7FEFF 		bl	I2C_I2CMasterStatus
+ 297              	.LVL31:
+ 298 003a C307     		lsl	r3, r0, #31
+ 299 003c FBD5     		bpl	.L19
+  52:.\main.c      ****     return (uint8)Error;
+ 300              		.loc 1 52 0
+ 301 003e FFF7FEFF 		bl	I2C_I2CMasterClearStatus
+ 302              	.LVL32:
+  54:.\main.c      **** 
+ 303              		.loc 1 54 0
+ 304              		@ sp needed
+ 305 0042 201C     		mov	r0, r4
+ 306              	.LVL33:
+ 307              	.LVL34:
+ 308              	.LVL35:
+ 309 0044 FEBD     		pop	{r1, r2, r3, r4, r5, r6, r7, pc}
+ 310              		.cfi_endproc
+ 311              	.LFE34:
+ 312              		.size	I2C_ReadRegister, .-I2C_ReadRegister
+ 313              		.section	.text.startup.main,"ax",%progbits
+ 314              		.align	1
+ 315              		.global	main
+ 316              		.code	16
+ 317              		.thumb_func
+ 318              		.type	main, %function
+ 319              	main:
+ 320              	.LFB38:
+  91:.\main.c      **** 
+  92:.\main.c      **** 
+  93:.\main.c      **** 
+  94:.\main.c      **** 
+  95:.\main.c      **** 
+  96:.\main.c      **** 
+  97:.\main.c      **** int main()
+  98:.\main.c      **** {
+ 321              		.loc 1 98 0
+ 322              		.cfi_startproc
+ 323 0000 08B5     		push	{r3, lr}
+ 324              		.cfi_def_cfa_offset 8
+ 325              		.cfi_offset 3, -8
+ 326              		.cfi_offset 14, -4
+  99:.\main.c      ****     DisplayReset_Write(1);    
+ 327              		.loc 1 99 0
+ 328 0002 0120     		mov	r0, #1
+ 329 0004 FFF7FEFF 		bl	DisplayReset_Write
+ 330              	.LVL36:
+ 100:.\main.c      ****     CyGlobalIntEnable;
+ 331              		.loc 1 100 0
+ 332              	@ 100 ".\main.c" 1
+ 333 0008 62B6     		CPSIE   i
+ 334              	@ 0 "" 2
+ 101:.\main.c      ****     I2C_Start();
+ 335              		.loc 1 101 0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 9
+
+
+ 336              		.code	16
+ 337 000a FFF7FEFF 		bl	I2C_Start
+ 338              	.LVL37:
+ 102:.\main.c      ****     CyDelay(300);
+ 339              		.loc 1 102 0
+ 340 000e 9620     		mov	r0, #150
+ 341 0010 4000     		lsl	r0, r0, #1
+ 342 0012 FFF7FEFF 		bl	CyDelay
+ 343              	.LVL38:
+ 103:.\main.c      ****     LCD_Init();
+ 344              		.loc 1 103 0
+ 345 0016 FFF7FEFF 		bl	LCD_Init
+ 346              	.LVL39:
+ 104:.\main.c      ****     LCD_Clear();
+ 347              		.loc 1 104 0
+ 348 001a FFF7FEFF 		bl	LCD_Clear
+ 349              	.LVL40:
+ 105:.\main.c      ****     LCD_Update();
+ 350              		.loc 1 105 0
+ 351 001e FFF7FEFF 		bl	LCD_Update
+ 352              	.LVL41:
+ 106:.\main.c      ****     ADC_Start();
+ 353              		.loc 1 106 0
+ 354 0022 FFF7FEFF 		bl	ADC_Start
+ 355              	.LVL42:
+ 107:.\main.c      ****     Timer_Start();
+ 356              		.loc 1 107 0
+ 357 0026 FFF7FEFF 		bl	Timer_Start
+ 358              	.LVL43:
+ 108:.\main.c      ****     RTOS_Start();
+ 359              		.loc 1 108 0
+ 360 002a FFF7FEFF 		bl	RTOS_Start
+ 361              	.LVL44:
+ 109:.\main.c      ****     SetTimerTask(LM92_Action, 500);
+ 362              		.loc 1 109 0
+ 363 002e FA21     		mov	r1, #250
+ 364 0030 0548     		ldr	r0, .L24
+ 365 0032 4900     		lsl	r1, r1, #1
+ 366 0034 FFF7FEFF 		bl	SetTimerTask
+ 367              	.LVL45:
+ 110:.\main.c      ****     SetTimerTask(ADC_Start_Convert_Task, 600);    
+ 368              		.loc 1 110 0
+ 369 0038 9621     		mov	r1, #150
+ 370 003a 0448     		ldr	r0, .L24+4
+ 371 003c 8900     		lsl	r1, r1, #2
+ 372 003e FFF7FEFF 		bl	SetTimerTask
+ 373              	.LVL46:
+ 374              	.L23:
+ 111:.\main.c      ****     for(;;)
+ 112:.\main.c      ****     {
+ 113:.\main.c      ****         TaskManager();
+ 375              		.loc 1 113 0 discriminator 1
+ 376 0042 FFF7FEFF 		bl	TaskManager
+ 377              	.LVL47:
+ 114:.\main.c      ****     }
+ 378              		.loc 1 114 0 discriminator 1
+ 379 0046 FCE7     		b	.L23
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 10
+
+
+ 380              	.L25:
+ 381              		.align	2
+ 382              	.L24:
+ 383 0048 00000000 		.word	LM92_Action
+ 384 004c 00000000 		.word	ADC_Start_Convert_Task
+ 385              		.cfi_endproc
+ 386              	.LFE38:
+ 387              		.size	main, .-main
+ 388              		.comm	Battery_Operation_Struct,14,2
+ 389              		.comm	LM92_Operational_Struct,32,2
+ 390              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 391              	.LC0:
+ 392 0000 4C4D3932 		.ascii	"LM92 Temp: \000"
+ 392      2054656D 
+ 392      703A2000 
+ 393              	.LC6:
+ 394 000c 42617474 		.ascii	"Battery: \000"
+ 394      6572793A 
+ 394      2000
+ 395              		.bss
+ 396              		.align	2
+ 397              		.type	MainTimer, %object
+ 398              		.size	MainTimer, 168
+ 399              	MainTimer:
+ 400 0000 00000000 		.space	168
+ 400      00000000 
+ 400      00000000 
+ 400      00000000 
+ 400      00000000 
+ 401              		.type	TaskQueue, %object
+ 402              		.size	TaskQueue, 44
+ 403              	TaskQueue:
+ 404 00a8 00000000 		.space	44
+ 404      00000000 
+ 404      00000000 
+ 404      00000000 
+ 404      00000000 
+ 405              		.text
+ 406              	.Letext0:
+ 407              		.file 2 "c:\\my programs\\psoc\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.3\\arm-none
+ 408              		.file 3 "c:\\my programs\\psoc\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.3\\arm-none
+ 409              		.file 4 "Generated_Source\\PSoC4/cytypes.h"
+ 410              		.file 5 "./LM92.h"
+ 411              		.file 6 "./TaskDispatcher.h"
+ 412              		.file 7 "./Battery.h"
+ 413              		.file 8 "./SSD1306.h"
+ 414              		.file 9 "Generated_Source\\PSoC4/ADC.h"
+ 415              		.file 10 "Generated_Source\\PSoC4/I2C_I2C.h"
+ 416              		.file 11 "Generated_Source\\PSoC4/DisplayReset.h"
+ 417              		.file 12 "Generated_Source\\PSoC4/I2C.h"
+ 418              		.file 13 "Generated_Source\\PSoC4/CyLib.h"
+ 419              		.file 14 "Generated_Source\\PSoC4/Timer.h"
+ 420              		.section	.debug_info,"",%progbits
+ 421              	.Ldebug_info0:
+ 422 0000 E9070000 		.4byte	0x7e9
+ 423 0004 0400     		.2byte	0x4
+ 424 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 11
+
+
+ 425 000a 04       		.byte	0x4
+ 426 000b 01       		.uleb128 0x1
+ 427 000c 07000000 		.4byte	.LASF80
+ 428 0010 01       		.byte	0x1
+ 429 0011 46010000 		.4byte	.LASF81
+ 430 0015 8C020000 		.4byte	.LASF82
+ 431 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 432 001d 00000000 		.4byte	0
+ 433 0021 00000000 		.4byte	.Ldebug_line0
+ 434 0025 02       		.uleb128 0x2
+ 435 0026 01       		.byte	0x1
+ 436 0027 06       		.byte	0x6
+ 437 0028 3A010000 		.4byte	.LASF0
+ 438 002c 03       		.uleb128 0x3
+ 439 002d BE000000 		.4byte	.LASF3
+ 440 0031 02       		.byte	0x2
+ 441 0032 1D       		.byte	0x1d
+ 442 0033 37000000 		.4byte	0x37
+ 443 0037 02       		.uleb128 0x2
+ 444 0038 01       		.byte	0x1
+ 445 0039 08       		.byte	0x8
+ 446 003a 85030000 		.4byte	.LASF1
+ 447 003e 02       		.uleb128 0x2
+ 448 003f 02       		.byte	0x2
+ 449 0040 05       		.byte	0x5
+ 450 0041 9C030000 		.4byte	.LASF2
+ 451 0045 03       		.uleb128 0x3
+ 452 0046 D8030000 		.4byte	.LASF4
+ 453 004a 02       		.byte	0x2
+ 454 004b 2B       		.byte	0x2b
+ 455 004c 50000000 		.4byte	0x50
+ 456 0050 02       		.uleb128 0x2
+ 457 0051 02       		.byte	0x2
+ 458 0052 07       		.byte	0x7
+ 459 0053 79020000 		.4byte	.LASF5
+ 460 0057 02       		.uleb128 0x2
+ 461 0058 04       		.byte	0x4
+ 462 0059 05       		.byte	0x5
+ 463 005a 59010000 		.4byte	.LASF6
+ 464 005e 03       		.uleb128 0x3
+ 465 005f C9010000 		.4byte	.LASF7
+ 466 0063 02       		.byte	0x2
+ 467 0064 41       		.byte	0x41
+ 468 0065 69000000 		.4byte	0x69
+ 469 0069 02       		.uleb128 0x2
+ 470 006a 04       		.byte	0x4
+ 471 006b 07       		.byte	0x7
+ 472 006c 24020000 		.4byte	.LASF8
+ 473 0070 02       		.uleb128 0x2
+ 474 0071 08       		.byte	0x8
+ 475 0072 05       		.byte	0x5
+ 476 0073 2C010000 		.4byte	.LASF9
+ 477 0077 02       		.uleb128 0x2
+ 478 0078 08       		.byte	0x8
+ 479 0079 07       		.byte	0x7
+ 480 007a E3000000 		.4byte	.LASF10
+ 481 007e 04       		.uleb128 0x4
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 12
+
+
+ 482 007f 04       		.byte	0x4
+ 483 0080 05       		.byte	0x5
+ 484 0081 696E7400 		.ascii	"int\000"
+ 485 0085 02       		.uleb128 0x2
+ 486 0086 04       		.byte	0x4
+ 487 0087 07       		.byte	0x7
+ 488 0088 F5010000 		.4byte	.LASF11
+ 489 008c 03       		.uleb128 0x3
+ 490 008d 47040000 		.4byte	.LASF12
+ 491 0091 03       		.byte	0x3
+ 492 0092 15       		.byte	0x15
+ 493 0093 2C000000 		.4byte	0x2c
+ 494 0097 03       		.uleb128 0x3
+ 495 0098 7F010000 		.4byte	.LASF13
+ 496 009c 03       		.byte	0x3
+ 497 009d 21       		.byte	0x21
+ 498 009e 45000000 		.4byte	0x45
+ 499 00a2 03       		.uleb128 0x3
+ 500 00a3 CA030000 		.4byte	.LASF14
+ 501 00a7 03       		.byte	0x3
+ 502 00a8 2D       		.byte	0x2d
+ 503 00a9 5E000000 		.4byte	0x5e
+ 504 00ad 03       		.uleb128 0x3
+ 505 00ae 79010000 		.4byte	.LASF15
+ 506 00b2 04       		.byte	0x4
+ 507 00b3 C2       		.byte	0xc2
+ 508 00b4 37000000 		.4byte	0x37
+ 509 00b8 03       		.uleb128 0x3
+ 510 00b9 00000000 		.4byte	.LASF16
+ 511 00bd 04       		.byte	0x4
+ 512 00be C3       		.byte	0xc3
+ 513 00bf 50000000 		.4byte	0x50
+ 514 00c3 03       		.uleb128 0x3
+ 515 00c4 BC010000 		.4byte	.LASF17
+ 516 00c8 04       		.byte	0x4
+ 517 00c9 C4       		.byte	0xc4
+ 518 00ca 69000000 		.4byte	0x69
+ 519 00ce 03       		.uleb128 0x3
+ 520 00cf 59040000 		.4byte	.LASF18
+ 521 00d3 04       		.byte	0x4
+ 522 00d4 C6       		.byte	0xc6
+ 523 00d5 3E000000 		.4byte	0x3e
+ 524 00d9 02       		.uleb128 0x2
+ 525 00da 04       		.byte	0x4
+ 526 00db 04       		.byte	0x4
+ 527 00dc 71030000 		.4byte	.LASF19
+ 528 00e0 02       		.uleb128 0x2
+ 529 00e1 08       		.byte	0x8
+ 530 00e2 04       		.byte	0x4
+ 531 00e3 88010000 		.4byte	.LASF20
+ 532 00e7 02       		.uleb128 0x2
+ 533 00e8 01       		.byte	0x1
+ 534 00e9 08       		.byte	0x8
+ 535 00ea D3030000 		.4byte	.LASF21
+ 536 00ee 05       		.uleb128 0x5
+ 537 00ef C3000000 		.4byte	0xc3
+ 538 00f3 06       		.uleb128 0x6
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 13
+
+
+ 539 00f4 04       		.byte	0x4
+ 540 00f5 F9000000 		.4byte	0xf9
+ 541 00f9 07       		.uleb128 0x7
+ 542 00fa 02       		.uleb128 0x2
+ 543 00fb 04       		.byte	0x4
+ 544 00fc 07       		.byte	0x7
+ 545 00fd 1C030000 		.4byte	.LASF22
+ 546 0101 06       		.uleb128 0x6
+ 547 0102 04       		.byte	0x4
+ 548 0103 E7000000 		.4byte	0xe7
+ 549 0107 08       		.uleb128 0x8
+ 550 0108 20       		.byte	0x20
+ 551 0109 05       		.byte	0x5
+ 552 010a 27       		.byte	0x27
+ 553 010b A0010000 		.4byte	0x1a0
+ 554 010f 09       		.uleb128 0x9
+ 555 0110 93030000 		.4byte	.LASF23
+ 556 0114 05       		.byte	0x5
+ 557 0115 29       		.byte	0x29
+ 558 0116 B8000000 		.4byte	0xb8
+ 559 011a 00       		.byte	0
+ 560 011b 09       		.uleb128 0x9
+ 561 011c 15010000 		.4byte	.LASF24
+ 562 0120 05       		.byte	0x5
+ 563 0121 2A       		.byte	0x2a
+ 564 0122 AD000000 		.4byte	0xad
+ 565 0126 02       		.byte	0x2
+ 566 0127 09       		.uleb128 0x9
+ 567 0128 92040000 		.4byte	.LASF25
+ 568 012c 05       		.byte	0x5
+ 569 012d 2B       		.byte	0x2b
+ 570 012e AD000000 		.4byte	0xad
+ 571 0132 03       		.byte	0x3
+ 572 0133 09       		.uleb128 0x9
+ 573 0134 14040000 		.4byte	.LASF26
+ 574 0138 05       		.byte	0x5
+ 575 0139 2C       		.byte	0x2c
+ 576 013a AD000000 		.4byte	0xad
+ 577 013e 04       		.byte	0x4
+ 578 013f 09       		.uleb128 0x9
+ 579 0140 21040000 		.4byte	.LASF27
+ 580 0144 05       		.byte	0x5
+ 581 0145 2D       		.byte	0x2d
+ 582 0146 B8000000 		.4byte	0xb8
+ 583 014a 06       		.byte	0x6
+ 584 014b 09       		.uleb128 0x9
+ 585 014c 1B040000 		.4byte	.LASF28
+ 586 0150 05       		.byte	0x5
+ 587 0151 2E       		.byte	0x2e
+ 588 0152 B8000000 		.4byte	0xb8
+ 589 0156 08       		.byte	0x8
+ 590 0157 09       		.uleb128 0x9
+ 591 0158 99040000 		.4byte	.LASF29
+ 592 015c 05       		.byte	0x5
+ 593 015d 2F       		.byte	0x2f
+ 594 015e B8000000 		.4byte	0xb8
+ 595 0162 0A       		.byte	0xa
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 14
+
+
+ 596 0163 09       		.uleb128 0x9
+ 597 0164 64030000 		.4byte	.LASF30
+ 598 0168 05       		.byte	0x5
+ 599 0169 30       		.byte	0x30
+ 600 016a B8000000 		.4byte	0xb8
+ 601 016e 0C       		.byte	0xc
+ 602 016f 09       		.uleb128 0x9
+ 603 0170 A0000000 		.4byte	.LASF31
+ 604 0174 05       		.byte	0x5
+ 605 0175 31       		.byte	0x31
+ 606 0176 B8000000 		.4byte	0xb8
+ 607 017a 0E       		.byte	0xe
+ 608 017b 09       		.uleb128 0x9
+ 609 017c 57030000 		.4byte	.LASF32
+ 610 0180 05       		.byte	0x5
+ 611 0181 32       		.byte	0x32
+ 612 0182 A0010000 		.4byte	0x1a0
+ 613 0186 10       		.byte	0x10
+ 614 0187 09       		.uleb128 0x9
+ 615 0188 D3000000 		.4byte	.LASF33
+ 616 018c 05       		.byte	0x5
+ 617 018d 33       		.byte	0x33
+ 618 018e B0010000 		.4byte	0x1b0
+ 619 0192 13       		.byte	0x13
+ 620 0193 09       		.uleb128 0x9
+ 621 0194 AF000000 		.4byte	.LASF34
+ 622 0198 05       		.byte	0x5
+ 623 0199 34       		.byte	0x34
+ 624 019a C0010000 		.4byte	0x1c0
+ 625 019e 15       		.byte	0x15
+ 626 019f 00       		.byte	0
+ 627 01a0 0A       		.uleb128 0xa
+ 628 01a1 AD000000 		.4byte	0xad
+ 629 01a5 B0010000 		.4byte	0x1b0
+ 630 01a9 0B       		.uleb128 0xb
+ 631 01aa FA000000 		.4byte	0xfa
+ 632 01ae 02       		.byte	0x2
+ 633 01af 00       		.byte	0
+ 634 01b0 0A       		.uleb128 0xa
+ 635 01b1 AD000000 		.4byte	0xad
+ 636 01b5 C0010000 		.4byte	0x1c0
+ 637 01b9 0B       		.uleb128 0xb
+ 638 01ba FA000000 		.4byte	0xfa
+ 639 01be 01       		.byte	0x1
+ 640 01bf 00       		.byte	0
+ 641 01c0 0A       		.uleb128 0xa
+ 642 01c1 E7000000 		.4byte	0xe7
+ 643 01c5 D0010000 		.4byte	0x1d0
+ 644 01c9 0B       		.uleb128 0xb
+ 645 01ca FA000000 		.4byte	0xfa
+ 646 01ce 09       		.byte	0x9
+ 647 01cf 00       		.byte	0
+ 648 01d0 03       		.uleb128 0x3
+ 649 01d1 FA000000 		.4byte	.LASF35
+ 650 01d5 05       		.byte	0x5
+ 651 01d6 37       		.byte	0x37
+ 652 01d7 07010000 		.4byte	0x107
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 15
+
+
+ 653 01db 03       		.uleb128 0x3
+ 654 01dc A5040000 		.4byte	.LASF36
+ 655 01e0 06       		.byte	0x6
+ 656 01e1 11       		.byte	0x11
+ 657 01e2 F3000000 		.4byte	0xf3
+ 658 01e6 08       		.uleb128 0x8
+ 659 01e7 08       		.byte	0x8
+ 660 01e8 06       		.byte	0x6
+ 661 01e9 15       		.byte	0x15
+ 662 01ea 07020000 		.4byte	0x207
+ 663 01ee 09       		.uleb128 0x9
+ 664 01ef A6030000 		.4byte	.LASF37
+ 665 01f3 06       		.byte	0x6
+ 666 01f4 17       		.byte	0x17
+ 667 01f5 DB010000 		.4byte	0x1db
+ 668 01f9 00       		.byte	0
+ 669 01fa 09       		.uleb128 0x9
+ 670 01fb E3030000 		.4byte	.LASF38
+ 671 01ff 06       		.byte	0x6
+ 672 0200 18       		.byte	0x18
+ 673 0201 C3000000 		.4byte	0xc3
+ 674 0205 04       		.byte	0x4
+ 675 0206 00       		.byte	0
+ 676 0207 08       		.uleb128 0x8
+ 677 0208 0E       		.byte	0xe
+ 678 0209 07       		.byte	0x7
+ 679 020a 12       		.byte	0x12
+ 680 020b 34020000 		.4byte	0x234
+ 681 020f 09       		.uleb128 0x9
+ 682 0210 26040000 		.4byte	.LASF39
+ 683 0214 07       		.byte	0x7
+ 684 0215 14       		.byte	0x14
+ 685 0216 B8000000 		.4byte	0xb8
+ 686 021a 00       		.byte	0
+ 687 021b 09       		.uleb128 0x9
+ 688 021c A3010000 		.4byte	.LASF40
+ 689 0220 07       		.byte	0x7
+ 690 0221 15       		.byte	0x15
+ 691 0222 B8000000 		.4byte	0xb8
+ 692 0226 02       		.byte	0x2
+ 693 0227 09       		.uleb128 0x9
+ 694 0228 AF000000 		.4byte	.LASF34
+ 695 022c 07       		.byte	0x7
+ 696 022d 16       		.byte	0x16
+ 697 022e C0010000 		.4byte	0x1c0
+ 698 0232 04       		.byte	0x4
+ 699 0233 00       		.byte	0
+ 700 0234 03       		.uleb128 0x3
+ 701 0235 69020000 		.4byte	.LASF41
+ 702 0239 07       		.byte	0x7
+ 703 023a 17       		.byte	0x17
+ 704 023b 07020000 		.4byte	0x207
+ 705 023f 0C       		.uleb128 0xc
+ 706 0240 02020000 		.4byte	.LASF83
+ 707 0244 01       		.byte	0x1
+ 708 0245 4A       		.byte	0x4a
+ 709 0246 01       		.byte	0x1
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 16
+
+
+ 710 0247 0D       		.uleb128 0xd
+ 711 0248 74040000 		.4byte	.LASF42
+ 712 024c 01       		.byte	0x1
+ 713 024d 38       		.byte	0x38
+ 714 024e 00000000 		.4byte	.LFB35
+ 715 0252 44000000 		.4byte	.LFE35-.LFB35
+ 716 0256 01       		.uleb128 0x1
+ 717 0257 9C       		.byte	0x9c
+ 718 0258 F0020000 		.4byte	0x2f0
+ 719 025c 0E       		.uleb128 0xe
+ 720 025d 06000000 		.4byte	.LVL0
+ 721 0261 98060000 		.4byte	0x698
+ 722 0265 0E       		.uleb128 0xe
+ 723 0266 0A000000 		.4byte	.LVL1
+ 724 026a A5060000 		.4byte	0x6a5
+ 725 026e 0F       		.uleb128 0xf
+ 726 026f 12000000 		.4byte	.LVL2
+ 727 0273 B2060000 		.4byte	0x6b2
+ 728 0277 86020000 		.4byte	0x286
+ 729 027b 10       		.uleb128 0x10
+ 730 027c 01       		.uleb128 0x1
+ 731 027d 51       		.byte	0x51
+ 732 027e 01       		.uleb128 0x1
+ 733 027f 30       		.byte	0x30
+ 734 0280 10       		.uleb128 0x10
+ 735 0281 01       		.uleb128 0x1
+ 736 0282 50       		.byte	0x50
+ 737 0283 01       		.uleb128 0x1
+ 738 0284 30       		.byte	0x30
+ 739 0285 00       		.byte	0
+ 740 0286 0F       		.uleb128 0xf
+ 741 0287 18000000 		.4byte	.LVL3
+ 742 028b C8060000 		.4byte	0x6c8
+ 743 028f 9D020000 		.4byte	0x29d
+ 744 0293 10       		.uleb128 0x10
+ 745 0294 01       		.uleb128 0x1
+ 746 0295 50       		.byte	0x50
+ 747 0296 05       		.uleb128 0x5
+ 748 0297 03       		.byte	0x3
+ 749 0298 00000000 		.4byte	.LC0
+ 750 029c 00       		.byte	0
+ 751 029d 0F       		.uleb128 0xf
+ 752 029e 20000000 		.4byte	.LVL4
+ 753 02a2 B2060000 		.4byte	0x6b2
+ 754 02a6 B5020000 		.4byte	0x2b5
+ 755 02aa 10       		.uleb128 0x10
+ 756 02ab 01       		.uleb128 0x1
+ 757 02ac 51       		.byte	0x51
+ 758 02ad 01       		.uleb128 0x1
+ 759 02ae 30       		.byte	0x30
+ 760 02af 10       		.uleb128 0x10
+ 761 02b0 01       		.uleb128 0x1
+ 762 02b1 50       		.byte	0x50
+ 763 02b2 01       		.uleb128 0x1
+ 764 02b3 3B       		.byte	0x3b
+ 765 02b4 00       		.byte	0
+ 766 02b5 0F       		.uleb128 0xf
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 17
+
+
+ 767 02b6 26000000 		.4byte	.LVL5
+ 768 02ba C8060000 		.4byte	0x6c8
+ 769 02be CC020000 		.4byte	0x2cc
+ 770 02c2 10       		.uleb128 0x10
+ 771 02c3 01       		.uleb128 0x1
+ 772 02c4 50       		.byte	0x50
+ 773 02c5 05       		.uleb128 0x5
+ 774 02c6 03       		.byte	0x3
+ 775 02c7 15000000 		.4byte	LM92_Operational_Struct+21
+ 776 02cb 00       		.byte	0
+ 777 02cc 0E       		.uleb128 0xe
+ 778 02cd 2A000000 		.4byte	.LVL6
+ 779 02d1 D9060000 		.4byte	0x6d9
+ 780 02d5 11       		.uleb128 0x11
+ 781 02d6 34000000 		.4byte	.LVL7
+ 782 02da E0060000 		.4byte	0x6e0
+ 783 02de 10       		.uleb128 0x10
+ 784 02df 01       		.uleb128 0x1
+ 785 02e0 51       		.byte	0x51
+ 786 02e1 03       		.uleb128 0x3
+ 787 02e2 0A       		.byte	0xa
+ 788 02e3 F401     		.2byte	0x1f4
+ 789 02e5 10       		.uleb128 0x10
+ 790 02e6 01       		.uleb128 0x1
+ 791 02e7 50       		.byte	0x50
+ 792 02e8 05       		.uleb128 0x5
+ 793 02e9 03       		.byte	0x3
+ 794 02ea 00000000 		.4byte	LM92_Action
+ 795 02ee 00       		.byte	0
+ 796 02ef 00       		.byte	0
+ 797 02f0 0D       		.uleb128 0xd
+ 798 02f1 62010000 		.4byte	.LASF43
+ 799 02f5 01       		.byte	0x1
+ 800 02f6 44       		.byte	0x44
+ 801 02f7 00000000 		.4byte	.LFB36
+ 802 02fb 14000000 		.4byte	.LFE36-.LFB36
+ 803 02ff 01       		.uleb128 0x1
+ 804 0300 9C       		.byte	0x9c
+ 805 0301 27030000 		.4byte	0x327
+ 806 0305 0E       		.uleb128 0xe
+ 807 0306 06000000 		.4byte	.LVL8
+ 808 030a F6060000 		.4byte	0x6f6
+ 809 030e 11       		.uleb128 0x11
+ 810 030f 0E000000 		.4byte	.LVL9
+ 811 0313 E0060000 		.4byte	0x6e0
+ 812 0317 10       		.uleb128 0x10
+ 813 0318 01       		.uleb128 0x1
+ 814 0319 51       		.byte	0x51
+ 815 031a 01       		.uleb128 0x1
+ 816 031b 3A       		.byte	0x3a
+ 817 031c 10       		.uleb128 0x10
+ 818 031d 01       		.uleb128 0x1
+ 819 031e 50       		.byte	0x50
+ 820 031f 05       		.uleb128 0x5
+ 821 0320 03       		.byte	0x3
+ 822 0321 00000000 		.4byte	ADC_Get_Battery_Volts
+ 823 0325 00       		.byte	0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 18
+
+
+ 824 0326 00       		.byte	0
+ 825 0327 12       		.uleb128 0x12
+ 826 0328 3F020000 		.4byte	0x23f
+ 827 032c 00000000 		.4byte	.LFB37
+ 828 0330 5C000000 		.4byte	.LFE37-.LFB37
+ 829 0334 01       		.uleb128 0x1
+ 830 0335 9C       		.byte	0x9c
+ 831 0336 D1030000 		.4byte	0x3d1
+ 832 033a 0F       		.uleb128 0xf
+ 833 033b 08000000 		.4byte	.LVL10
+ 834 033f FD060000 		.4byte	0x6fd
+ 835 0343 4D030000 		.4byte	0x34d
+ 836 0347 10       		.uleb128 0x10
+ 837 0348 01       		.uleb128 0x1
+ 838 0349 50       		.byte	0x50
+ 839 034a 01       		.uleb128 0x1
+ 840 034b 31       		.byte	0x31
+ 841 034c 00       		.byte	0
+ 842 034d 0F       		.uleb128 0xf
+ 843 034e 12000000 		.4byte	.LVL11
+ 844 0352 12070000 		.4byte	0x712
+ 845 0356 60030000 		.4byte	0x360
+ 846 035a 10       		.uleb128 0x10
+ 847 035b 01       		.uleb128 0x1
+ 848 035c 50       		.byte	0x50
+ 849 035d 01       		.uleb128 0x1
+ 850 035e 30       		.byte	0x30
+ 851 035f 00       		.byte	0
+ 852 0360 0E       		.uleb128 0xe
+ 853 0361 1A000000 		.4byte	.LVL12
+ 854 0365 27070000 		.4byte	0x727
+ 855 0369 0F       		.uleb128 0xf
+ 856 036a 22000000 		.4byte	.LVL13
+ 857 036e B2060000 		.4byte	0x6b2
+ 858 0372 81030000 		.4byte	0x381
+ 859 0376 10       		.uleb128 0x10
+ 860 0377 01       		.uleb128 0x1
+ 861 0378 51       		.byte	0x51
+ 862 0379 01       		.uleb128 0x1
+ 863 037a 31       		.byte	0x31
+ 864 037b 10       		.uleb128 0x10
+ 865 037c 01       		.uleb128 0x1
+ 866 037d 50       		.byte	0x50
+ 867 037e 01       		.uleb128 0x1
+ 868 037f 30       		.byte	0x30
+ 869 0380 00       		.byte	0
+ 870 0381 0F       		.uleb128 0xf
+ 871 0382 28000000 		.4byte	.LVL14
+ 872 0386 C8060000 		.4byte	0x6c8
+ 873 038a 98030000 		.4byte	0x398
+ 874 038e 10       		.uleb128 0x10
+ 875 038f 01       		.uleb128 0x1
+ 876 0390 50       		.byte	0x50
+ 877 0391 05       		.uleb128 0x5
+ 878 0392 03       		.byte	0x3
+ 879 0393 0C000000 		.4byte	.LC6
+ 880 0397 00       		.byte	0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 19
+
+
+ 881 0398 0F       		.uleb128 0xf
+ 882 0399 30000000 		.4byte	.LVL15
+ 883 039d B2060000 		.4byte	0x6b2
+ 884 03a1 B0030000 		.4byte	0x3b0
+ 885 03a5 10       		.uleb128 0x10
+ 886 03a6 01       		.uleb128 0x1
+ 887 03a7 51       		.byte	0x51
+ 888 03a8 01       		.uleb128 0x1
+ 889 03a9 31       		.byte	0x31
+ 890 03aa 10       		.uleb128 0x10
+ 891 03ab 01       		.uleb128 0x1
+ 892 03ac 50       		.byte	0x50
+ 893 03ad 01       		.uleb128 0x1
+ 894 03ae 39       		.byte	0x39
+ 895 03af 00       		.byte	0
+ 896 03b0 0F       		.uleb128 0xf
+ 897 03b1 36000000 		.4byte	.LVL16
+ 898 03b5 C8060000 		.4byte	0x6c8
+ 899 03b9 C7030000 		.4byte	0x3c7
+ 900 03bd 10       		.uleb128 0x10
+ 901 03be 01       		.uleb128 0x1
+ 902 03bf 50       		.byte	0x50
+ 903 03c0 05       		.uleb128 0x5
+ 904 03c1 03       		.byte	0x3
+ 905 03c2 04000000 		.4byte	Battery_Operation_Struct+4
+ 906 03c6 00       		.byte	0
+ 907 03c7 0E       		.uleb128 0xe
+ 908 03c8 46000000 		.4byte	.LVL17
+ 909 03cc E0060000 		.4byte	0x6e0
+ 910 03d0 00       		.byte	0
+ 911 03d1 13       		.uleb128 0x13
+ 912 03d2 06010000 		.4byte	.LASF47
+ 913 03d6 01       		.byte	0x1
+ 914 03d7 18       		.byte	0x18
+ 915 03d8 C3000000 		.4byte	0xc3
+ 916 03dc 00000000 		.4byte	.LFB33
+ 917 03e0 26000000 		.4byte	.LFE33-.LFB33
+ 918 03e4 01       		.uleb128 0x1
+ 919 03e5 9C       		.byte	0x9c
+ 920 03e6 5D040000 		.4byte	0x45d
+ 921 03ea 14       		.uleb128 0x14
+ 922 03eb F2020000 		.4byte	.LASF44
+ 923 03ef 01       		.byte	0x1
+ 924 03f0 18       		.byte	0x18
+ 925 03f1 A2000000 		.4byte	0xa2
+ 926 03f5 00000000 		.4byte	.LLST0
+ 927 03f9 14       		.uleb128 0x14
+ 928 03fa C3010000 		.4byte	.LASF45
+ 929 03fe 01       		.byte	0x1
+ 930 03ff 18       		.byte	0x18
+ 931 0400 5D040000 		.4byte	0x45d
+ 932 0404 2C000000 		.4byte	.LLST1
+ 933 0408 14       		.uleb128 0x14
+ 934 0409 77030000 		.4byte	.LASF46
+ 935 040d 01       		.byte	0x1
+ 936 040e 18       		.byte	0x18
+ 937 040f 97000000 		.4byte	0x97
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 20
+
+
+ 938 0413 58000000 		.4byte	.LLST2
+ 939 0417 15       		.uleb128 0x15
+ 940 0418 16030000 		.4byte	.LASF52
+ 941 041c 01       		.byte	0x1
+ 942 041d 1A       		.byte	0x1a
+ 943 041e EE000000 		.4byte	0xee
+ 944 0422 02       		.uleb128 0x2
+ 945 0423 91       		.byte	0x91
+ 946 0424 6C       		.sleb128 -20
+ 947 0425 0E       		.uleb128 0xe
+ 948 0426 0C000000 		.4byte	.LVL19
+ 949 042a 34070000 		.4byte	0x734
+ 950 042e 0F       		.uleb128 0xf
+ 951 042f 18000000 		.4byte	.LVL20
+ 952 0433 3F070000 		.4byte	0x73f
+ 953 0437 53040000 		.4byte	0x453
+ 954 043b 10       		.uleb128 0x10
+ 955 043c 01       		.uleb128 0x1
+ 956 043d 53       		.byte	0x53
+ 957 043e 01       		.uleb128 0x1
+ 958 043f 30       		.byte	0x30
+ 959 0440 10       		.uleb128 0x10
+ 960 0441 01       		.uleb128 0x1
+ 961 0442 52       		.byte	0x52
+ 962 0443 02       		.uleb128 0x2
+ 963 0444 74       		.byte	0x74
+ 964 0445 00       		.sleb128 0
+ 965 0446 10       		.uleb128 0x10
+ 966 0447 01       		.uleb128 0x1
+ 967 0448 51       		.byte	0x51
+ 968 0449 02       		.uleb128 0x2
+ 969 044a 75       		.byte	0x75
+ 970 044b 00       		.sleb128 0
+ 971 044c 10       		.uleb128 0x10
+ 972 044d 01       		.uleb128 0x1
+ 973 044e 50       		.byte	0x50
+ 974 044f 02       		.uleb128 0x2
+ 975 0450 76       		.byte	0x76
+ 976 0451 00       		.sleb128 0
+ 977 0452 00       		.byte	0
+ 978 0453 0E       		.uleb128 0xe
+ 979 0454 1E000000 		.4byte	.LVL21
+ 980 0458 63070000 		.4byte	0x763
+ 981 045c 00       		.byte	0
+ 982 045d 06       		.uleb128 0x6
+ 983 045e 04       		.byte	0x4
+ 984 045f 8C000000 		.4byte	0x8c
+ 985 0463 13       		.uleb128 0x13
+ 986 0464 AF030000 		.4byte	.LASF48
+ 987 0468 01       		.byte	0x1
+ 988 0469 24       		.byte	0x24
+ 989 046a AD000000 		.4byte	0xad
+ 990 046e 00000000 		.4byte	.LFB34
+ 991 0472 46000000 		.4byte	.LFE34-.LFB34
+ 992 0476 01       		.uleb128 0x1
+ 993 0477 9C       		.byte	0x9c
+ 994 0478 4E050000 		.4byte	0x54e
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 21
+
+
+ 995 047c 14       		.uleb128 0x14
+ 996 047d EB020000 		.4byte	.LASF49
+ 997 0481 01       		.byte	0x1
+ 998 0482 24       		.byte	0x24
+ 999 0483 C3000000 		.4byte	0xc3
+ 1000 0487 79000000 		.4byte	.LLST3
+ 1001 048b 14       		.uleb128 0x14
+ 1002 048c C3010000 		.4byte	.LASF45
+ 1003 0490 01       		.byte	0x1
+ 1004 0491 24       		.byte	0x24
+ 1005 0492 4E050000 		.4byte	0x54e
+ 1006 0496 A5000000 		.4byte	.LLST4
+ 1007 049a 14       		.uleb128 0x14
+ 1008 049b 60020000 		.4byte	.LASF50
+ 1009 049f 01       		.byte	0x1
+ 1010 04a0 24       		.byte	0x24
+ 1011 04a1 AD000000 		.4byte	0xad
+ 1012 04a5 D1000000 		.4byte	.LLST5
+ 1013 04a9 14       		.uleb128 0x14
+ 1014 04aa 5F040000 		.4byte	.LASF51
+ 1015 04ae 01       		.byte	0x1
+ 1016 04af 24       		.byte	0x24
+ 1017 04b0 AD000000 		.4byte	0xad
+ 1018 04b4 F2000000 		.4byte	.LLST6
+ 1019 04b8 16       		.uleb128 0x16
+ 1020 04b9 16030000 		.4byte	.LASF52
+ 1021 04bd 01       		.byte	0x1
+ 1022 04be 26       		.byte	0x26
+ 1023 04bf 8C000000 		.4byte	0x8c
+ 1024 04c3 13010000 		.4byte	.LLST7
+ 1025 04c7 17       		.uleb128 0x17
+ 1026 04c8 52656700 		.ascii	"Reg\000"
+ 1027 04cc 01       		.byte	0x1
+ 1028 04cd 27       		.byte	0x27
+ 1029 04ce 54050000 		.4byte	0x554
+ 1030 04d2 02       		.uleb128 0x2
+ 1031 04d3 91       		.byte	0x91
+ 1032 04d4 64       		.sleb128 -28
+ 1033 04d5 0E       		.uleb128 0xe
+ 1034 04d6 10000000 		.4byte	.LVL25
+ 1035 04da 34070000 		.4byte	0x734
+ 1036 04de 0F       		.uleb128 0xf
+ 1037 04df 1C000000 		.4byte	.LVL26
+ 1038 04e3 3F070000 		.4byte	0x73f
+ 1039 04e7 02050000 		.4byte	0x502
+ 1040 04eb 10       		.uleb128 0x10
+ 1041 04ec 01       		.uleb128 0x1
+ 1042 04ed 53       		.byte	0x53
+ 1043 04ee 01       		.uleb128 0x1
+ 1044 04ef 32       		.byte	0x32
+ 1045 04f0 10       		.uleb128 0x10
+ 1046 04f1 01       		.uleb128 0x1
+ 1047 04f2 52       		.byte	0x52
+ 1048 04f3 01       		.uleb128 0x1
+ 1049 04f4 31       		.byte	0x31
+ 1050 04f5 10       		.uleb128 0x10
+ 1051 04f6 01       		.uleb128 0x1
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 22
+
+
+ 1052 04f7 51       		.byte	0x51
+ 1053 04f8 02       		.uleb128 0x2
+ 1054 04f9 77       		.byte	0x77
+ 1055 04fa 00       		.sleb128 0
+ 1056 04fb 10       		.uleb128 0x10
+ 1057 04fc 01       		.uleb128 0x1
+ 1058 04fd 50       		.byte	0x50
+ 1059 04fe 02       		.uleb128 0x2
+ 1060 04ff 75       		.byte	0x75
+ 1061 0500 00       		.sleb128 0
+ 1062 0501 00       		.byte	0
+ 1063 0502 0E       		.uleb128 0xe
+ 1064 0503 20000000 		.4byte	.LVL27
+ 1065 0507 63070000 		.4byte	0x763
+ 1066 050b 0E       		.uleb128 0xe
+ 1067 050c 28000000 		.4byte	.LVL28
+ 1068 0510 34070000 		.4byte	0x734
+ 1069 0514 0F       		.uleb128 0xf
+ 1070 0515 34000000 		.4byte	.LVL29
+ 1071 0519 6E070000 		.4byte	0x76e
+ 1072 051d 3B050000 		.4byte	0x53b
+ 1073 0521 10       		.uleb128 0x10
+ 1074 0522 01       		.uleb128 0x1
+ 1075 0523 53       		.byte	0x53
+ 1076 0524 01       		.uleb128 0x1
+ 1077 0525 31       		.byte	0x31
+ 1078 0526 10       		.uleb128 0x10
+ 1079 0527 01       		.uleb128 0x1
+ 1080 0528 52       		.byte	0x52
+ 1081 0529 04       		.uleb128 0x4
+ 1082 052a 74       		.byte	0x74
+ 1083 052b 00       		.sleb128 0
+ 1084 052c 33       		.byte	0x33
+ 1085 052d 25       		.byte	0x25
+ 1086 052e 10       		.uleb128 0x10
+ 1087 052f 01       		.uleb128 0x1
+ 1088 0530 51       		.byte	0x51
+ 1089 0531 02       		.uleb128 0x2
+ 1090 0532 76       		.byte	0x76
+ 1091 0533 00       		.sleb128 0
+ 1092 0534 10       		.uleb128 0x10
+ 1093 0535 01       		.uleb128 0x1
+ 1094 0536 50       		.byte	0x50
+ 1095 0537 02       		.uleb128 0x2
+ 1096 0538 75       		.byte	0x75
+ 1097 0539 00       		.sleb128 0
+ 1098 053a 00       		.byte	0
+ 1099 053b 0E       		.uleb128 0xe
+ 1100 053c 3A000000 		.4byte	.LVL31
+ 1101 0540 63070000 		.4byte	0x763
+ 1102 0544 0E       		.uleb128 0xe
+ 1103 0545 42000000 		.4byte	.LVL32
+ 1104 0549 34070000 		.4byte	0x734
+ 1105 054d 00       		.byte	0
+ 1106 054e 06       		.uleb128 0x6
+ 1107 054f 04       		.byte	0x4
+ 1108 0550 AD000000 		.4byte	0xad
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 23
+
+
+ 1109 0554 0A       		.uleb128 0xa
+ 1110 0555 AD000000 		.4byte	0xad
+ 1111 0559 64050000 		.4byte	0x564
+ 1112 055d 0B       		.uleb128 0xb
+ 1113 055e FA000000 		.4byte	0xfa
+ 1114 0562 00       		.byte	0
+ 1115 0563 00       		.byte	0
+ 1116 0564 18       		.uleb128 0x18
+ 1117 0565 A0040000 		.4byte	.LASF84
+ 1118 0569 01       		.byte	0x1
+ 1119 056a 61       		.byte	0x61
+ 1120 056b 7E000000 		.4byte	0x7e
+ 1121 056f 00000000 		.4byte	.LFB38
+ 1122 0573 50000000 		.4byte	.LFE38-.LFB38
+ 1123 0577 01       		.uleb128 0x1
+ 1124 0578 9C       		.byte	0x9c
+ 1125 0579 2A060000 		.4byte	0x62a
+ 1126 057d 0F       		.uleb128 0xf
+ 1127 057e 08000000 		.4byte	.LVL36
+ 1128 0582 92070000 		.4byte	0x792
+ 1129 0586 90050000 		.4byte	0x590
+ 1130 058a 10       		.uleb128 0x10
+ 1131 058b 01       		.uleb128 0x1
+ 1132 058c 50       		.byte	0x50
+ 1133 058d 01       		.uleb128 0x1
+ 1134 058e 31       		.byte	0x31
+ 1135 058f 00       		.byte	0
+ 1136 0590 0E       		.uleb128 0xe
+ 1137 0591 0E000000 		.4byte	.LVL37
+ 1138 0595 A3070000 		.4byte	0x7a3
+ 1139 0599 0F       		.uleb128 0xf
+ 1140 059a 16000000 		.4byte	.LVL38
+ 1141 059e AA070000 		.4byte	0x7aa
+ 1142 05a2 AE050000 		.4byte	0x5ae
+ 1143 05a6 10       		.uleb128 0x10
+ 1144 05a7 01       		.uleb128 0x1
+ 1145 05a8 50       		.byte	0x50
+ 1146 05a9 03       		.uleb128 0x3
+ 1147 05aa 0A       		.byte	0xa
+ 1148 05ab 2C01     		.2byte	0x12c
+ 1149 05ad 00       		.byte	0
+ 1150 05ae 0E       		.uleb128 0xe
+ 1151 05af 1A000000 		.4byte	.LVL39
+ 1152 05b3 BB070000 		.4byte	0x7bb
+ 1153 05b7 0E       		.uleb128 0xe
+ 1154 05b8 1E000000 		.4byte	.LVL40
+ 1155 05bc C2070000 		.4byte	0x7c2
+ 1156 05c0 0E       		.uleb128 0xe
+ 1157 05c1 22000000 		.4byte	.LVL41
+ 1158 05c5 D9060000 		.4byte	0x6d9
+ 1159 05c9 0E       		.uleb128 0xe
+ 1160 05ca 26000000 		.4byte	.LVL42
+ 1161 05ce C9070000 		.4byte	0x7c9
+ 1162 05d2 0E       		.uleb128 0xe
+ 1163 05d3 2A000000 		.4byte	.LVL43
+ 1164 05d7 D0070000 		.4byte	0x7d0
+ 1165 05db 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 24
+
+
+ 1166 05dc 2E000000 		.4byte	.LVL44
+ 1167 05e0 D8070000 		.4byte	0x7d8
+ 1168 05e4 0F       		.uleb128 0xf
+ 1169 05e5 38000000 		.4byte	.LVL45
+ 1170 05e9 E0060000 		.4byte	0x6e0
+ 1171 05ed 02060000 		.4byte	0x602
+ 1172 05f1 10       		.uleb128 0x10
+ 1173 05f2 01       		.uleb128 0x1
+ 1174 05f3 51       		.byte	0x51
+ 1175 05f4 03       		.uleb128 0x3
+ 1176 05f5 0A       		.byte	0xa
+ 1177 05f6 F401     		.2byte	0x1f4
+ 1178 05f8 10       		.uleb128 0x10
+ 1179 05f9 01       		.uleb128 0x1
+ 1180 05fa 50       		.byte	0x50
+ 1181 05fb 05       		.uleb128 0x5
+ 1182 05fc 03       		.byte	0x3
+ 1183 05fd 00000000 		.4byte	LM92_Action
+ 1184 0601 00       		.byte	0
+ 1185 0602 0F       		.uleb128 0xf
+ 1186 0603 42000000 		.4byte	.LVL46
+ 1187 0607 E0060000 		.4byte	0x6e0
+ 1188 060b 20060000 		.4byte	0x620
+ 1189 060f 10       		.uleb128 0x10
+ 1190 0610 01       		.uleb128 0x1
+ 1191 0611 51       		.byte	0x51
+ 1192 0612 03       		.uleb128 0x3
+ 1193 0613 0A       		.byte	0xa
+ 1194 0614 5802     		.2byte	0x258
+ 1195 0616 10       		.uleb128 0x10
+ 1196 0617 01       		.uleb128 0x1
+ 1197 0618 50       		.byte	0x50
+ 1198 0619 05       		.uleb128 0x5
+ 1199 061a 03       		.byte	0x3
+ 1200 061b 00000000 		.4byte	ADC_Start_Convert_Task
+ 1201 061f 00       		.byte	0
+ 1202 0620 0E       		.uleb128 0xe
+ 1203 0621 46000000 		.4byte	.LVL47
+ 1204 0625 E5070000 		.4byte	0x7e5
+ 1205 0629 00       		.byte	0
+ 1206 062a 0A       		.uleb128 0xa
+ 1207 062b DB010000 		.4byte	0x1db
+ 1208 062f 3A060000 		.4byte	0x63a
+ 1209 0633 0B       		.uleb128 0xb
+ 1210 0634 FA000000 		.4byte	0xfa
+ 1211 0638 0A       		.byte	0xa
+ 1212 0639 00       		.byte	0
+ 1213 063a 15       		.uleb128 0x15
+ 1214 063b C0030000 		.4byte	.LASF53
+ 1215 063f 06       		.byte	0x6
+ 1216 0640 13       		.byte	0x13
+ 1217 0641 4B060000 		.4byte	0x64b
+ 1218 0645 05       		.uleb128 0x5
+ 1219 0646 03       		.byte	0x3
+ 1220 0647 A8000000 		.4byte	TaskQueue
+ 1221 064b 05       		.uleb128 0x5
+ 1222 064c 2A060000 		.4byte	0x62a
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 25
+
+
+ 1223 0650 0A       		.uleb128 0xa
+ 1224 0651 E6010000 		.4byte	0x1e6
+ 1225 0655 60060000 		.4byte	0x660
+ 1226 0659 0B       		.uleb128 0xb
+ 1227 065a FA000000 		.4byte	0xfa
+ 1228 065e 14       		.byte	0x14
+ 1229 065f 00       		.byte	0
+ 1230 0660 15       		.uleb128 0x15
+ 1231 0661 4D030000 		.4byte	.LASF54
+ 1232 0665 06       		.byte	0x6
+ 1233 0666 1A       		.byte	0x1a
+ 1234 0667 71060000 		.4byte	0x671
+ 1235 066b 05       		.uleb128 0x5
+ 1236 066c 03       		.byte	0x3
+ 1237 066d 00000000 		.4byte	MainTimer
+ 1238 0671 05       		.uleb128 0x5
+ 1239 0672 50060000 		.4byte	0x650
+ 1240 0676 19       		.uleb128 0x19
+ 1241 0677 E8030000 		.4byte	.LASF55
+ 1242 067b 05       		.byte	0x5
+ 1243 067c 39       		.byte	0x39
+ 1244 067d D0010000 		.4byte	0x1d0
+ 1245 0681 05       		.uleb128 0x5
+ 1246 0682 03       		.byte	0x3
+ 1247 0683 00000000 		.4byte	LM92_Operational_Struct
+ 1248 0687 19       		.uleb128 0x19
+ 1249 0688 36020000 		.4byte	.LASF56
+ 1250 068c 07       		.byte	0x7
+ 1251 068d 19       		.byte	0x19
+ 1252 068e 34020000 		.4byte	0x234
+ 1253 0692 05       		.uleb128 0x5
+ 1254 0693 03       		.byte	0x3
+ 1255 0694 00000000 		.4byte	Battery_Operation_Struct
+ 1256 0698 1A       		.uleb128 0x1a
+ 1257 0699 1A010000 		.4byte	.LASF57
+ 1258 069d 05       		.byte	0x5
+ 1259 069e 3B       		.byte	0x3b
+ 1260 069f A5060000 		.4byte	0x6a5
+ 1261 06a3 1B       		.uleb128 0x1b
+ 1262 06a4 00       		.byte	0
+ 1263 06a5 1A       		.uleb128 0x1a
+ 1264 06a6 8F010000 		.4byte	.LASF58
+ 1265 06aa 05       		.byte	0x5
+ 1266 06ab 42       		.byte	0x42
+ 1267 06ac B2060000 		.4byte	0x6b2
+ 1268 06b0 1B       		.uleb128 0x1b
+ 1269 06b1 00       		.byte	0
+ 1270 06b2 1C       		.uleb128 0x1c
+ 1271 06b3 25030000 		.4byte	.LASF59
+ 1272 06b7 08       		.byte	0x8
+ 1273 06b8 36       		.byte	0x36
+ 1274 06b9 C8060000 		.4byte	0x6c8
+ 1275 06bd 1D       		.uleb128 0x1d
+ 1276 06be 8C000000 		.4byte	0x8c
+ 1277 06c2 1D       		.uleb128 0x1d
+ 1278 06c3 8C000000 		.4byte	0x8c
+ 1279 06c7 00       		.byte	0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 26
+
+
+ 1280 06c8 1C       		.uleb128 0x1c
+ 1281 06c9 7C030000 		.4byte	.LASF60
+ 1282 06cd 08       		.byte	0x8
+ 1283 06ce 33       		.byte	0x33
+ 1284 06cf D9060000 		.4byte	0x6d9
+ 1285 06d3 1D       		.uleb128 0x1d
+ 1286 06d4 01010000 		.4byte	0x101
+ 1287 06d8 00       		.byte	0
+ 1288 06d9 1E       		.uleb128 0x1e
+ 1289 06da C8000000 		.4byte	.LASF62
+ 1290 06de 08       		.byte	0x8
+ 1291 06df 30       		.byte	0x30
+ 1292 06e0 1C       		.uleb128 0x1c
+ 1293 06e1 D4010000 		.4byte	.LASF61
+ 1294 06e5 06       		.byte	0x6
+ 1295 06e6 20       		.byte	0x20
+ 1296 06e7 F6060000 		.4byte	0x6f6
+ 1297 06eb 1D       		.uleb128 0x1d
+ 1298 06ec DB010000 		.4byte	0x1db
+ 1299 06f0 1D       		.uleb128 0x1d
+ 1300 06f1 C3000000 		.4byte	0xc3
+ 1301 06f5 00       		.byte	0
+ 1302 06f6 1E       		.uleb128 0x1e
+ 1303 06f7 4F020000 		.4byte	.LASF63
+ 1304 06fb 09       		.byte	0x9
+ 1305 06fc 9C       		.byte	0x9c
+ 1306 06fd 1F       		.uleb128 0x1f
+ 1307 06fe 30030000 		.4byte	.LASF64
+ 1308 0702 09       		.byte	0x9
+ 1309 0703 9E       		.byte	0x9e
+ 1310 0704 C3000000 		.4byte	0xc3
+ 1311 0708 12070000 		.4byte	0x712
+ 1312 070c 1D       		.uleb128 0x1d
+ 1313 070d C3000000 		.4byte	0xc3
+ 1314 0711 00       		.byte	0
+ 1315 0712 1F       		.uleb128 0x1f
+ 1316 0713 AA040000 		.4byte	.LASF65
+ 1317 0717 09       		.byte	0x9
+ 1318 0718 9F       		.byte	0x9f
+ 1319 0719 CE000000 		.4byte	0xce
+ 1320 071d 27070000 		.4byte	0x727
+ 1321 0721 1D       		.uleb128 0x1d
+ 1322 0722 C3000000 		.4byte	0xc3
+ 1323 0726 00       		.byte	0
+ 1324 0727 1A       		.uleb128 0x1a
+ 1325 0728 80040000 		.4byte	.LASF66
+ 1326 072c 01       		.byte	0x1
+ 1327 072d 15       		.byte	0x15
+ 1328 072e 34070000 		.4byte	0x734
+ 1329 0732 1B       		.uleb128 0x1b
+ 1330 0733 00       		.byte	0
+ 1331 0734 20       		.uleb128 0x20
+ 1332 0735 FD020000 		.4byte	.LASF68
+ 1333 0739 0A       		.byte	0xa
+ 1334 073a C1       		.byte	0xc1
+ 1335 073b C3000000 		.4byte	0xc3
+ 1336 073f 1F       		.uleb128 0x1f
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 27
+
+
+ 1337 0740 31040000 		.4byte	.LASF67
+ 1338 0744 0A       		.byte	0xa
+ 1339 0745 C4       		.byte	0xc4
+ 1340 0746 C3000000 		.4byte	0xc3
+ 1341 074a 63070000 		.4byte	0x763
+ 1342 074e 1D       		.uleb128 0x1d
+ 1343 074f C3000000 		.4byte	0xc3
+ 1344 0753 1D       		.uleb128 0x1d
+ 1345 0754 4E050000 		.4byte	0x54e
+ 1346 0758 1D       		.uleb128 0x1d
+ 1347 0759 C3000000 		.4byte	0xc3
+ 1348 075d 1D       		.uleb128 0x1d
+ 1349 075e C3000000 		.4byte	0xc3
+ 1350 0762 00       		.byte	0
+ 1351 0763 20       		.uleb128 0x20
+ 1352 0764 E1010000 		.4byte	.LASF69
+ 1353 0768 0A       		.byte	0xa
+ 1354 0769 C0       		.byte	0xc0
+ 1355 076a C3000000 		.4byte	0xc3
+ 1356 076e 1F       		.uleb128 0x1f
+ 1357 076f D6020000 		.4byte	.LASF70
+ 1358 0773 0A       		.byte	0xa
+ 1359 0774 C5       		.byte	0xc5
+ 1360 0775 C3000000 		.4byte	0xc3
+ 1361 0779 92070000 		.4byte	0x792
+ 1362 077d 1D       		.uleb128 0x1d
+ 1363 077e C3000000 		.4byte	0xc3
+ 1364 0782 1D       		.uleb128 0x1d
+ 1365 0783 4E050000 		.4byte	0x54e
+ 1366 0787 1D       		.uleb128 0x1d
+ 1367 0788 C3000000 		.4byte	0xc3
+ 1368 078c 1D       		.uleb128 0x1d
+ 1369 078d C3000000 		.4byte	0xc3
+ 1370 0791 00       		.byte	0
+ 1371 0792 1C       		.uleb128 0x1c
+ 1372 0793 A9010000 		.4byte	.LASF71
+ 1373 0797 0B       		.byte	0xb
+ 1374 0798 1D       		.byte	0x1d
+ 1375 0799 A3070000 		.4byte	0x7a3
+ 1376 079d 1D       		.uleb128 0x1d
+ 1377 079e AD000000 		.4byte	0xad
+ 1378 07a2 00       		.byte	0
+ 1379 07a3 1E       		.uleb128 0x1e
+ 1380 07a4 4F040000 		.4byte	.LASF72
+ 1381 07a8 0C       		.byte	0xc
+ 1382 07a9 68       		.byte	0x68
+ 1383 07aa 1C       		.uleb128 0x1c
+ 1384 07ab 00040000 		.4byte	.LASF73
+ 1385 07af 0D       		.byte	0xd
+ 1386 07b0 57       		.byte	0x57
+ 1387 07b1 BB070000 		.4byte	0x7bb
+ 1388 07b5 1D       		.uleb128 0x1d
+ 1389 07b6 C3000000 		.4byte	0xc3
+ 1390 07ba 00       		.byte	0
+ 1391 07bb 1E       		.uleb128 0x1e
+ 1392 07bc 44030000 		.4byte	.LASF74
+ 1393 07c0 08       		.byte	0x8
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 28
+
+
+ 1394 07c1 2E       		.byte	0x2e
+ 1395 07c2 1E       		.uleb128 0x1e
+ 1396 07c3 CC020000 		.4byte	.LASF75
+ 1397 07c7 08       		.byte	0x8
+ 1398 07c8 2F       		.byte	0x2f
+ 1399 07c9 1E       		.uleb128 0x1e
+ 1400 07ca 4F010000 		.4byte	.LASF76
+ 1401 07ce 09       		.byte	0x9
+ 1402 07cf 98       		.byte	0x98
+ 1403 07d0 21       		.uleb128 0x21
+ 1404 07d1 18020000 		.4byte	.LASF77
+ 1405 07d5 0E       		.byte	0xe
+ 1406 07d6 3101     		.2byte	0x131
+ 1407 07d8 1A       		.uleb128 0x1a
+ 1408 07d9 95000000 		.4byte	.LASF78
+ 1409 07dd 06       		.byte	0x6
+ 1410 07de 22       		.byte	0x22
+ 1411 07df E5070000 		.4byte	0x7e5
+ 1412 07e3 1B       		.uleb128 0x1b
+ 1413 07e4 00       		.byte	0
+ 1414 07e5 1E       		.uleb128 0x1e
+ 1415 07e6 08040000 		.4byte	.LASF79
+ 1416 07ea 06       		.byte	0x6
+ 1417 07eb 1D       		.byte	0x1d
+ 1418 07ec 00       		.byte	0
+ 1419              		.section	.debug_abbrev,"",%progbits
+ 1420              	.Ldebug_abbrev0:
+ 1421 0000 01       		.uleb128 0x1
+ 1422 0001 11       		.uleb128 0x11
+ 1423 0002 01       		.byte	0x1
+ 1424 0003 25       		.uleb128 0x25
+ 1425 0004 0E       		.uleb128 0xe
+ 1426 0005 13       		.uleb128 0x13
+ 1427 0006 0B       		.uleb128 0xb
+ 1428 0007 03       		.uleb128 0x3
+ 1429 0008 0E       		.uleb128 0xe
+ 1430 0009 1B       		.uleb128 0x1b
+ 1431 000a 0E       		.uleb128 0xe
+ 1432 000b 55       		.uleb128 0x55
+ 1433 000c 17       		.uleb128 0x17
+ 1434 000d 11       		.uleb128 0x11
+ 1435 000e 01       		.uleb128 0x1
+ 1436 000f 10       		.uleb128 0x10
+ 1437 0010 17       		.uleb128 0x17
+ 1438 0011 00       		.byte	0
+ 1439 0012 00       		.byte	0
+ 1440 0013 02       		.uleb128 0x2
+ 1441 0014 24       		.uleb128 0x24
+ 1442 0015 00       		.byte	0
+ 1443 0016 0B       		.uleb128 0xb
+ 1444 0017 0B       		.uleb128 0xb
+ 1445 0018 3E       		.uleb128 0x3e
+ 1446 0019 0B       		.uleb128 0xb
+ 1447 001a 03       		.uleb128 0x3
+ 1448 001b 0E       		.uleb128 0xe
+ 1449 001c 00       		.byte	0
+ 1450 001d 00       		.byte	0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 29
+
+
+ 1451 001e 03       		.uleb128 0x3
+ 1452 001f 16       		.uleb128 0x16
+ 1453 0020 00       		.byte	0
+ 1454 0021 03       		.uleb128 0x3
+ 1455 0022 0E       		.uleb128 0xe
+ 1456 0023 3A       		.uleb128 0x3a
+ 1457 0024 0B       		.uleb128 0xb
+ 1458 0025 3B       		.uleb128 0x3b
+ 1459 0026 0B       		.uleb128 0xb
+ 1460 0027 49       		.uleb128 0x49
+ 1461 0028 13       		.uleb128 0x13
+ 1462 0029 00       		.byte	0
+ 1463 002a 00       		.byte	0
+ 1464 002b 04       		.uleb128 0x4
+ 1465 002c 24       		.uleb128 0x24
+ 1466 002d 00       		.byte	0
+ 1467 002e 0B       		.uleb128 0xb
+ 1468 002f 0B       		.uleb128 0xb
+ 1469 0030 3E       		.uleb128 0x3e
+ 1470 0031 0B       		.uleb128 0xb
+ 1471 0032 03       		.uleb128 0x3
+ 1472 0033 08       		.uleb128 0x8
+ 1473 0034 00       		.byte	0
+ 1474 0035 00       		.byte	0
+ 1475 0036 05       		.uleb128 0x5
+ 1476 0037 35       		.uleb128 0x35
+ 1477 0038 00       		.byte	0
+ 1478 0039 49       		.uleb128 0x49
+ 1479 003a 13       		.uleb128 0x13
+ 1480 003b 00       		.byte	0
+ 1481 003c 00       		.byte	0
+ 1482 003d 06       		.uleb128 0x6
+ 1483 003e 0F       		.uleb128 0xf
+ 1484 003f 00       		.byte	0
+ 1485 0040 0B       		.uleb128 0xb
+ 1486 0041 0B       		.uleb128 0xb
+ 1487 0042 49       		.uleb128 0x49
+ 1488 0043 13       		.uleb128 0x13
+ 1489 0044 00       		.byte	0
+ 1490 0045 00       		.byte	0
+ 1491 0046 07       		.uleb128 0x7
+ 1492 0047 15       		.uleb128 0x15
+ 1493 0048 00       		.byte	0
+ 1494 0049 27       		.uleb128 0x27
+ 1495 004a 19       		.uleb128 0x19
+ 1496 004b 00       		.byte	0
+ 1497 004c 00       		.byte	0
+ 1498 004d 08       		.uleb128 0x8
+ 1499 004e 13       		.uleb128 0x13
+ 1500 004f 01       		.byte	0x1
+ 1501 0050 0B       		.uleb128 0xb
+ 1502 0051 0B       		.uleb128 0xb
+ 1503 0052 3A       		.uleb128 0x3a
+ 1504 0053 0B       		.uleb128 0xb
+ 1505 0054 3B       		.uleb128 0x3b
+ 1506 0055 0B       		.uleb128 0xb
+ 1507 0056 01       		.uleb128 0x1
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 30
+
+
+ 1508 0057 13       		.uleb128 0x13
+ 1509 0058 00       		.byte	0
+ 1510 0059 00       		.byte	0
+ 1511 005a 09       		.uleb128 0x9
+ 1512 005b 0D       		.uleb128 0xd
+ 1513 005c 00       		.byte	0
+ 1514 005d 03       		.uleb128 0x3
+ 1515 005e 0E       		.uleb128 0xe
+ 1516 005f 3A       		.uleb128 0x3a
+ 1517 0060 0B       		.uleb128 0xb
+ 1518 0061 3B       		.uleb128 0x3b
+ 1519 0062 0B       		.uleb128 0xb
+ 1520 0063 49       		.uleb128 0x49
+ 1521 0064 13       		.uleb128 0x13
+ 1522 0065 38       		.uleb128 0x38
+ 1523 0066 0B       		.uleb128 0xb
+ 1524 0067 00       		.byte	0
+ 1525 0068 00       		.byte	0
+ 1526 0069 0A       		.uleb128 0xa
+ 1527 006a 01       		.uleb128 0x1
+ 1528 006b 01       		.byte	0x1
+ 1529 006c 49       		.uleb128 0x49
+ 1530 006d 13       		.uleb128 0x13
+ 1531 006e 01       		.uleb128 0x1
+ 1532 006f 13       		.uleb128 0x13
+ 1533 0070 00       		.byte	0
+ 1534 0071 00       		.byte	0
+ 1535 0072 0B       		.uleb128 0xb
+ 1536 0073 21       		.uleb128 0x21
+ 1537 0074 00       		.byte	0
+ 1538 0075 49       		.uleb128 0x49
+ 1539 0076 13       		.uleb128 0x13
+ 1540 0077 2F       		.uleb128 0x2f
+ 1541 0078 0B       		.uleb128 0xb
+ 1542 0079 00       		.byte	0
+ 1543 007a 00       		.byte	0
+ 1544 007b 0C       		.uleb128 0xc
+ 1545 007c 2E       		.uleb128 0x2e
+ 1546 007d 00       		.byte	0
+ 1547 007e 3F       		.uleb128 0x3f
+ 1548 007f 19       		.uleb128 0x19
+ 1549 0080 03       		.uleb128 0x3
+ 1550 0081 0E       		.uleb128 0xe
+ 1551 0082 3A       		.uleb128 0x3a
+ 1552 0083 0B       		.uleb128 0xb
+ 1553 0084 3B       		.uleb128 0x3b
+ 1554 0085 0B       		.uleb128 0xb
+ 1555 0086 20       		.uleb128 0x20
+ 1556 0087 0B       		.uleb128 0xb
+ 1557 0088 00       		.byte	0
+ 1558 0089 00       		.byte	0
+ 1559 008a 0D       		.uleb128 0xd
+ 1560 008b 2E       		.uleb128 0x2e
+ 1561 008c 01       		.byte	0x1
+ 1562 008d 3F       		.uleb128 0x3f
+ 1563 008e 19       		.uleb128 0x19
+ 1564 008f 03       		.uleb128 0x3
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 31
+
+
+ 1565 0090 0E       		.uleb128 0xe
+ 1566 0091 3A       		.uleb128 0x3a
+ 1567 0092 0B       		.uleb128 0xb
+ 1568 0093 3B       		.uleb128 0x3b
+ 1569 0094 0B       		.uleb128 0xb
+ 1570 0095 11       		.uleb128 0x11
+ 1571 0096 01       		.uleb128 0x1
+ 1572 0097 12       		.uleb128 0x12
+ 1573 0098 06       		.uleb128 0x6
+ 1574 0099 40       		.uleb128 0x40
+ 1575 009a 18       		.uleb128 0x18
+ 1576 009b 9742     		.uleb128 0x2117
+ 1577 009d 19       		.uleb128 0x19
+ 1578 009e 01       		.uleb128 0x1
+ 1579 009f 13       		.uleb128 0x13
+ 1580 00a0 00       		.byte	0
+ 1581 00a1 00       		.byte	0
+ 1582 00a2 0E       		.uleb128 0xe
+ 1583 00a3 898201   		.uleb128 0x4109
+ 1584 00a6 00       		.byte	0
+ 1585 00a7 11       		.uleb128 0x11
+ 1586 00a8 01       		.uleb128 0x1
+ 1587 00a9 31       		.uleb128 0x31
+ 1588 00aa 13       		.uleb128 0x13
+ 1589 00ab 00       		.byte	0
+ 1590 00ac 00       		.byte	0
+ 1591 00ad 0F       		.uleb128 0xf
+ 1592 00ae 898201   		.uleb128 0x4109
+ 1593 00b1 01       		.byte	0x1
+ 1594 00b2 11       		.uleb128 0x11
+ 1595 00b3 01       		.uleb128 0x1
+ 1596 00b4 31       		.uleb128 0x31
+ 1597 00b5 13       		.uleb128 0x13
+ 1598 00b6 01       		.uleb128 0x1
+ 1599 00b7 13       		.uleb128 0x13
+ 1600 00b8 00       		.byte	0
+ 1601 00b9 00       		.byte	0
+ 1602 00ba 10       		.uleb128 0x10
+ 1603 00bb 8A8201   		.uleb128 0x410a
+ 1604 00be 00       		.byte	0
+ 1605 00bf 02       		.uleb128 0x2
+ 1606 00c0 18       		.uleb128 0x18
+ 1607 00c1 9142     		.uleb128 0x2111
+ 1608 00c3 18       		.uleb128 0x18
+ 1609 00c4 00       		.byte	0
+ 1610 00c5 00       		.byte	0
+ 1611 00c6 11       		.uleb128 0x11
+ 1612 00c7 898201   		.uleb128 0x4109
+ 1613 00ca 01       		.byte	0x1
+ 1614 00cb 11       		.uleb128 0x11
+ 1615 00cc 01       		.uleb128 0x1
+ 1616 00cd 31       		.uleb128 0x31
+ 1617 00ce 13       		.uleb128 0x13
+ 1618 00cf 00       		.byte	0
+ 1619 00d0 00       		.byte	0
+ 1620 00d1 12       		.uleb128 0x12
+ 1621 00d2 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 32
+
+
+ 1622 00d3 01       		.byte	0x1
+ 1623 00d4 31       		.uleb128 0x31
+ 1624 00d5 13       		.uleb128 0x13
+ 1625 00d6 11       		.uleb128 0x11
+ 1626 00d7 01       		.uleb128 0x1
+ 1627 00d8 12       		.uleb128 0x12
+ 1628 00d9 06       		.uleb128 0x6
+ 1629 00da 40       		.uleb128 0x40
+ 1630 00db 18       		.uleb128 0x18
+ 1631 00dc 9742     		.uleb128 0x2117
+ 1632 00de 19       		.uleb128 0x19
+ 1633 00df 01       		.uleb128 0x1
+ 1634 00e0 13       		.uleb128 0x13
+ 1635 00e1 00       		.byte	0
+ 1636 00e2 00       		.byte	0
+ 1637 00e3 13       		.uleb128 0x13
+ 1638 00e4 2E       		.uleb128 0x2e
+ 1639 00e5 01       		.byte	0x1
+ 1640 00e6 3F       		.uleb128 0x3f
+ 1641 00e7 19       		.uleb128 0x19
+ 1642 00e8 03       		.uleb128 0x3
+ 1643 00e9 0E       		.uleb128 0xe
+ 1644 00ea 3A       		.uleb128 0x3a
+ 1645 00eb 0B       		.uleb128 0xb
+ 1646 00ec 3B       		.uleb128 0x3b
+ 1647 00ed 0B       		.uleb128 0xb
+ 1648 00ee 27       		.uleb128 0x27
+ 1649 00ef 19       		.uleb128 0x19
+ 1650 00f0 49       		.uleb128 0x49
+ 1651 00f1 13       		.uleb128 0x13
+ 1652 00f2 11       		.uleb128 0x11
+ 1653 00f3 01       		.uleb128 0x1
+ 1654 00f4 12       		.uleb128 0x12
+ 1655 00f5 06       		.uleb128 0x6
+ 1656 00f6 40       		.uleb128 0x40
+ 1657 00f7 18       		.uleb128 0x18
+ 1658 00f8 9742     		.uleb128 0x2117
+ 1659 00fa 19       		.uleb128 0x19
+ 1660 00fb 01       		.uleb128 0x1
+ 1661 00fc 13       		.uleb128 0x13
+ 1662 00fd 00       		.byte	0
+ 1663 00fe 00       		.byte	0
+ 1664 00ff 14       		.uleb128 0x14
+ 1665 0100 05       		.uleb128 0x5
+ 1666 0101 00       		.byte	0
+ 1667 0102 03       		.uleb128 0x3
+ 1668 0103 0E       		.uleb128 0xe
+ 1669 0104 3A       		.uleb128 0x3a
+ 1670 0105 0B       		.uleb128 0xb
+ 1671 0106 3B       		.uleb128 0x3b
+ 1672 0107 0B       		.uleb128 0xb
+ 1673 0108 49       		.uleb128 0x49
+ 1674 0109 13       		.uleb128 0x13
+ 1675 010a 02       		.uleb128 0x2
+ 1676 010b 17       		.uleb128 0x17
+ 1677 010c 00       		.byte	0
+ 1678 010d 00       		.byte	0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 33
+
+
+ 1679 010e 15       		.uleb128 0x15
+ 1680 010f 34       		.uleb128 0x34
+ 1681 0110 00       		.byte	0
+ 1682 0111 03       		.uleb128 0x3
+ 1683 0112 0E       		.uleb128 0xe
+ 1684 0113 3A       		.uleb128 0x3a
+ 1685 0114 0B       		.uleb128 0xb
+ 1686 0115 3B       		.uleb128 0x3b
+ 1687 0116 0B       		.uleb128 0xb
+ 1688 0117 49       		.uleb128 0x49
+ 1689 0118 13       		.uleb128 0x13
+ 1690 0119 02       		.uleb128 0x2
+ 1691 011a 18       		.uleb128 0x18
+ 1692 011b 00       		.byte	0
+ 1693 011c 00       		.byte	0
+ 1694 011d 16       		.uleb128 0x16
+ 1695 011e 34       		.uleb128 0x34
+ 1696 011f 00       		.byte	0
+ 1697 0120 03       		.uleb128 0x3
+ 1698 0121 0E       		.uleb128 0xe
+ 1699 0122 3A       		.uleb128 0x3a
+ 1700 0123 0B       		.uleb128 0xb
+ 1701 0124 3B       		.uleb128 0x3b
+ 1702 0125 0B       		.uleb128 0xb
+ 1703 0126 49       		.uleb128 0x49
+ 1704 0127 13       		.uleb128 0x13
+ 1705 0128 02       		.uleb128 0x2
+ 1706 0129 17       		.uleb128 0x17
+ 1707 012a 00       		.byte	0
+ 1708 012b 00       		.byte	0
+ 1709 012c 17       		.uleb128 0x17
+ 1710 012d 34       		.uleb128 0x34
+ 1711 012e 00       		.byte	0
+ 1712 012f 03       		.uleb128 0x3
+ 1713 0130 08       		.uleb128 0x8
+ 1714 0131 3A       		.uleb128 0x3a
+ 1715 0132 0B       		.uleb128 0xb
+ 1716 0133 3B       		.uleb128 0x3b
+ 1717 0134 0B       		.uleb128 0xb
+ 1718 0135 49       		.uleb128 0x49
+ 1719 0136 13       		.uleb128 0x13
+ 1720 0137 02       		.uleb128 0x2
+ 1721 0138 18       		.uleb128 0x18
+ 1722 0139 00       		.byte	0
+ 1723 013a 00       		.byte	0
+ 1724 013b 18       		.uleb128 0x18
+ 1725 013c 2E       		.uleb128 0x2e
+ 1726 013d 01       		.byte	0x1
+ 1727 013e 3F       		.uleb128 0x3f
+ 1728 013f 19       		.uleb128 0x19
+ 1729 0140 03       		.uleb128 0x3
+ 1730 0141 0E       		.uleb128 0xe
+ 1731 0142 3A       		.uleb128 0x3a
+ 1732 0143 0B       		.uleb128 0xb
+ 1733 0144 3B       		.uleb128 0x3b
+ 1734 0145 0B       		.uleb128 0xb
+ 1735 0146 49       		.uleb128 0x49
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 34
+
+
+ 1736 0147 13       		.uleb128 0x13
+ 1737 0148 11       		.uleb128 0x11
+ 1738 0149 01       		.uleb128 0x1
+ 1739 014a 12       		.uleb128 0x12
+ 1740 014b 06       		.uleb128 0x6
+ 1741 014c 40       		.uleb128 0x40
+ 1742 014d 18       		.uleb128 0x18
+ 1743 014e 9742     		.uleb128 0x2117
+ 1744 0150 19       		.uleb128 0x19
+ 1745 0151 01       		.uleb128 0x1
+ 1746 0152 13       		.uleb128 0x13
+ 1747 0153 00       		.byte	0
+ 1748 0154 00       		.byte	0
+ 1749 0155 19       		.uleb128 0x19
+ 1750 0156 34       		.uleb128 0x34
+ 1751 0157 00       		.byte	0
+ 1752 0158 03       		.uleb128 0x3
+ 1753 0159 0E       		.uleb128 0xe
+ 1754 015a 3A       		.uleb128 0x3a
+ 1755 015b 0B       		.uleb128 0xb
+ 1756 015c 3B       		.uleb128 0x3b
+ 1757 015d 0B       		.uleb128 0xb
+ 1758 015e 49       		.uleb128 0x49
+ 1759 015f 13       		.uleb128 0x13
+ 1760 0160 3F       		.uleb128 0x3f
+ 1761 0161 19       		.uleb128 0x19
+ 1762 0162 02       		.uleb128 0x2
+ 1763 0163 18       		.uleb128 0x18
+ 1764 0164 00       		.byte	0
+ 1765 0165 00       		.byte	0
+ 1766 0166 1A       		.uleb128 0x1a
+ 1767 0167 2E       		.uleb128 0x2e
+ 1768 0168 01       		.byte	0x1
+ 1769 0169 3F       		.uleb128 0x3f
+ 1770 016a 19       		.uleb128 0x19
+ 1771 016b 03       		.uleb128 0x3
+ 1772 016c 0E       		.uleb128 0xe
+ 1773 016d 3A       		.uleb128 0x3a
+ 1774 016e 0B       		.uleb128 0xb
+ 1775 016f 3B       		.uleb128 0x3b
+ 1776 0170 0B       		.uleb128 0xb
+ 1777 0171 3C       		.uleb128 0x3c
+ 1778 0172 19       		.uleb128 0x19
+ 1779 0173 01       		.uleb128 0x1
+ 1780 0174 13       		.uleb128 0x13
+ 1781 0175 00       		.byte	0
+ 1782 0176 00       		.byte	0
+ 1783 0177 1B       		.uleb128 0x1b
+ 1784 0178 18       		.uleb128 0x18
+ 1785 0179 00       		.byte	0
+ 1786 017a 00       		.byte	0
+ 1787 017b 00       		.byte	0
+ 1788 017c 1C       		.uleb128 0x1c
+ 1789 017d 2E       		.uleb128 0x2e
+ 1790 017e 01       		.byte	0x1
+ 1791 017f 3F       		.uleb128 0x3f
+ 1792 0180 19       		.uleb128 0x19
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 35
+
+
+ 1793 0181 03       		.uleb128 0x3
+ 1794 0182 0E       		.uleb128 0xe
+ 1795 0183 3A       		.uleb128 0x3a
+ 1796 0184 0B       		.uleb128 0xb
+ 1797 0185 3B       		.uleb128 0x3b
+ 1798 0186 0B       		.uleb128 0xb
+ 1799 0187 27       		.uleb128 0x27
+ 1800 0188 19       		.uleb128 0x19
+ 1801 0189 3C       		.uleb128 0x3c
+ 1802 018a 19       		.uleb128 0x19
+ 1803 018b 01       		.uleb128 0x1
+ 1804 018c 13       		.uleb128 0x13
+ 1805 018d 00       		.byte	0
+ 1806 018e 00       		.byte	0
+ 1807 018f 1D       		.uleb128 0x1d
+ 1808 0190 05       		.uleb128 0x5
+ 1809 0191 00       		.byte	0
+ 1810 0192 49       		.uleb128 0x49
+ 1811 0193 13       		.uleb128 0x13
+ 1812 0194 00       		.byte	0
+ 1813 0195 00       		.byte	0
+ 1814 0196 1E       		.uleb128 0x1e
+ 1815 0197 2E       		.uleb128 0x2e
+ 1816 0198 00       		.byte	0
+ 1817 0199 3F       		.uleb128 0x3f
+ 1818 019a 19       		.uleb128 0x19
+ 1819 019b 03       		.uleb128 0x3
+ 1820 019c 0E       		.uleb128 0xe
+ 1821 019d 3A       		.uleb128 0x3a
+ 1822 019e 0B       		.uleb128 0xb
+ 1823 019f 3B       		.uleb128 0x3b
+ 1824 01a0 0B       		.uleb128 0xb
+ 1825 01a1 27       		.uleb128 0x27
+ 1826 01a2 19       		.uleb128 0x19
+ 1827 01a3 3C       		.uleb128 0x3c
+ 1828 01a4 19       		.uleb128 0x19
+ 1829 01a5 00       		.byte	0
+ 1830 01a6 00       		.byte	0
+ 1831 01a7 1F       		.uleb128 0x1f
+ 1832 01a8 2E       		.uleb128 0x2e
+ 1833 01a9 01       		.byte	0x1
+ 1834 01aa 3F       		.uleb128 0x3f
+ 1835 01ab 19       		.uleb128 0x19
+ 1836 01ac 03       		.uleb128 0x3
+ 1837 01ad 0E       		.uleb128 0xe
+ 1838 01ae 3A       		.uleb128 0x3a
+ 1839 01af 0B       		.uleb128 0xb
+ 1840 01b0 3B       		.uleb128 0x3b
+ 1841 01b1 0B       		.uleb128 0xb
+ 1842 01b2 27       		.uleb128 0x27
+ 1843 01b3 19       		.uleb128 0x19
+ 1844 01b4 49       		.uleb128 0x49
+ 1845 01b5 13       		.uleb128 0x13
+ 1846 01b6 3C       		.uleb128 0x3c
+ 1847 01b7 19       		.uleb128 0x19
+ 1848 01b8 01       		.uleb128 0x1
+ 1849 01b9 13       		.uleb128 0x13
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 36
+
+
+ 1850 01ba 00       		.byte	0
+ 1851 01bb 00       		.byte	0
+ 1852 01bc 20       		.uleb128 0x20
+ 1853 01bd 2E       		.uleb128 0x2e
+ 1854 01be 00       		.byte	0
+ 1855 01bf 3F       		.uleb128 0x3f
+ 1856 01c0 19       		.uleb128 0x19
+ 1857 01c1 03       		.uleb128 0x3
+ 1858 01c2 0E       		.uleb128 0xe
+ 1859 01c3 3A       		.uleb128 0x3a
+ 1860 01c4 0B       		.uleb128 0xb
+ 1861 01c5 3B       		.uleb128 0x3b
+ 1862 01c6 0B       		.uleb128 0xb
+ 1863 01c7 27       		.uleb128 0x27
+ 1864 01c8 19       		.uleb128 0x19
+ 1865 01c9 49       		.uleb128 0x49
+ 1866 01ca 13       		.uleb128 0x13
+ 1867 01cb 3C       		.uleb128 0x3c
+ 1868 01cc 19       		.uleb128 0x19
+ 1869 01cd 00       		.byte	0
+ 1870 01ce 00       		.byte	0
+ 1871 01cf 21       		.uleb128 0x21
+ 1872 01d0 2E       		.uleb128 0x2e
+ 1873 01d1 00       		.byte	0
+ 1874 01d2 3F       		.uleb128 0x3f
+ 1875 01d3 19       		.uleb128 0x19
+ 1876 01d4 03       		.uleb128 0x3
+ 1877 01d5 0E       		.uleb128 0xe
+ 1878 01d6 3A       		.uleb128 0x3a
+ 1879 01d7 0B       		.uleb128 0xb
+ 1880 01d8 3B       		.uleb128 0x3b
+ 1881 01d9 05       		.uleb128 0x5
+ 1882 01da 27       		.uleb128 0x27
+ 1883 01db 19       		.uleb128 0x19
+ 1884 01dc 3C       		.uleb128 0x3c
+ 1885 01dd 19       		.uleb128 0x19
+ 1886 01de 00       		.byte	0
+ 1887 01df 00       		.byte	0
+ 1888 01e0 00       		.byte	0
+ 1889              		.section	.debug_loc,"",%progbits
+ 1890              	.Ldebug_loc0:
+ 1891              	.LLST0:
+ 1892 0000 00000000 		.4byte	.LVL18
+ 1893 0004 0B000000 		.4byte	.LVL19-1
+ 1894 0008 0100     		.2byte	0x1
+ 1895 000a 50       		.byte	0x50
+ 1896 000b 0B000000 		.4byte	.LVL19-1
+ 1897 000f 24000000 		.4byte	.LVL23
+ 1898 0013 0100     		.2byte	0x1
+ 1899 0015 56       		.byte	0x56
+ 1900 0016 24000000 		.4byte	.LVL23
+ 1901 001a 26000000 		.4byte	.LFE33
+ 1902 001e 0400     		.2byte	0x4
+ 1903 0020 F3       		.byte	0xf3
+ 1904 0021 01       		.uleb128 0x1
+ 1905 0022 50       		.byte	0x50
+ 1906 0023 9F       		.byte	0x9f
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 37
+
+
+ 1907 0024 00000000 		.4byte	0
+ 1908 0028 00000000 		.4byte	0
+ 1909              	.LLST1:
+ 1910 002c 00000000 		.4byte	.LVL18
+ 1911 0030 0B000000 		.4byte	.LVL19-1
+ 1912 0034 0100     		.2byte	0x1
+ 1913 0036 51       		.byte	0x51
+ 1914 0037 0B000000 		.4byte	.LVL19-1
+ 1915 003b 24000000 		.4byte	.LVL22
+ 1916 003f 0100     		.2byte	0x1
+ 1917 0041 55       		.byte	0x55
+ 1918 0042 24000000 		.4byte	.LVL22
+ 1919 0046 26000000 		.4byte	.LFE33
+ 1920 004a 0400     		.2byte	0x4
+ 1921 004c F3       		.byte	0xf3
+ 1922 004d 01       		.uleb128 0x1
+ 1923 004e 51       		.byte	0x51
+ 1924 004f 9F       		.byte	0x9f
+ 1925 0050 00000000 		.4byte	0
+ 1926 0054 00000000 		.4byte	0
+ 1927              	.LLST2:
+ 1928 0058 00000000 		.4byte	.LVL18
+ 1929 005c 0B000000 		.4byte	.LVL19-1
+ 1930 0060 0100     		.2byte	0x1
+ 1931 0062 52       		.byte	0x52
+ 1932 0063 0B000000 		.4byte	.LVL19-1
+ 1933 0067 26000000 		.4byte	.LFE33
+ 1934 006b 0400     		.2byte	0x4
+ 1935 006d F3       		.byte	0xf3
+ 1936 006e 01       		.uleb128 0x1
+ 1937 006f 52       		.byte	0x52
+ 1938 0070 9F       		.byte	0x9f
+ 1939 0071 00000000 		.4byte	0
+ 1940 0075 00000000 		.4byte	0
+ 1941              	.LLST3:
+ 1942 0079 00000000 		.4byte	.LVL24
+ 1943 007d 0F000000 		.4byte	.LVL25-1
+ 1944 0081 0100     		.2byte	0x1
+ 1945 0083 50       		.byte	0x50
+ 1946 0084 0F000000 		.4byte	.LVL25-1
+ 1947 0088 44000000 		.4byte	.LVL34
+ 1948 008c 0100     		.2byte	0x1
+ 1949 008e 55       		.byte	0x55
+ 1950 008f 44000000 		.4byte	.LVL34
+ 1951 0093 46000000 		.4byte	.LFE34
+ 1952 0097 0400     		.2byte	0x4
+ 1953 0099 F3       		.byte	0xf3
+ 1954 009a 01       		.uleb128 0x1
+ 1955 009b 50       		.byte	0x50
+ 1956 009c 9F       		.byte	0x9f
+ 1957 009d 00000000 		.4byte	0
+ 1958 00a1 00000000 		.4byte	0
+ 1959              	.LLST4:
+ 1960 00a5 00000000 		.4byte	.LVL24
+ 1961 00a9 0F000000 		.4byte	.LVL25-1
+ 1962 00ad 0100     		.2byte	0x1
+ 1963 00af 51       		.byte	0x51
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 38
+
+
+ 1964 00b0 0F000000 		.4byte	.LVL25-1
+ 1965 00b4 44000000 		.4byte	.LVL35
+ 1966 00b8 0100     		.2byte	0x1
+ 1967 00ba 56       		.byte	0x56
+ 1968 00bb 44000000 		.4byte	.LVL35
+ 1969 00bf 46000000 		.4byte	.LFE34
+ 1970 00c3 0400     		.2byte	0x4
+ 1971 00c5 F3       		.byte	0xf3
+ 1972 00c6 01       		.uleb128 0x1
+ 1973 00c7 51       		.byte	0x51
+ 1974 00c8 9F       		.byte	0x9f
+ 1975 00c9 00000000 		.4byte	0
+ 1976 00cd 00000000 		.4byte	0
+ 1977              	.LLST5:
+ 1978 00d1 00000000 		.4byte	.LVL24
+ 1979 00d5 0F000000 		.4byte	.LVL25-1
+ 1980 00d9 0100     		.2byte	0x1
+ 1981 00db 52       		.byte	0x52
+ 1982 00dc 0F000000 		.4byte	.LVL25-1
+ 1983 00e0 46000000 		.4byte	.LFE34
+ 1984 00e4 0400     		.2byte	0x4
+ 1985 00e6 F3       		.byte	0xf3
+ 1986 00e7 01       		.uleb128 0x1
+ 1987 00e8 52       		.byte	0x52
+ 1988 00e9 9F       		.byte	0x9f
+ 1989 00ea 00000000 		.4byte	0
+ 1990 00ee 00000000 		.4byte	0
+ 1991              	.LLST6:
+ 1992 00f2 00000000 		.4byte	.LVL24
+ 1993 00f6 0F000000 		.4byte	.LVL25-1
+ 1994 00fa 0100     		.2byte	0x1
+ 1995 00fc 53       		.byte	0x53
+ 1996 00fd 0F000000 		.4byte	.LVL25-1
+ 1997 0101 46000000 		.4byte	.LFE34
+ 1998 0105 0400     		.2byte	0x4
+ 1999 0107 F3       		.byte	0xf3
+ 2000 0108 01       		.uleb128 0x1
+ 2001 0109 53       		.byte	0x53
+ 2002 010a 9F       		.byte	0x9f
+ 2003 010b 00000000 		.4byte	0
+ 2004 010f 00000000 		.4byte	0
+ 2005              	.LLST7:
+ 2006 0113 36000000 		.4byte	.LVL30
+ 2007 0117 44000000 		.4byte	.LVL33
+ 2008 011b 0100     		.2byte	0x1
+ 2009 011d 54       		.byte	0x54
+ 2010 011e 44000000 		.4byte	.LVL33
+ 2011 0122 46000000 		.4byte	.LFE34
+ 2012 0126 0100     		.2byte	0x1
+ 2013 0128 50       		.byte	0x50
+ 2014 0129 00000000 		.4byte	0
+ 2015 012d 00000000 		.4byte	0
+ 2016              		.section	.debug_aranges,"",%progbits
+ 2017 0000 44000000 		.4byte	0x44
+ 2018 0004 0200     		.2byte	0x2
+ 2019 0006 00000000 		.4byte	.Ldebug_info0
+ 2020 000a 04       		.byte	0x4
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 39
+
+
+ 2021 000b 00       		.byte	0
+ 2022 000c 0000     		.2byte	0
+ 2023 000e 0000     		.2byte	0
+ 2024 0010 00000000 		.4byte	.LFB35
+ 2025 0014 44000000 		.4byte	.LFE35-.LFB35
+ 2026 0018 00000000 		.4byte	.LFB36
+ 2027 001c 14000000 		.4byte	.LFE36-.LFB36
+ 2028 0020 00000000 		.4byte	.LFB37
+ 2029 0024 5C000000 		.4byte	.LFE37-.LFB37
+ 2030 0028 00000000 		.4byte	.LFB33
+ 2031 002c 26000000 		.4byte	.LFE33-.LFB33
+ 2032 0030 00000000 		.4byte	.LFB34
+ 2033 0034 46000000 		.4byte	.LFE34-.LFB34
+ 2034 0038 00000000 		.4byte	.LFB38
+ 2035 003c 50000000 		.4byte	.LFE38-.LFB38
+ 2036 0040 00000000 		.4byte	0
+ 2037 0044 00000000 		.4byte	0
+ 2038              		.section	.debug_ranges,"",%progbits
+ 2039              	.Ldebug_ranges0:
+ 2040 0000 00000000 		.4byte	.LFB35
+ 2041 0004 44000000 		.4byte	.LFE35
+ 2042 0008 00000000 		.4byte	.LFB36
+ 2043 000c 14000000 		.4byte	.LFE36
+ 2044 0010 00000000 		.4byte	.LFB37
+ 2045 0014 5C000000 		.4byte	.LFE37
+ 2046 0018 00000000 		.4byte	.LFB33
+ 2047 001c 26000000 		.4byte	.LFE33
+ 2048 0020 00000000 		.4byte	.LFB34
+ 2049 0024 46000000 		.4byte	.LFE34
+ 2050 0028 00000000 		.4byte	.LFB38
+ 2051 002c 50000000 		.4byte	.LFE38
+ 2052 0030 00000000 		.4byte	0
+ 2053 0034 00000000 		.4byte	0
+ 2054              		.section	.debug_line,"",%progbits
+ 2055              	.Ldebug_line0:
+ 2056 0000 59020000 		.section	.debug_str,"MS",%progbits,1
+ 2056      0200AC01 
+ 2056      00000201 
+ 2056      FB0E0D00 
+ 2056      01010101 
+ 2057              	.LASF16:
+ 2058 0000 75696E74 		.ascii	"uint16\000"
+ 2058      313600
+ 2059              	.LASF80:
+ 2060 0007 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2060      4320342E 
+ 2060      392E3320 
+ 2060      32303135 
+ 2060      30333033 
+ 2061 003a 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 2061      20726576 
+ 2061      6973696F 
+ 2061      6E203232 
+ 2061      31323230 
+ 2062 006d 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 2062      66756E63 
+ 2062      74696F6E 
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 40
+
+
+ 2062      2D736563 
+ 2062      74696F6E 
+ 2063              	.LASF78:
+ 2064 0095 52544F53 		.ascii	"RTOS_Start\000"
+ 2064      5F537461 
+ 2064      727400
+ 2065              	.LASF31:
+ 2066 00a0 4D616E75 		.ascii	"Manufacture_ID\000"
+ 2066      66616374 
+ 2066      7572655F 
+ 2066      494400
+ 2067              	.LASF34:
+ 2068 00af 44697370 		.ascii	"Display_String\000"
+ 2068      6C61795F 
+ 2068      53747269 
+ 2068      6E6700
+ 2069              	.LASF3:
+ 2070 00be 5F5F7569 		.ascii	"__uint8_t\000"
+ 2070      6E74385F 
+ 2070      7400
+ 2071              	.LASF62:
+ 2072 00c8 4C43445F 		.ascii	"LCD_Update\000"
+ 2072      55706461 
+ 2072      746500
+ 2073              	.LASF33:
+ 2074 00d3 54656D70 		.ascii	"Temp_Fractional\000"
+ 2074      5F467261 
+ 2074      6374696F 
+ 2074      6E616C00 
+ 2075              	.LASF10:
+ 2076 00e3 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2076      206C6F6E 
+ 2076      6720756E 
+ 2076      7369676E 
+ 2076      65642069 
+ 2077              	.LASF35:
+ 2078 00fa 4C4D3932 		.ascii	"LM92_Struct\000"
+ 2078      5F537472 
+ 2078      75637400 
+ 2079              	.LASF47:
+ 2080 0106 4932435F 		.ascii	"I2C_SendBuffer\000"
+ 2080      53656E64 
+ 2080      42756666 
+ 2080      657200
+ 2081              	.LASF24:
+ 2082 0115 5369676E 		.ascii	"Sign\000"
+ 2082      00
+ 2083              	.LASF57:
+ 2084 011a 4C4D3932 		.ascii	"LM92_GetRegisters\000"
+ 2084      5F476574 
+ 2084      52656769 
+ 2084      73746572 
+ 2084      7300
+ 2085              	.LASF9:
+ 2086 012c 6C6F6E67 		.ascii	"long long int\000"
+ 2086      206C6F6E 
+ 2086      6720696E 
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 41
+
+
+ 2086      7400
+ 2087              	.LASF0:
+ 2088 013a 7369676E 		.ascii	"signed char\000"
+ 2088      65642063 
+ 2088      68617200 
+ 2089              	.LASF81:
+ 2090 0146 2E5C6D61 		.ascii	".\\main.c\000"
+ 2090      696E2E63 
+ 2090      00
+ 2091              	.LASF76:
+ 2092 014f 4144435F 		.ascii	"ADC_Start\000"
+ 2092      53746172 
+ 2092      7400
+ 2093              	.LASF6:
+ 2094 0159 6C6F6E67 		.ascii	"long int\000"
+ 2094      20696E74 
+ 2094      00
+ 2095              	.LASF43:
+ 2096 0162 4144435F 		.ascii	"ADC_Start_Convert_Task\000"
+ 2096      53746172 
+ 2096      745F436F 
+ 2096      6E766572 
+ 2096      745F5461 
+ 2097              	.LASF15:
+ 2098 0179 75696E74 		.ascii	"uint8\000"
+ 2098      3800
+ 2099              	.LASF13:
+ 2100 017f 75696E74 		.ascii	"uint16_t\000"
+ 2100      31365F74 
+ 2100      00
+ 2101              	.LASF20:
+ 2102 0188 646F7562 		.ascii	"double\000"
+ 2102      6C6500
+ 2103              	.LASF58:
+ 2104 018f 4C4D3932 		.ascii	"LM92_GetTemperature\000"
+ 2104      5F476574 
+ 2104      54656D70 
+ 2104      65726174 
+ 2104      75726500 
+ 2105              	.LASF40:
+ 2106 01a3 566F6C74 		.ascii	"Volts\000"
+ 2106      7300
+ 2107              	.LASF71:
+ 2108 01a9 44697370 		.ascii	"DisplayReset_Write\000"
+ 2108      6C617952 
+ 2108      65736574 
+ 2108      5F577269 
+ 2108      746500
+ 2109              	.LASF17:
+ 2110 01bc 75696E74 		.ascii	"uint32\000"
+ 2110      333200
+ 2111              	.LASF45:
+ 2112 01c3 70446174 		.ascii	"pData\000"
+ 2112      6100
+ 2113              	.LASF7:
+ 2114 01c9 5F5F7569 		.ascii	"__uint32_t\000"
+ 2114      6E743332 
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 42
+
+
+ 2114      5F7400
+ 2115              	.LASF61:
+ 2116 01d4 53657454 		.ascii	"SetTimerTask\000"
+ 2116      696D6572 
+ 2116      5461736B 
+ 2116      00
+ 2117              	.LASF69:
+ 2118 01e1 4932435F 		.ascii	"I2C_I2CMasterStatus\000"
+ 2118      4932434D 
+ 2118      61737465 
+ 2118      72537461 
+ 2118      74757300 
+ 2119              	.LASF11:
+ 2120 01f5 756E7369 		.ascii	"unsigned int\000"
+ 2120      676E6564 
+ 2120      20696E74 
+ 2120      00
+ 2121              	.LASF83:
+ 2122 0202 4144435F 		.ascii	"ADC_Get_Battery_Volts\000"
+ 2122      4765745F 
+ 2122      42617474 
+ 2122      6572795F 
+ 2122      566F6C74 
+ 2123              	.LASF77:
+ 2124 0218 54696D65 		.ascii	"Timer_Start\000"
+ 2124      725F5374 
+ 2124      61727400 
+ 2125              	.LASF8:
+ 2126 0224 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2126      20756E73 
+ 2126      69676E65 
+ 2126      6420696E 
+ 2126      7400
+ 2127              	.LASF56:
+ 2128 0236 42617474 		.ascii	"Battery_Operation_Struct\000"
+ 2128      6572795F 
+ 2128      4F706572 
+ 2128      6174696F 
+ 2128      6E5F5374 
+ 2129              	.LASF63:
+ 2130 024f 4144435F 		.ascii	"ADC_StartConvert\000"
+ 2130      53746172 
+ 2130      74436F6E 
+ 2130      76657274 
+ 2130      00
+ 2131              	.LASF50:
+ 2132 0260 52656769 		.ascii	"Register\000"
+ 2132      73746572 
+ 2132      00
+ 2133              	.LASF41:
+ 2134 0269 42617474 		.ascii	"Battery_Sttruct\000"
+ 2134      6572795F 
+ 2134      53747472 
+ 2134      75637400 
+ 2135              	.LASF5:
+ 2136 0279 73686F72 		.ascii	"short unsigned int\000"
+ 2136      7420756E 
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 43
+
+
+ 2136      7369676E 
+ 2136      65642069 
+ 2136      6E7400
+ 2137              	.LASF82:
+ 2138 028c 433A5C55 		.ascii	"C:\\Users\\Vit\\Documents\\PSoC Creator\\SensorTest"
+ 2138      73657273 
+ 2138      5C566974 
+ 2138      5C446F63 
+ 2138      756D656E 
+ 2139 02ba 5C53656E 		.ascii	"\\SensorTest.cydsn\000"
+ 2139      736F7254 
+ 2139      6573742E 
+ 2139      63796473 
+ 2139      6E00
+ 2140              	.LASF75:
+ 2141 02cc 4C43445F 		.ascii	"LCD_Clear\000"
+ 2141      436C6561 
+ 2141      7200
+ 2142              	.LASF70:
+ 2143 02d6 4932435F 		.ascii	"I2C_I2CMasterReadBuf\000"
+ 2143      4932434D 
+ 2143      61737465 
+ 2143      72526561 
+ 2143      64427566 
+ 2144              	.LASF49:
+ 2145 02eb 41647265 		.ascii	"Adress\000"
+ 2145      737300
+ 2146              	.LASF44:
+ 2147 02f2 44657641 		.ascii	"DevAddress\000"
+ 2147      64647265 
+ 2147      737300
+ 2148              	.LASF68:
+ 2149 02fd 4932435F 		.ascii	"I2C_I2CMasterClearStatus\000"
+ 2149      4932434D 
+ 2149      61737465 
+ 2149      72436C65 
+ 2149      61725374 
+ 2150              	.LASF52:
+ 2151 0316 4572726F 		.ascii	"Error\000"
+ 2151      7200
+ 2152              	.LASF22:
+ 2153 031c 73697A65 		.ascii	"sizetype\000"
+ 2153      74797065 
+ 2153      00
+ 2154              	.LASF59:
+ 2155 0325 4C43445F 		.ascii	"LCD_GotoXY\000"
+ 2155      476F746F 
+ 2155      585900
+ 2156              	.LASF64:
+ 2157 0330 4144435F 		.ascii	"ADC_IsEndConversion\000"
+ 2157      4973456E 
+ 2157      64436F6E 
+ 2157      76657273 
+ 2157      696F6E00 
+ 2158              	.LASF74:
+ 2159 0344 4C43445F 		.ascii	"LCD_Init\000"
+ 2159      496E6974 
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 44
+
+
+ 2159      00
+ 2160              	.LASF54:
+ 2161 034d 4D61696E 		.ascii	"MainTimer\000"
+ 2161      54696D65 
+ 2161      7200
+ 2162              	.LASF32:
+ 2163 0357 54656D70 		.ascii	"Temp_Integer\000"
+ 2163      5F496E74 
+ 2163      65676572 
+ 2163      00
+ 2164              	.LASF30:
+ 2165 0364 545F4879 		.ascii	"T_Hysteresis\000"
+ 2165      73746572 
+ 2165      65736973 
+ 2165      00
+ 2166              	.LASF19:
+ 2167 0371 666C6F61 		.ascii	"float\000"
+ 2167      7400
+ 2168              	.LASF46:
+ 2169 0377 53697A65 		.ascii	"Size\000"
+ 2169      00
+ 2170              	.LASF60:
+ 2171 037c 4C43445F 		.ascii	"LCD_FStr\000"
+ 2171      46537472 
+ 2171      00
+ 2172              	.LASF1:
+ 2173 0385 756E7369 		.ascii	"unsigned char\000"
+ 2173      676E6564 
+ 2173      20636861 
+ 2173      7200
+ 2174              	.LASF23:
+ 2175 0393 54656D70 		.ascii	"Temp_Reg\000"
+ 2175      5F526567 
+ 2175      00
+ 2176              	.LASF2:
+ 2177 039c 73686F72 		.ascii	"short int\000"
+ 2177      7420696E 
+ 2177      7400
+ 2178              	.LASF37:
+ 2179 03a6 476F546F 		.ascii	"GoToTask\000"
+ 2179      5461736B 
+ 2179      00
+ 2180              	.LASF48:
+ 2181 03af 4932435F 		.ascii	"I2C_ReadRegister\000"
+ 2181      52656164 
+ 2181      52656769 
+ 2181      73746572 
+ 2181      00
+ 2182              	.LASF53:
+ 2183 03c0 5461736B 		.ascii	"TaskQueue\000"
+ 2183      51756575 
+ 2183      6500
+ 2184              	.LASF14:
+ 2185 03ca 75696E74 		.ascii	"uint32_t\000"
+ 2185      33325F74 
+ 2185      00
+ 2186              	.LASF21:
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 45
+
+
+ 2187 03d3 63686172 		.ascii	"char\000"
+ 2187      00
+ 2188              	.LASF4:
+ 2189 03d8 5F5F7569 		.ascii	"__uint16_t\000"
+ 2189      6E743136 
+ 2189      5F7400
+ 2190              	.LASF38:
+ 2191 03e3 54696D65 		.ascii	"Time\000"
+ 2191      00
+ 2192              	.LASF55:
+ 2193 03e8 4C4D3932 		.ascii	"LM92_Operational_Struct\000"
+ 2193      5F4F7065 
+ 2193      72617469 
+ 2193      6F6E616C 
+ 2193      5F537472 
+ 2194              	.LASF73:
+ 2195 0400 43794465 		.ascii	"CyDelay\000"
+ 2195      6C617900 
+ 2196              	.LASF79:
+ 2197 0408 5461736B 		.ascii	"TaskManager\000"
+ 2197      4D616E61 
+ 2197      67657200 
+ 2198              	.LASF26:
+ 2199 0414 436F6E66 		.ascii	"Config\000"
+ 2199      696700
+ 2200              	.LASF28:
+ 2201 041b 545F4C6F 		.ascii	"T_Low\000"
+ 2201      7700
+ 2202              	.LASF27:
+ 2203 0421 545F4849 		.ascii	"T_HI\000"
+ 2203      00
+ 2204              	.LASF39:
+ 2205 0426 4144435F 		.ascii	"ADC_Result\000"
+ 2205      52657375 
+ 2205      6C7400
+ 2206              	.LASF67:
+ 2207 0431 4932435F 		.ascii	"I2C_I2CMasterWriteBuf\000"
+ 2207      4932434D 
+ 2207      61737465 
+ 2207      72577269 
+ 2207      74654275 
+ 2208              	.LASF12:
+ 2209 0447 75696E74 		.ascii	"uint8_t\000"
+ 2209      385F7400 
+ 2210              	.LASF72:
+ 2211 044f 4932435F 		.ascii	"I2C_Start\000"
+ 2211      53746172 
+ 2211      7400
+ 2212              	.LASF18:
+ 2213 0459 696E7431 		.ascii	"int16\000"
+ 2213      3600
+ 2214              	.LASF51:
+ 2215 045f 52656769 		.ascii	"Registers_Lenght_Bit\000"
+ 2215      73746572 
+ 2215      735F4C65 
+ 2215      6E676874 
+ 2215      5F426974 
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\ccaIXlnT.s 			page 46
+
+
+ 2216              	.LASF42:
+ 2217 0474 4C4D3932 		.ascii	"LM92_Action\000"
+ 2217      5F416374 
+ 2217      696F6E00 
+ 2218              	.LASF66:
+ 2219 0480 42617474 		.ascii	"Battery_Get_Volts\000"
+ 2219      6572795F 
+ 2219      4765745F 
+ 2219      566F6C74 
+ 2219      7300
+ 2220              	.LASF25:
+ 2221 0492 53746174 		.ascii	"Status\000"
+ 2221      757300
+ 2222              	.LASF29:
+ 2223 0499 545F4372 		.ascii	"T_Crit\000"
+ 2223      697400
+ 2224              	.LASF84:
+ 2225 04a0 6D61696E 		.ascii	"main\000"
+ 2225      00
+ 2226              	.LASF36:
+ 2227 04a5 54505452 		.ascii	"TPTR\000"
+ 2227      00
+ 2228              	.LASF65:
+ 2229 04aa 4144435F 		.ascii	"ADC_GetResult16\000"
+ 2229      47657452 
+ 2229      6573756C 
+ 2229      74313600 
+ 2230              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

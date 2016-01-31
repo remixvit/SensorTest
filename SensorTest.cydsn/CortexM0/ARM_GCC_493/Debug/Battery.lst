@@ -1,0 +1,1040 @@
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"Battery.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	__aeabi_uidiv
+  18              		.global	__aeabi_uidivmod
+  19              		.section	.text.Battery_Get_Volts,"ax",%progbits
+  20              		.align	1
+  21              		.global	Battery_Get_Volts
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	Battery_Get_Volts, %function
+  25              	Battery_Get_Volts:
+  26              	.LFB33:
+  27              		.file 1 ".\\Battery.c"
+   1:.\Battery.c   **** /* ========================================
+   2:.\Battery.c   ****  *
+   3:.\Battery.c   ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\Battery.c   ****  * All Rights Reserved
+   5:.\Battery.c   ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\Battery.c   ****  *
+   7:.\Battery.c   ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\Battery.c   ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\Battery.c   ****  *
+  10:.\Battery.c   ****  * ========================================
+  11:.\Battery.c   **** */
+  12:.\Battery.c   **** #include <Battery.h>
+  13:.\Battery.c   **** #include <bcd.h>
+  14:.\Battery.c   **** 
+  15:.\Battery.c   **** void Battery_Get_Volts()
+  16:.\Battery.c   **** {
+  28              		.loc 1 16 0
+  29              		.cfi_startproc
+  30 0000 10B5     		push	{r4, lr}
+  31              		.cfi_def_cfa_offset 8
+  32              		.cfi_offset 4, -8
+  33              		.cfi_offset 14, -4
+  17:.\Battery.c   ****     uint8 Bufer;
+  18:.\Battery.c   ****     Battery_Operation_Struct.Volts = ADC_CountsTo_mVolts(0, Battery_Operation_Struct.ADC_Result);
+  34              		.loc 1 18 0
+  35 0002 2A4C     		ldr	r4, .L11
+  36 0004 0020     		mov	r0, #0
+  37 0006 0023     		mov	r3, #0
+  38 0008 E15E     		ldrsh	r1, [r4, r3]
+  39 000a FFF7FEFF 		bl	ADC_CountsTo_mVolts
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 2
+
+
+  40              	.LVL0:
+  41 000e 80B2     		uxth	r0, r0
+  19:.\Battery.c   ****     Bufer = Battery_Operation_Struct.Volts / 100;
+  42              		.loc 1 19 0
+  43 0010 6421     		mov	r1, #100
+  18:.\Battery.c   ****     Bufer = Battery_Operation_Struct.Volts / 100;
+  44              		.loc 1 18 0
+  45 0012 6080     		strh	r0, [r4, #2]
+  46              	.LVL1:
+  47              		.loc 1 19 0
+  48 0014 FFF7FEFF 		bl	__aeabi_uidiv
+  49              	.LVL2:
+  20:.\Battery.c   ****     BCD_Uchar(Bufer);
+  50              		.loc 1 20 0
+  51 0018 C0B2     		uxtb	r0, r0
+  52 001a FFF7FEFF 		bl	BCD_Uchar
+  53              	.LVL3:
+  21:.\Battery.c   ****     Battery_Operation_Struct.Display_String[0] = *(BCD_GetPointerBuf() + 2);
+  54              		.loc 1 21 0
+  55 001e FFF7FEFF 		bl	BCD_GetPointerBuf
+  56              	.LVL4:
+  57 0022 8378     		ldrb	r3, [r0, #2]
+  22:.\Battery.c   ****     
+  23:.\Battery.c   ****     Battery_Operation_Struct.Display_String[1] = ',';
+  24:.\Battery.c   ****     
+  25:.\Battery.c   ****     Bufer = (Battery_Operation_Struct.Volts % 100) / 10;
+  58              		.loc 1 25 0
+  59 0024 6421     		mov	r1, #100
+  21:.\Battery.c   ****     Battery_Operation_Struct.Display_String[0] = *(BCD_GetPointerBuf() + 2);
+  60              		.loc 1 21 0
+  61 0026 2371     		strb	r3, [r4, #4]
+  23:.\Battery.c   ****     
+  62              		.loc 1 23 0
+  63 0028 2C23     		mov	r3, #44
+  64              		.loc 1 25 0
+  65 002a 6088     		ldrh	r0, [r4, #2]
+  23:.\Battery.c   ****     
+  66              		.loc 1 23 0
+  67 002c 6371     		strb	r3, [r4, #5]
+  68              	.LVL5:
+  69              		.loc 1 25 0
+  70 002e FFF7FEFF 		bl	__aeabi_uidivmod
+  71              	.LVL6:
+  72 0032 88B2     		uxth	r0, r1
+  73 0034 0A21     		mov	r1, #10
+  74 0036 FFF7FEFF 		bl	__aeabi_uidiv
+  75              	.LVL7:
+  26:.\Battery.c   ****     BCD_Uchar(Bufer);
+  76              		.loc 1 26 0
+  77 003a C0B2     		uxtb	r0, r0
+  78 003c FFF7FEFF 		bl	BCD_Uchar
+  79              	.LVL8:
+  27:.\Battery.c   ****     Battery_Operation_Struct.Display_String[2] = *(BCD_GetPointerBuf() + 2);
+  80              		.loc 1 27 0
+  81 0040 FFF7FEFF 		bl	BCD_GetPointerBuf
+  82              	.LVL9:
+  83 0044 8378     		ldrb	r3, [r0, #2]
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 3
+
+
+  28:.\Battery.c   ****     
+  29:.\Battery.c   ****     Bufer = Battery_Operation_Struct.Volts % 10;
+  84              		.loc 1 29 0
+  85 0046 0A21     		mov	r1, #10
+  27:.\Battery.c   ****     Battery_Operation_Struct.Display_String[2] = *(BCD_GetPointerBuf() + 2);
+  86              		.loc 1 27 0
+  87 0048 A371     		strb	r3, [r4, #6]
+  88              	.LVL10:
+  89              		.loc 1 29 0
+  90 004a 6088     		ldrh	r0, [r4, #2]
+  91 004c FFF7FEFF 		bl	__aeabi_uidivmod
+  92              	.LVL11:
+  30:.\Battery.c   ****     BCD_Uchar(Bufer);
+  93              		.loc 1 30 0
+  94 0050 C8B2     		uxtb	r0, r1
+  95 0052 FFF7FEFF 		bl	BCD_Uchar
+  96              	.LVL12:
+  31:.\Battery.c   ****     Battery_Operation_Struct.Display_String[3] = *(BCD_GetPointerBuf() + 2);
+  97              		.loc 1 31 0
+  98 0056 FFF7FEFF 		bl	BCD_GetPointerBuf
+  99              	.LVL13:
+ 100 005a 8378     		ldrb	r3, [r0, #2]
+ 101 005c E371     		strb	r3, [r4, #7]
+  32:.\Battery.c   ****     Battery_Operation_Struct.Display_String[4] = 'V';
+ 102              		.loc 1 32 0
+ 103 005e 5623     		mov	r3, #86
+ 104 0060 2372     		strb	r3, [r4, #8]
+  33:.\Battery.c   ****     
+  34:.\Battery.c   ****     switch(Charge_Status_Reg_Read())
+ 105              		.loc 1 34 0
+ 106 0062 FFF7FEFF 		bl	Charge_Status_Reg_Read
+ 107              	.LVL14:
+ 108 0066 231C     		mov	r3, r4
+ 109 0068 0328     		cmp	r0, #3
+ 110 006a 1DD8     		bhi	.L1
+ 111 006c 2022     		mov	r2, #32
+  35:.\Battery.c   ****     {
+  36:.\Battery.c   ****         case 0:
+  37:.\Battery.c   ****             Battery_Operation_Struct.Display_String[5] = ' ';
+  38:.\Battery.c   ****             Battery_Operation_Struct.Display_String[6] = 'P';
+  39:.\Battery.c   ****             Battery_Operation_Struct.Display_String[7] = 'C';
+  40:.\Battery.c   ****             Battery_Operation_Struct.Display_String[8] = 'H';
+  41:.\Battery.c   ****             Battery_Operation_Struct.Display_String[9] = '\0';
+  42:.\Battery.c   ****             break;
+  43:.\Battery.c   ****         case 1:
+  44:.\Battery.c   ****             Battery_Operation_Struct.Display_String[5] = ' ';
+  45:.\Battery.c   ****             Battery_Operation_Struct.Display_String[6] = 'C';
+  46:.\Battery.c   ****             Battery_Operation_Struct.Display_String[7] = 'H';
+  47:.\Battery.c   ****             Battery_Operation_Struct.Display_String[8] = 'D';
+  48:.\Battery.c   ****             Battery_Operation_Struct.Display_String[9] = '\0';
+  49:.\Battery.c   ****             break;
+  50:.\Battery.c   ****         case 2:
+  51:.\Battery.c   ****             Battery_Operation_Struct.Display_String[5] = ' ';
+  52:.\Battery.c   ****             Battery_Operation_Struct.Display_String[6] = 'F';
+  53:.\Battery.c   ****             Battery_Operation_Struct.Display_String[7] = 'C';
+  54:.\Battery.c   ****             Battery_Operation_Struct.Display_String[8] = 'H';
+  55:.\Battery.c   ****             Battery_Operation_Struct.Display_String[9] = '\0';
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 4
+
+
+  56:.\Battery.c   ****             break;
+  57:.\Battery.c   ****         case 3:
+  58:.\Battery.c   ****             Battery_Operation_Struct.Display_String[5] = ' ';
+ 112              		.loc 1 58 0
+ 113 006e 6272     		strb	r2, [r4, #9]
+  34:.\Battery.c   ****     {
+ 114              		.loc 1 34 0
+ 115 0070 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 116              	.L4:
+ 117 0074 02       		.byte	(.L3-.L4)/2
+ 118 0075 06       		.byte	(.L5-.L4)/2
+ 119 0076 0C       		.byte	(.L6-.L4)/2
+ 120 0077 12       		.byte	(.L7-.L4)/2
+ 121              		.p2align 1
+ 122              	.L3:
+  38:.\Battery.c   ****             Battery_Operation_Struct.Display_String[7] = 'C';
+ 123              		.loc 1 38 0
+ 124 0078 5022     		mov	r2, #80
+ 125 007a A272     		strb	r2, [r4, #10]
+  39:.\Battery.c   ****             Battery_Operation_Struct.Display_String[8] = 'H';
+ 126              		.loc 1 39 0
+ 127 007c 0D3A     		sub	r2, r2, #13
+ 128 007e 08E0     		b	.L9
+ 129              	.L5:
+  45:.\Battery.c   ****             Battery_Operation_Struct.Display_String[7] = 'H';
+ 130              		.loc 1 45 0
+ 131 0080 4322     		mov	r2, #67
+ 132 0082 A272     		strb	r2, [r4, #10]
+  46:.\Battery.c   ****             Battery_Operation_Struct.Display_String[8] = 'D';
+ 133              		.loc 1 46 0
+ 134 0084 0532     		add	r2, r2, #5
+ 135 0086 E272     		strb	r2, [r4, #11]
+  47:.\Battery.c   ****             Battery_Operation_Struct.Display_String[9] = '\0';
+ 136              		.loc 1 47 0
+ 137 0088 043A     		sub	r2, r2, #4
+ 138 008a 0AE0     		b	.L8
+ 139              	.L6:
+  52:.\Battery.c   ****             Battery_Operation_Struct.Display_String[7] = 'C';
+ 140              		.loc 1 52 0
+ 141 008c 4622     		mov	r2, #70
+ 142 008e A272     		strb	r2, [r4, #10]
+  53:.\Battery.c   ****             Battery_Operation_Struct.Display_String[8] = 'H';
+ 143              		.loc 1 53 0
+ 144 0090 033A     		sub	r2, r2, #3
+ 145              	.L9:
+ 146 0092 DA72     		strb	r2, [r3, #11]
+  54:.\Battery.c   ****             Battery_Operation_Struct.Display_String[9] = '\0';
+ 147              		.loc 1 54 0
+ 148 0094 0532     		add	r2, r2, #5
+ 149 0096 04E0     		b	.L8
+ 150              	.L7:
+  59:.\Battery.c   ****             Battery_Operation_Struct.Display_String[6] = 'S';
+ 151              		.loc 1 59 0
+ 152 0098 5322     		mov	r2, #83
+ 153 009a A272     		strb	r2, [r4, #10]
+  60:.\Battery.c   ****             Battery_Operation_Struct.Display_String[7] = 'L';
+ 154              		.loc 1 60 0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 5
+
+
+ 155 009c 073A     		sub	r2, r2, #7
+ 156 009e E272     		strb	r2, [r4, #11]
+  61:.\Battery.c   ****             Battery_Operation_Struct.Display_String[8] = 'P';
+ 157              		.loc 1 61 0
+ 158 00a0 0432     		add	r2, r2, #4
+ 159              	.L8:
+ 160 00a2 1A73     		strb	r2, [r3, #12]
+  62:.\Battery.c   ****             Battery_Operation_Struct.Display_String[9] = '\0';
+ 161              		.loc 1 62 0
+ 162 00a4 0022     		mov	r2, #0
+ 163 00a6 5A73     		strb	r2, [r3, #13]
+ 164              	.L1:
+  63:.\Battery.c   ****             break;
+  64:.\Battery.c   ****     }
+  65:.\Battery.c   **** }
+ 165              		.loc 1 65 0
+ 166              		@ sp needed
+ 167 00a8 10BD     		pop	{r4, pc}
+ 168              	.L12:
+ 169 00aa C046     		.align	2
+ 170              	.L11:
+ 171 00ac 00000000 		.word	Battery_Operation_Struct
+ 172              		.cfi_endproc
+ 173              	.LFE33:
+ 174              		.size	Battery_Get_Volts, .-Battery_Get_Volts
+ 175              		.comm	Battery_Operation_Struct,14,2
+ 176              		.text
+ 177              	.Letext0:
+ 178              		.file 2 "c:\\my programs\\psoc\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.3\\arm-none
+ 179              		.file 3 "c:\\my programs\\psoc\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.3\\arm-none
+ 180              		.file 4 "Generated_Source\\PSoC4/cytypes.h"
+ 181              		.file 5 "./Battery.h"
+ 182              		.file 6 "./bcd.h"
+ 183              		.file 7 "Generated_Source\\PSoC4/Charge_Status_Reg.h"
+ 184              		.file 8 "Generated_Source\\PSoC4/ADC.h"
+ 185              		.section	.debug_info,"",%progbits
+ 186              	.Ldebug_info0:
+ 187 0000 DD010000 		.4byte	0x1dd
+ 188 0004 0400     		.2byte	0x4
+ 189 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 190 000a 04       		.byte	0x4
+ 191 000b 01       		.uleb128 0x1
+ 192 000c 1A000000 		.4byte	.LASF25
+ 193 0010 01       		.byte	0x1
+ 194 0011 D3000000 		.4byte	.LASF26
+ 195 0015 F3000000 		.4byte	.LASF27
+ 196 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 197 001d 00000000 		.4byte	0
+ 198 0021 00000000 		.4byte	.Ldebug_line0
+ 199 0025 02       		.uleb128 0x2
+ 200 0026 02       		.byte	0x2
+ 201 0027 07       		.byte	0x7
+ 202 0028 34020000 		.4byte	.LASF0
+ 203 002c 02       		.uleb128 0x2
+ 204 002d 01       		.byte	0x1
+ 205 002e 06       		.byte	0x6
+ 206 002f 28020000 		.4byte	.LASF1
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 6
+
+
+ 207 0033 03       		.uleb128 0x3
+ 208 0034 10000000 		.4byte	.LASF9
+ 209 0038 02       		.byte	0x2
+ 210 0039 1D       		.byte	0x1d
+ 211 003a 3E000000 		.4byte	0x3e
+ 212 003e 02       		.uleb128 0x2
+ 213 003f 01       		.byte	0x1
+ 214 0040 08       		.byte	0x8
+ 215 0041 E5000000 		.4byte	.LASF2
+ 216 0045 02       		.uleb128 0x2
+ 217 0046 02       		.byte	0x2
+ 218 0047 05       		.byte	0x5
+ 219 0048 52010000 		.4byte	.LASF3
+ 220 004c 02       		.uleb128 0x2
+ 221 004d 04       		.byte	0x4
+ 222 004e 05       		.byte	0x5
+ 223 004f 14020000 		.4byte	.LASF4
+ 224 0053 02       		.uleb128 0x2
+ 225 0054 04       		.byte	0x4
+ 226 0055 07       		.byte	0x7
+ 227 0056 33010000 		.4byte	.LASF5
+ 228 005a 02       		.uleb128 0x2
+ 229 005b 08       		.byte	0x8
+ 230 005c 05       		.byte	0x5
+ 231 005d CB010000 		.4byte	.LASF6
+ 232 0061 02       		.uleb128 0x2
+ 233 0062 08       		.byte	0x8
+ 234 0063 07       		.byte	0x7
+ 235 0064 89010000 		.4byte	.LASF7
+ 236 0068 04       		.uleb128 0x4
+ 237 0069 04       		.byte	0x4
+ 238 006a 05       		.byte	0x5
+ 239 006b 696E7400 		.ascii	"int\000"
+ 240 006f 02       		.uleb128 0x2
+ 241 0070 04       		.byte	0x4
+ 242 0071 07       		.byte	0x7
+ 243 0072 7C010000 		.4byte	.LASF8
+ 244 0076 03       		.uleb128 0x3
+ 245 0077 CB000000 		.4byte	.LASF10
+ 246 007b 03       		.byte	0x3
+ 247 007c 15       		.byte	0x15
+ 248 007d 33000000 		.4byte	0x33
+ 249 0081 03       		.uleb128 0x3
+ 250 0082 0E020000 		.4byte	.LASF11
+ 251 0086 04       		.byte	0x4
+ 252 0087 C2       		.byte	0xc2
+ 253 0088 3E000000 		.4byte	0x3e
+ 254 008c 03       		.uleb128 0x3
+ 255 008d 5C010000 		.4byte	.LASF12
+ 256 0091 04       		.byte	0x4
+ 257 0092 C3       		.byte	0xc3
+ 258 0093 25000000 		.4byte	0x25
+ 259 0097 03       		.uleb128 0x3
+ 260 0098 63010000 		.4byte	.LASF13
+ 261 009c 04       		.byte	0x4
+ 262 009d C4       		.byte	0xc4
+ 263 009e 53000000 		.4byte	0x53
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 7
+
+
+ 264 00a2 03       		.uleb128 0x3
+ 265 00a3 AA010000 		.4byte	.LASF14
+ 266 00a7 04       		.byte	0x4
+ 267 00a8 C6       		.byte	0xc6
+ 268 00a9 45000000 		.4byte	0x45
+ 269 00ad 02       		.uleb128 0x2
+ 270 00ae 04       		.byte	0x4
+ 271 00af 04       		.byte	0x4
+ 272 00b0 DF000000 		.4byte	.LASF15
+ 273 00b4 02       		.uleb128 0x2
+ 274 00b5 08       		.byte	0x8
+ 275 00b6 04       		.byte	0x4
+ 276 00b7 4B010000 		.4byte	.LASF16
+ 277 00bb 02       		.uleb128 0x2
+ 278 00bc 01       		.byte	0x1
+ 279 00bd 08       		.byte	0x8
+ 280 00be D9010000 		.4byte	.LASF17
+ 281 00c2 02       		.uleb128 0x2
+ 282 00c3 04       		.byte	0x4
+ 283 00c4 07       		.byte	0x7
+ 284 00c5 B0010000 		.4byte	.LASF18
+ 285 00c9 05       		.uleb128 0x5
+ 286 00ca 0E       		.byte	0xe
+ 287 00cb 05       		.byte	0x5
+ 288 00cc 12       		.byte	0x12
+ 289 00cd F6000000 		.4byte	0xf6
+ 290 00d1 06       		.uleb128 0x6
+ 291 00d2 1D020000 		.4byte	.LASF19
+ 292 00d6 05       		.byte	0x5
+ 293 00d7 14       		.byte	0x14
+ 294 00d8 8C000000 		.4byte	0x8c
+ 295 00dc 00       		.byte	0
+ 296 00dd 06       		.uleb128 0x6
+ 297 00de 47020000 		.4byte	.LASF20
+ 298 00e2 05       		.byte	0x5
+ 299 00e3 15       		.byte	0x15
+ 300 00e4 8C000000 		.4byte	0x8c
+ 301 00e8 02       		.byte	0x2
+ 302 00e9 06       		.uleb128 0x6
+ 303 00ea BC000000 		.4byte	.LASF21
+ 304 00ee 05       		.byte	0x5
+ 305 00ef 16       		.byte	0x16
+ 306 00f0 F6000000 		.4byte	0xf6
+ 307 00f4 04       		.byte	0x4
+ 308 00f5 00       		.byte	0
+ 309 00f6 07       		.uleb128 0x7
+ 310 00f7 BB000000 		.4byte	0xbb
+ 311 00fb 06010000 		.4byte	0x106
+ 312 00ff 08       		.uleb128 0x8
+ 313 0100 C2000000 		.4byte	0xc2
+ 314 0104 09       		.byte	0x9
+ 315 0105 00       		.byte	0
+ 316 0106 03       		.uleb128 0x3
+ 317 0107 00000000 		.4byte	.LASF22
+ 318 010b 05       		.byte	0x5
+ 319 010c 17       		.byte	0x17
+ 320 010d C9000000 		.4byte	0xc9
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 8
+
+
+ 321 0111 09       		.uleb128 0x9
+ 322 0112 B9010000 		.4byte	.LASF28
+ 323 0116 01       		.byte	0x1
+ 324 0117 0F       		.byte	0xf
+ 325 0118 00000000 		.4byte	.LFB33
+ 326 011c B0000000 		.4byte	.LFE33-.LFB33
+ 327 0120 01       		.uleb128 0x1
+ 328 0121 9C       		.byte	0x9c
+ 329 0122 88010000 		.4byte	0x188
+ 330 0126 0A       		.uleb128 0xa
+ 331 0127 45010000 		.4byte	.LASF29
+ 332 012b 01       		.byte	0x1
+ 333 012c 11       		.byte	0x11
+ 334 012d 81000000 		.4byte	0x81
+ 335 0131 00000000 		.4byte	.LLST0
+ 336 0135 0B       		.uleb128 0xb
+ 337 0136 0E000000 		.4byte	.LVL0
+ 338 013a 99010000 		.4byte	0x199
+ 339 013e 48010000 		.4byte	0x148
+ 340 0142 0C       		.uleb128 0xc
+ 341 0143 01       		.uleb128 0x1
+ 342 0144 50       		.byte	0x50
+ 343 0145 01       		.uleb128 0x1
+ 344 0146 30       		.byte	0x30
+ 345 0147 00       		.byte	0
+ 346 0148 0D       		.uleb128 0xd
+ 347 0149 1E000000 		.4byte	.LVL3
+ 348 014d B3010000 		.4byte	0x1b3
+ 349 0151 0D       		.uleb128 0xd
+ 350 0152 22000000 		.4byte	.LVL4
+ 351 0156 C4010000 		.4byte	0x1c4
+ 352 015a 0D       		.uleb128 0xd
+ 353 015b 40000000 		.4byte	.LVL8
+ 354 015f B3010000 		.4byte	0x1b3
+ 355 0163 0D       		.uleb128 0xd
+ 356 0164 44000000 		.4byte	.LVL9
+ 357 0168 C4010000 		.4byte	0x1c4
+ 358 016c 0D       		.uleb128 0xd
+ 359 016d 56000000 		.4byte	.LVL12
+ 360 0171 B3010000 		.4byte	0x1b3
+ 361 0175 0D       		.uleb128 0xd
+ 362 0176 5A000000 		.4byte	.LVL13
+ 363 017a C4010000 		.4byte	0x1c4
+ 364 017e 0D       		.uleb128 0xd
+ 365 017f 66000000 		.4byte	.LVL14
+ 366 0183 D5010000 		.4byte	0x1d5
+ 367 0187 00       		.byte	0
+ 368 0188 0E       		.uleb128 0xe
+ 369 0189 DE010000 		.4byte	.LASF30
+ 370 018d 05       		.byte	0x5
+ 371 018e 19       		.byte	0x19
+ 372 018f 06010000 		.4byte	0x106
+ 373 0193 05       		.uleb128 0x5
+ 374 0194 03       		.byte	0x3
+ 375 0195 00000000 		.4byte	Battery_Operation_Struct
+ 376 0199 0F       		.uleb128 0xf
+ 377 019a A8000000 		.4byte	.LASF31
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 9
+
+
+ 378 019e 08       		.byte	0x8
+ 379 019f AB       		.byte	0xab
+ 380 01a0 A2000000 		.4byte	0xa2
+ 381 01a4 B3010000 		.4byte	0x1b3
+ 382 01a8 10       		.uleb128 0x10
+ 383 01a9 97000000 		.4byte	0x97
+ 384 01ad 10       		.uleb128 0x10
+ 385 01ae A2000000 		.4byte	0xa2
+ 386 01b2 00       		.byte	0
+ 387 01b3 11       		.uleb128 0x11
+ 388 01b4 A0010000 		.4byte	.LASF32
+ 389 01b8 06       		.byte	0x6
+ 390 01b9 50       		.byte	0x50
+ 391 01ba C4010000 		.4byte	0x1c4
+ 392 01be 10       		.uleb128 0x10
+ 393 01bf 76000000 		.4byte	0x76
+ 394 01c3 00       		.byte	0
+ 395 01c4 12       		.uleb128 0x12
+ 396 01c5 6A010000 		.4byte	.LASF23
+ 397 01c9 06       		.byte	0x6
+ 398 01ca 39       		.byte	0x39
+ 399 01cb CF010000 		.4byte	0x1cf
+ 400 01cf 13       		.uleb128 0x13
+ 401 01d0 04       		.byte	0x4
+ 402 01d1 76000000 		.4byte	0x76
+ 403 01d5 12       		.uleb128 0x12
+ 404 01d6 F7010000 		.4byte	.LASF24
+ 405 01da 07       		.byte	0x7
+ 406 01db 28       		.byte	0x28
+ 407 01dc 81000000 		.4byte	0x81
+ 408 01e0 00       		.byte	0
+ 409              		.section	.debug_abbrev,"",%progbits
+ 410              	.Ldebug_abbrev0:
+ 411 0000 01       		.uleb128 0x1
+ 412 0001 11       		.uleb128 0x11
+ 413 0002 01       		.byte	0x1
+ 414 0003 25       		.uleb128 0x25
+ 415 0004 0E       		.uleb128 0xe
+ 416 0005 13       		.uleb128 0x13
+ 417 0006 0B       		.uleb128 0xb
+ 418 0007 03       		.uleb128 0x3
+ 419 0008 0E       		.uleb128 0xe
+ 420 0009 1B       		.uleb128 0x1b
+ 421 000a 0E       		.uleb128 0xe
+ 422 000b 55       		.uleb128 0x55
+ 423 000c 17       		.uleb128 0x17
+ 424 000d 11       		.uleb128 0x11
+ 425 000e 01       		.uleb128 0x1
+ 426 000f 10       		.uleb128 0x10
+ 427 0010 17       		.uleb128 0x17
+ 428 0011 00       		.byte	0
+ 429 0012 00       		.byte	0
+ 430 0013 02       		.uleb128 0x2
+ 431 0014 24       		.uleb128 0x24
+ 432 0015 00       		.byte	0
+ 433 0016 0B       		.uleb128 0xb
+ 434 0017 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 10
+
+
+ 435 0018 3E       		.uleb128 0x3e
+ 436 0019 0B       		.uleb128 0xb
+ 437 001a 03       		.uleb128 0x3
+ 438 001b 0E       		.uleb128 0xe
+ 439 001c 00       		.byte	0
+ 440 001d 00       		.byte	0
+ 441 001e 03       		.uleb128 0x3
+ 442 001f 16       		.uleb128 0x16
+ 443 0020 00       		.byte	0
+ 444 0021 03       		.uleb128 0x3
+ 445 0022 0E       		.uleb128 0xe
+ 446 0023 3A       		.uleb128 0x3a
+ 447 0024 0B       		.uleb128 0xb
+ 448 0025 3B       		.uleb128 0x3b
+ 449 0026 0B       		.uleb128 0xb
+ 450 0027 49       		.uleb128 0x49
+ 451 0028 13       		.uleb128 0x13
+ 452 0029 00       		.byte	0
+ 453 002a 00       		.byte	0
+ 454 002b 04       		.uleb128 0x4
+ 455 002c 24       		.uleb128 0x24
+ 456 002d 00       		.byte	0
+ 457 002e 0B       		.uleb128 0xb
+ 458 002f 0B       		.uleb128 0xb
+ 459 0030 3E       		.uleb128 0x3e
+ 460 0031 0B       		.uleb128 0xb
+ 461 0032 03       		.uleb128 0x3
+ 462 0033 08       		.uleb128 0x8
+ 463 0034 00       		.byte	0
+ 464 0035 00       		.byte	0
+ 465 0036 05       		.uleb128 0x5
+ 466 0037 13       		.uleb128 0x13
+ 467 0038 01       		.byte	0x1
+ 468 0039 0B       		.uleb128 0xb
+ 469 003a 0B       		.uleb128 0xb
+ 470 003b 3A       		.uleb128 0x3a
+ 471 003c 0B       		.uleb128 0xb
+ 472 003d 3B       		.uleb128 0x3b
+ 473 003e 0B       		.uleb128 0xb
+ 474 003f 01       		.uleb128 0x1
+ 475 0040 13       		.uleb128 0x13
+ 476 0041 00       		.byte	0
+ 477 0042 00       		.byte	0
+ 478 0043 06       		.uleb128 0x6
+ 479 0044 0D       		.uleb128 0xd
+ 480 0045 00       		.byte	0
+ 481 0046 03       		.uleb128 0x3
+ 482 0047 0E       		.uleb128 0xe
+ 483 0048 3A       		.uleb128 0x3a
+ 484 0049 0B       		.uleb128 0xb
+ 485 004a 3B       		.uleb128 0x3b
+ 486 004b 0B       		.uleb128 0xb
+ 487 004c 49       		.uleb128 0x49
+ 488 004d 13       		.uleb128 0x13
+ 489 004e 38       		.uleb128 0x38
+ 490 004f 0B       		.uleb128 0xb
+ 491 0050 00       		.byte	0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 11
+
+
+ 492 0051 00       		.byte	0
+ 493 0052 07       		.uleb128 0x7
+ 494 0053 01       		.uleb128 0x1
+ 495 0054 01       		.byte	0x1
+ 496 0055 49       		.uleb128 0x49
+ 497 0056 13       		.uleb128 0x13
+ 498 0057 01       		.uleb128 0x1
+ 499 0058 13       		.uleb128 0x13
+ 500 0059 00       		.byte	0
+ 501 005a 00       		.byte	0
+ 502 005b 08       		.uleb128 0x8
+ 503 005c 21       		.uleb128 0x21
+ 504 005d 00       		.byte	0
+ 505 005e 49       		.uleb128 0x49
+ 506 005f 13       		.uleb128 0x13
+ 507 0060 2F       		.uleb128 0x2f
+ 508 0061 0B       		.uleb128 0xb
+ 509 0062 00       		.byte	0
+ 510 0063 00       		.byte	0
+ 511 0064 09       		.uleb128 0x9
+ 512 0065 2E       		.uleb128 0x2e
+ 513 0066 01       		.byte	0x1
+ 514 0067 3F       		.uleb128 0x3f
+ 515 0068 19       		.uleb128 0x19
+ 516 0069 03       		.uleb128 0x3
+ 517 006a 0E       		.uleb128 0xe
+ 518 006b 3A       		.uleb128 0x3a
+ 519 006c 0B       		.uleb128 0xb
+ 520 006d 3B       		.uleb128 0x3b
+ 521 006e 0B       		.uleb128 0xb
+ 522 006f 11       		.uleb128 0x11
+ 523 0070 01       		.uleb128 0x1
+ 524 0071 12       		.uleb128 0x12
+ 525 0072 06       		.uleb128 0x6
+ 526 0073 40       		.uleb128 0x40
+ 527 0074 18       		.uleb128 0x18
+ 528 0075 9642     		.uleb128 0x2116
+ 529 0077 19       		.uleb128 0x19
+ 530 0078 01       		.uleb128 0x1
+ 531 0079 13       		.uleb128 0x13
+ 532 007a 00       		.byte	0
+ 533 007b 00       		.byte	0
+ 534 007c 0A       		.uleb128 0xa
+ 535 007d 34       		.uleb128 0x34
+ 536 007e 00       		.byte	0
+ 537 007f 03       		.uleb128 0x3
+ 538 0080 0E       		.uleb128 0xe
+ 539 0081 3A       		.uleb128 0x3a
+ 540 0082 0B       		.uleb128 0xb
+ 541 0083 3B       		.uleb128 0x3b
+ 542 0084 0B       		.uleb128 0xb
+ 543 0085 49       		.uleb128 0x49
+ 544 0086 13       		.uleb128 0x13
+ 545 0087 02       		.uleb128 0x2
+ 546 0088 17       		.uleb128 0x17
+ 547 0089 00       		.byte	0
+ 548 008a 00       		.byte	0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 12
+
+
+ 549 008b 0B       		.uleb128 0xb
+ 550 008c 898201   		.uleb128 0x4109
+ 551 008f 01       		.byte	0x1
+ 552 0090 11       		.uleb128 0x11
+ 553 0091 01       		.uleb128 0x1
+ 554 0092 31       		.uleb128 0x31
+ 555 0093 13       		.uleb128 0x13
+ 556 0094 01       		.uleb128 0x1
+ 557 0095 13       		.uleb128 0x13
+ 558 0096 00       		.byte	0
+ 559 0097 00       		.byte	0
+ 560 0098 0C       		.uleb128 0xc
+ 561 0099 8A8201   		.uleb128 0x410a
+ 562 009c 00       		.byte	0
+ 563 009d 02       		.uleb128 0x2
+ 564 009e 18       		.uleb128 0x18
+ 565 009f 9142     		.uleb128 0x2111
+ 566 00a1 18       		.uleb128 0x18
+ 567 00a2 00       		.byte	0
+ 568 00a3 00       		.byte	0
+ 569 00a4 0D       		.uleb128 0xd
+ 570 00a5 898201   		.uleb128 0x4109
+ 571 00a8 00       		.byte	0
+ 572 00a9 11       		.uleb128 0x11
+ 573 00aa 01       		.uleb128 0x1
+ 574 00ab 31       		.uleb128 0x31
+ 575 00ac 13       		.uleb128 0x13
+ 576 00ad 00       		.byte	0
+ 577 00ae 00       		.byte	0
+ 578 00af 0E       		.uleb128 0xe
+ 579 00b0 34       		.uleb128 0x34
+ 580 00b1 00       		.byte	0
+ 581 00b2 03       		.uleb128 0x3
+ 582 00b3 0E       		.uleb128 0xe
+ 583 00b4 3A       		.uleb128 0x3a
+ 584 00b5 0B       		.uleb128 0xb
+ 585 00b6 3B       		.uleb128 0x3b
+ 586 00b7 0B       		.uleb128 0xb
+ 587 00b8 49       		.uleb128 0x49
+ 588 00b9 13       		.uleb128 0x13
+ 589 00ba 3F       		.uleb128 0x3f
+ 590 00bb 19       		.uleb128 0x19
+ 591 00bc 02       		.uleb128 0x2
+ 592 00bd 18       		.uleb128 0x18
+ 593 00be 00       		.byte	0
+ 594 00bf 00       		.byte	0
+ 595 00c0 0F       		.uleb128 0xf
+ 596 00c1 2E       		.uleb128 0x2e
+ 597 00c2 01       		.byte	0x1
+ 598 00c3 3F       		.uleb128 0x3f
+ 599 00c4 19       		.uleb128 0x19
+ 600 00c5 03       		.uleb128 0x3
+ 601 00c6 0E       		.uleb128 0xe
+ 602 00c7 3A       		.uleb128 0x3a
+ 603 00c8 0B       		.uleb128 0xb
+ 604 00c9 3B       		.uleb128 0x3b
+ 605 00ca 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 13
+
+
+ 606 00cb 27       		.uleb128 0x27
+ 607 00cc 19       		.uleb128 0x19
+ 608 00cd 49       		.uleb128 0x49
+ 609 00ce 13       		.uleb128 0x13
+ 610 00cf 3C       		.uleb128 0x3c
+ 611 00d0 19       		.uleb128 0x19
+ 612 00d1 01       		.uleb128 0x1
+ 613 00d2 13       		.uleb128 0x13
+ 614 00d3 00       		.byte	0
+ 615 00d4 00       		.byte	0
+ 616 00d5 10       		.uleb128 0x10
+ 617 00d6 05       		.uleb128 0x5
+ 618 00d7 00       		.byte	0
+ 619 00d8 49       		.uleb128 0x49
+ 620 00d9 13       		.uleb128 0x13
+ 621 00da 00       		.byte	0
+ 622 00db 00       		.byte	0
+ 623 00dc 11       		.uleb128 0x11
+ 624 00dd 2E       		.uleb128 0x2e
+ 625 00de 01       		.byte	0x1
+ 626 00df 3F       		.uleb128 0x3f
+ 627 00e0 19       		.uleb128 0x19
+ 628 00e1 03       		.uleb128 0x3
+ 629 00e2 0E       		.uleb128 0xe
+ 630 00e3 3A       		.uleb128 0x3a
+ 631 00e4 0B       		.uleb128 0xb
+ 632 00e5 3B       		.uleb128 0x3b
+ 633 00e6 0B       		.uleb128 0xb
+ 634 00e7 27       		.uleb128 0x27
+ 635 00e8 19       		.uleb128 0x19
+ 636 00e9 3C       		.uleb128 0x3c
+ 637 00ea 19       		.uleb128 0x19
+ 638 00eb 01       		.uleb128 0x1
+ 639 00ec 13       		.uleb128 0x13
+ 640 00ed 00       		.byte	0
+ 641 00ee 00       		.byte	0
+ 642 00ef 12       		.uleb128 0x12
+ 643 00f0 2E       		.uleb128 0x2e
+ 644 00f1 00       		.byte	0
+ 645 00f2 3F       		.uleb128 0x3f
+ 646 00f3 19       		.uleb128 0x19
+ 647 00f4 03       		.uleb128 0x3
+ 648 00f5 0E       		.uleb128 0xe
+ 649 00f6 3A       		.uleb128 0x3a
+ 650 00f7 0B       		.uleb128 0xb
+ 651 00f8 3B       		.uleb128 0x3b
+ 652 00f9 0B       		.uleb128 0xb
+ 653 00fa 27       		.uleb128 0x27
+ 654 00fb 19       		.uleb128 0x19
+ 655 00fc 49       		.uleb128 0x49
+ 656 00fd 13       		.uleb128 0x13
+ 657 00fe 3C       		.uleb128 0x3c
+ 658 00ff 19       		.uleb128 0x19
+ 659 0100 00       		.byte	0
+ 660 0101 00       		.byte	0
+ 661 0102 13       		.uleb128 0x13
+ 662 0103 0F       		.uleb128 0xf
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 14
+
+
+ 663 0104 00       		.byte	0
+ 664 0105 0B       		.uleb128 0xb
+ 665 0106 0B       		.uleb128 0xb
+ 666 0107 49       		.uleb128 0x49
+ 667 0108 13       		.uleb128 0x13
+ 668 0109 00       		.byte	0
+ 669 010a 00       		.byte	0
+ 670 010b 00       		.byte	0
+ 671              		.section	.debug_loc,"",%progbits
+ 672              	.Ldebug_loc0:
+ 673              	.LLST0:
+ 674 0000 14000000 		.4byte	.LVL1
+ 675 0004 17000000 		.4byte	.LVL2-1
+ 676 0008 0C00     		.2byte	0xc
+ 677 000a 70       		.byte	0x70
+ 678 000b 00       		.sleb128 0
+ 679 000c F7       		.byte	0xf7
+ 680 000d 25       		.uleb128 0x25
+ 681 000e 08       		.byte	0x8
+ 682 000f 64       		.byte	0x64
+ 683 0010 F7       		.byte	0xf7
+ 684 0011 25       		.uleb128 0x25
+ 685 0012 1B       		.byte	0x1b
+ 686 0013 F7       		.byte	0xf7
+ 687 0014 00       		.uleb128 0
+ 688 0015 9F       		.byte	0x9f
+ 689 0016 2E000000 		.4byte	.LVL5
+ 690 001a 31000000 		.4byte	.LVL6-1
+ 691 001e 1300     		.2byte	0x13
+ 692 0020 03       		.byte	0x3
+ 693 0021 02000000 		.4byte	Battery_Operation_Struct+2
+ 694 0025 94       		.byte	0x94
+ 695 0026 02       		.byte	0x2
+ 696 0027 08       		.byte	0x8
+ 697 0028 64       		.byte	0x64
+ 698 0029 1D       		.byte	0x1d
+ 699 002a F7       		.byte	0xf7
+ 700 002b 25       		.uleb128 0x25
+ 701 002c 3A       		.byte	0x3a
+ 702 002d F7       		.byte	0xf7
+ 703 002e 25       		.uleb128 0x25
+ 704 002f 1B       		.byte	0x1b
+ 705 0030 F7       		.byte	0xf7
+ 706 0031 00       		.uleb128 0
+ 707 0032 9F       		.byte	0x9f
+ 708 0033 4A000000 		.4byte	.LVL10
+ 709 0037 4F000000 		.4byte	.LVL11-1
+ 710 003b 0A00     		.2byte	0xa
+ 711 003d 03       		.byte	0x3
+ 712 003e 02000000 		.4byte	Battery_Operation_Struct+2
+ 713 0042 94       		.byte	0x94
+ 714 0043 02       		.byte	0x2
+ 715 0044 3A       		.byte	0x3a
+ 716 0045 1D       		.byte	0x1d
+ 717 0046 9F       		.byte	0x9f
+ 718 0047 00000000 		.4byte	0
+ 719 004b 00000000 		.4byte	0
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 15
+
+
+ 720              		.section	.debug_aranges,"",%progbits
+ 721 0000 1C000000 		.4byte	0x1c
+ 722 0004 0200     		.2byte	0x2
+ 723 0006 00000000 		.4byte	.Ldebug_info0
+ 724 000a 04       		.byte	0x4
+ 725 000b 00       		.byte	0
+ 726 000c 0000     		.2byte	0
+ 727 000e 0000     		.2byte	0
+ 728 0010 00000000 		.4byte	.LFB33
+ 729 0014 B0000000 		.4byte	.LFE33-.LFB33
+ 730 0018 00000000 		.4byte	0
+ 731 001c 00000000 		.4byte	0
+ 732              		.section	.debug_ranges,"",%progbits
+ 733              	.Ldebug_ranges0:
+ 734 0000 00000000 		.4byte	.LFB33
+ 735 0004 B0000000 		.4byte	.LFE33
+ 736 0008 00000000 		.4byte	0
+ 737 000c 00000000 		.4byte	0
+ 738              		.section	.debug_line,"",%progbits
+ 739              	.Ldebug_line0:
+ 740 0000 9F010000 		.section	.debug_str,"MS",%progbits,1
+ 740      02006201 
+ 740      00000201 
+ 740      FB0E0D00 
+ 740      01010101 
+ 741              	.LASF22:
+ 742 0000 42617474 		.ascii	"Battery_Sttruct\000"
+ 742      6572795F 
+ 742      53747472 
+ 742      75637400 
+ 743              	.LASF9:
+ 744 0010 5F5F7569 		.ascii	"__uint8_t\000"
+ 744      6E74385F 
+ 744      7400
+ 745              	.LASF25:
+ 746 001a 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 746      4320342E 
+ 746      392E3320 
+ 746      32303135 
+ 746      30333033 
+ 747 004d 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 747      20726576 
+ 747      6973696F 
+ 747      6E203232 
+ 747      31323230 
+ 748 0080 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 748      66756E63 
+ 748      74696F6E 
+ 748      2D736563 
+ 748      74696F6E 
+ 749              	.LASF31:
+ 750 00a8 4144435F 		.ascii	"ADC_CountsTo_mVolts\000"
+ 750      436F756E 
+ 750      7473546F 
+ 750      5F6D566F 
+ 750      6C747300 
+ 751              	.LASF21:
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 16
+
+
+ 752 00bc 44697370 		.ascii	"Display_String\000"
+ 752      6C61795F 
+ 752      53747269 
+ 752      6E6700
+ 753              	.LASF10:
+ 754 00cb 75696E74 		.ascii	"uint8_t\000"
+ 754      385F7400 
+ 755              	.LASF26:
+ 756 00d3 2E5C4261 		.ascii	".\\Battery.c\000"
+ 756      74746572 
+ 756      792E6300 
+ 757              	.LASF15:
+ 758 00df 666C6F61 		.ascii	"float\000"
+ 758      7400
+ 759              	.LASF2:
+ 760 00e5 756E7369 		.ascii	"unsigned char\000"
+ 760      676E6564 
+ 760      20636861 
+ 760      7200
+ 761              	.LASF27:
+ 762 00f3 433A5C55 		.ascii	"C:\\Users\\Vit\\Documents\\PSoC Creator\\SensorTest"
+ 762      73657273 
+ 762      5C566974 
+ 762      5C446F63 
+ 762      756D656E 
+ 763 0121 5C53656E 		.ascii	"\\SensorTest.cydsn\000"
+ 763      736F7254 
+ 763      6573742E 
+ 763      63796473 
+ 763      6E00
+ 764              	.LASF5:
+ 765 0133 6C6F6E67 		.ascii	"long unsigned int\000"
+ 765      20756E73 
+ 765      69676E65 
+ 765      6420696E 
+ 765      7400
+ 766              	.LASF29:
+ 767 0145 42756665 		.ascii	"Bufer\000"
+ 767      7200
+ 768              	.LASF16:
+ 769 014b 646F7562 		.ascii	"double\000"
+ 769      6C6500
+ 770              	.LASF3:
+ 771 0152 73686F72 		.ascii	"short int\000"
+ 771      7420696E 
+ 771      7400
+ 772              	.LASF12:
+ 773 015c 75696E74 		.ascii	"uint16\000"
+ 773      313600
+ 774              	.LASF13:
+ 775 0163 75696E74 		.ascii	"uint32\000"
+ 775      333200
+ 776              	.LASF23:
+ 777 016a 4243445F 		.ascii	"BCD_GetPointerBuf\000"
+ 777      47657450 
+ 777      6F696E74 
+ 777      65724275 
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 17
+
+
+ 777      6600
+ 778              	.LASF8:
+ 779 017c 756E7369 		.ascii	"unsigned int\000"
+ 779      676E6564 
+ 779      20696E74 
+ 779      00
+ 780              	.LASF7:
+ 781 0189 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 781      206C6F6E 
+ 781      6720756E 
+ 781      7369676E 
+ 781      65642069 
+ 782              	.LASF32:
+ 783 01a0 4243445F 		.ascii	"BCD_Uchar\000"
+ 783      55636861 
+ 783      7200
+ 784              	.LASF14:
+ 785 01aa 696E7431 		.ascii	"int16\000"
+ 785      3600
+ 786              	.LASF18:
+ 787 01b0 73697A65 		.ascii	"sizetype\000"
+ 787      74797065 
+ 787      00
+ 788              	.LASF28:
+ 789 01b9 42617474 		.ascii	"Battery_Get_Volts\000"
+ 789      6572795F 
+ 789      4765745F 
+ 789      566F6C74 
+ 789      7300
+ 790              	.LASF6:
+ 791 01cb 6C6F6E67 		.ascii	"long long int\000"
+ 791      206C6F6E 
+ 791      6720696E 
+ 791      7400
+ 792              	.LASF17:
+ 793 01d9 63686172 		.ascii	"char\000"
+ 793      00
+ 794              	.LASF30:
+ 795 01de 42617474 		.ascii	"Battery_Operation_Struct\000"
+ 795      6572795F 
+ 795      4F706572 
+ 795      6174696F 
+ 795      6E5F5374 
+ 796              	.LASF24:
+ 797 01f7 43686172 		.ascii	"Charge_Status_Reg_Read\000"
+ 797      67655F53 
+ 797      74617475 
+ 797      735F5265 
+ 797      675F5265 
+ 798              	.LASF11:
+ 799 020e 75696E74 		.ascii	"uint8\000"
+ 799      3800
+ 800              	.LASF4:
+ 801 0214 6C6F6E67 		.ascii	"long int\000"
+ 801      20696E74 
+ 801      00
+ 802              	.LASF19:
+ARM GAS  C:\Users\Vit\AppData\Local\Temp\cczMDeco.s 			page 18
+
+
+ 803 021d 4144435F 		.ascii	"ADC_Result\000"
+ 803      52657375 
+ 803      6C7400
+ 804              	.LASF1:
+ 805 0228 7369676E 		.ascii	"signed char\000"
+ 805      65642063 
+ 805      68617200 
+ 806              	.LASF0:
+ 807 0234 73686F72 		.ascii	"short unsigned int\000"
+ 807      7420756E 
+ 807      7369676E 
+ 807      65642069 
+ 807      6E7400
+ 808              	.LASF20:
+ 809 0247 566F6C74 		.ascii	"Volts\000"
+ 809      7300
+ 810              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
